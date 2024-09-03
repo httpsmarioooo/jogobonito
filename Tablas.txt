@@ -1,0 +1,20 @@
+tablas independientes del esquema de base de datos:
+
+stadiums
+teams
+event_type
+judge_roles
+judges
+
+
+tablas dependientes del esquema de base de datos:
+
+players
+matches
+goals
+assists
+standings
+awards
+coaches
+match_events
+judges_per_match
