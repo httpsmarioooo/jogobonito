@@ -13,6 +13,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "players")
+
+
 public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,6 +39,11 @@ public class Player {
     @Column(nullable = false)
     private String countryOfBirth;
 
+    @ManyToOne
+    @JoinColumn(name = "team_id", referencedColumnName = "id", nullable = false)
+    private Team team;
+
+    
     // Getters and setters
 }
 
