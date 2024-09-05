@@ -18,3 +18,10 @@ awards
 coaches
 match_events
 judges_per_match
+
+
+Relaciones terminadas
+
+Player
+MatchEvent
+Awards
