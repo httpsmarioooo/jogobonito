@@ -24,6 +24,11 @@ public class Award {
     @Column
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "player_id", referencedColumnName = "id", nullable = false)
+    private Player player;
+
+
 }
 
 
