@@ -23,4 +23,22 @@ public class MatchEvent {
 
     @Column
     private String description;
+
+
+    @ManyToOne
+    @JoinColumn(name = "match_id", referencedColumnName = "id", nullable = false)
+    private MatchEvent matchEvent;
+
+    @ManyToOne
+    @JoinColumn(name = "player_id", referencedColumnName = "id", nullable = false)
+    private Player player;
+
+    @ManyToOne
+    @JoinColumn(name = "player2_id", referencedColumnName = "id", nullable = false)
+    private Player player2;
+
+
+
 }
+
+
