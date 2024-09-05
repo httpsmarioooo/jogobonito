@@ -37,8 +37,6 @@ public class MatchEvent {
     @JoinColumn(name = "player2_id", referencedColumnName = "id", nullable = false)
     private Player player2;
 
-
-
 }
 
 
