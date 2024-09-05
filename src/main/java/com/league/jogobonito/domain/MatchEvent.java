@@ -37,6 +37,10 @@ public class MatchEvent {
     @JoinColumn(name = "player2_id", referencedColumnName = "id", nullable = false)
     private Player player2;
 
+    @ManyToOne
+    @JoinColumn(name = "event_type_id", referencedColumnName = "id", nullable = false)
+    private EventType eventType;
+
 }
 
 
