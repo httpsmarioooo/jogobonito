@@ -20,9 +20,16 @@ match_events
 judges_per_match
 
 
-Relaciones terminadas
+Las que faltan por terminar-----
+matches
+standings
+coaches
+judges_per_match
+
+Relaciones terminadas------
 
 Player
 MatchEvent
 Award
 Assist
+Goal

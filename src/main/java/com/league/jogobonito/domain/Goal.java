@@ -19,4 +19,12 @@ public class Goal {
 
     @Column(nullable = false)
     private Integer minute;
+
+    @ManyToOne
+    @JoinColumn(name = "match_id", referencedColumnName = "id", nullable = false)
+    private Match match;
+
+    @ManyToOne
+    @JoinColumn(name = "player_id", referencedColumnName = "id", nullable = false)
+    private Player player;
 }
