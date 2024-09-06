@@ -24,4 +24,5 @@ Relaciones terminadas
 
 Player
 MatchEvent
-Awards
+Award
+Assist
