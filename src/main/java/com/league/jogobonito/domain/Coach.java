@@ -19,4 +19,8 @@ public class Coach {
 
     @Column(nullable = false)
     private String name;
+
+    @ManyToOne
+    @JoinColumn (name = "team_id", referencedColumnName = "id", nullable = false)
+    private Team team;
 }
