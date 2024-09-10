@@ -20,4 +20,6 @@ public class JudgeRole {
     @Column(nullable = false)
     private String roleName;
 
+
+
 }

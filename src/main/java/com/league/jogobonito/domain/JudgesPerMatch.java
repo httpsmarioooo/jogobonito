@@ -18,5 +18,16 @@ public class JudgesPerMatch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+
+    @ManyToOne
+    @JoinColumn (name = "judge_id", referencedColumnName = "id", nullable = false)
+    private Judge judge;
+
+
+    @ManyToOne
+    @JoinColumn (name = "match_id" , referencedColumnName =  "id" , nullable = false)
+    private Match match;
+
+
 }
 
