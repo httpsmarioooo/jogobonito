@@ -28,6 +28,10 @@ public class JudgesPerMatch {
     @JoinColumn (name = "match_id" , referencedColumnName =  "id" , nullable = false)
     private Match match;
 
+    @ManyToOne
+    @JoinColumn (name = "role_id" , referencedColumnName = "id", nullable = false)
+    private JudgeRole judgeRole;
+
 
 
 
