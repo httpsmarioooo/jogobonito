@@ -28,4 +28,18 @@ public class Match {
 
     @Column(nullable = false)
     private Integer awayTeamScore;
+
+    @ManyToOne
+    @JoinColumn (name = "stadium_id" , referencedColumnName = "id", nullable = false)
+    private Stadium stadium;
+
+    @ManyToOne
+    @JoinColumn (name = "home_team_id", referencedColumnName = "id" , nullable = false)
+    private Match match;
+
+    @ManyToOne
+    @JoinColumn (name = "away_team_id", referencedColumnName = "id" , nullable = false)
+    private Match match2;
+
+
 }

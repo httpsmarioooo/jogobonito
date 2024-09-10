@@ -21,10 +21,9 @@ judges_per_match
 
 
 Las que faltan por terminar-----
-matches
+
 standings
-coaches
-judges_per_match
+
 
 Relaciones terminadas------
 
@@ -33,3 +32,10 @@ MatchEvent
 Award
 Assist
 Goal
+JudgesPerMatch
+Coach
+Match
+EventType
+
+
+
