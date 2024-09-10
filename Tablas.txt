@@ -20,22 +20,23 @@ match_events
 judges_per_match
 
 
-Las que faltan por terminar-----
-
-standings
 
 
 Relaciones terminadas------
 
+Mario
 Player
 MatchEvent
 Award
 Assist
 Goal
 JudgesPerMatch
+
+Miguel
 Coach
 Match
 EventType
+standings
 
 
 
