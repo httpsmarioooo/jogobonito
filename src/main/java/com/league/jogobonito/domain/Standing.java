@@ -26,4 +26,8 @@ public class Standing {
     @Column(nullable = false)
     private Integer goalsAgainst;
 
+    @ManyToOne
+    @JoinColumn (name = "team_id" , referencedColumnName = "id", nullable = false)
+    private Team team;
+
 }
