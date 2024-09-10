@@ -35,11 +35,11 @@ public class Match {
 
     @ManyToOne
     @JoinColumn (name = "home_team_id", referencedColumnName = "id" , nullable = false)
-    private Match match;
+    private Team team;
 
     @ManyToOne
     @JoinColumn (name = "away_team_id", referencedColumnName = "id" , nullable = false)
-    private Match match2;
+    private Team team2;
 
 
 
