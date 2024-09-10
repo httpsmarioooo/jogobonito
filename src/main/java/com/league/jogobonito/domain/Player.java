@@ -43,6 +43,9 @@ public class Player {
     @JoinColumn(name = "team_id", referencedColumnName = "id", nullable = false)
     private Team team;
 
+
+
+
     
     // Getters and setters
 }

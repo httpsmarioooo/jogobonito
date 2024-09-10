@@ -27,7 +27,7 @@ public class MatchEvent {
 
     @ManyToOne
     @JoinColumn(name = "match_id", referencedColumnName = "id", nullable = false)
-    private MatchEvent matchEvent;
+    private Match match;
 
     @ManyToOne
     @JoinColumn(name = "player_id", referencedColumnName = "id", nullable = false)
