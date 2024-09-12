@@ -26,17 +26,17 @@ public class Player {
     @Column(nullable = false)
     private String position;
 
-    @Column(nullable = false, length = 3)
+    @Column(nullable = false, length = 3, name = "jersey_number")
     private String jerseyNumber;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "birth_date")
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "height_cm")
     private Integer heightCm;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "country_of_birth")
     private String countryOfBirth;
 
     @ManyToOne

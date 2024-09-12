@@ -40,3 +40,8 @@ standings
 
 
 
+Arreglar en proceso (agregar el name = "country_of_birth"):
+
+Player
+
+

@@ -1,4 +1,4 @@
-package repository;
+package com.league.jogobonito.repository;
 
 
 import io.micrometer.observation.Observation;

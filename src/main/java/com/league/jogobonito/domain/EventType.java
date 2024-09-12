@@ -20,8 +20,5 @@ public class EventType {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne
-    @JoinColumn  (name = "event_type_id", referencedColumnName = "id" , nullable = false)
-    private EventType eventType;
 
 }
