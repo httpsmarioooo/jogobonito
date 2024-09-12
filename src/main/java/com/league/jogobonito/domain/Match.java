@@ -23,10 +23,10 @@ public class Match {
     @Temporal(TemporalType.DATE)
     private Date date;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "home_team_score")
     private Integer homeTeamScore;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "away_team_score")
     private Integer awayTeamScore;
 
     @ManyToOne

@@ -20,10 +20,10 @@ public class Standing {
     @Column(nullable = false)
     private Integer points;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "goals_for")
     private Integer goalsFor;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "goals_against")
     private Integer goalsAgainst;
 
     @ManyToOne

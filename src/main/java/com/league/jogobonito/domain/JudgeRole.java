@@ -17,7 +17,7 @@ public class JudgeRole {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "role_name")
     private String roleName;
 
 

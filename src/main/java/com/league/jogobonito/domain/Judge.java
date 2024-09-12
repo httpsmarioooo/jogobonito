@@ -21,6 +21,6 @@ public class Judge {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "country_of_birth")
     private String countryOfBirth;
 }

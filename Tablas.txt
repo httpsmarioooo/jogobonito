@@ -40,8 +40,18 @@ standings
 
 
 
-Arreglar en proceso (agregar el name = "country_of_birth"):
+CORREGIR  (agregar el name = "country_of_birth"):
 
 Player
+Standing
+Match
+Judge
+JudgeRole
 
+CORREGIDAS:
+Player
+Standing
+Match
+Judge
+JudgeRole
 

@@ -24,7 +24,6 @@ public class MatchEvent {
     @Column
     private String description;
 
-
     @ManyToOne
     @JoinColumn(name = "match_id", referencedColumnName = "id", nullable = false)
     private Match match;
