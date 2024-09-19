@@ -39,7 +39,6 @@ EventType
 standings
 
 
-
 CORREGIR  (agregar el name = "country_of_birth"):
 
 Player
@@ -56,7 +55,6 @@ Judge
 JudgeRole
 
 
-
 Controlladores construidos
 Assist
 Award
@@ -68,6 +66,7 @@ Team
 Judge
 match
 player
+
 
 Constroladores que faltan
 Judgerole

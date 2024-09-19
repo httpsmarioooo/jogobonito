@@ -15,8 +15,8 @@ public class MatchController {
         this.matchRepository = matchRepository;
     }
 
-    @GetMapping(value = "/obtenerCoaches")
-    public List<Match> obtenerCoaches() {
+    @GetMapping(value = "/obtenerMatches")
+    public List<Match> obtenerMatches() {
         return matchRepository.findAll();
     }
 }
