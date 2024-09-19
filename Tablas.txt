@@ -55,3 +55,23 @@ Match
 Judge
 JudgeRole
 
+
+
+Controlladores construidos
+Assist
+Award
+Coach
+EventType
+Goal
+Stadium
+Team
+
+
+Constroladores que faltan
+Judge
+Judgerole
+Judgespermatch
+match
+machtevent
+player
+standing
