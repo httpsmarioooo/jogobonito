@@ -65,13 +65,12 @@ EventType
 Goal
 Stadium
 Team
-
+Judge
+match
+player
 
 Constroladores que faltan
-Judge
 Judgerole
 Judgespermatch
-match
 machtevent
-player
 standing
