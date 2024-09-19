@@ -5,5 +5,5 @@ import io.micrometer.observation.Observation;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MatchEvent extends Observation.Event {
+public interface MatchEventRepository extends Observation.Event {
 }
