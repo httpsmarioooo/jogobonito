@@ -66,10 +66,10 @@ Team
 Judge
 match
 player
-
+standing
 
 Constroladores que faltan
 Judgerole
 Judgespermatch
 machtevent
-standing
+
