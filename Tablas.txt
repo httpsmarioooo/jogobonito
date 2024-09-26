@@ -67,9 +67,19 @@ Judge
 match
 player
 standing
+Judgerole
 
 Constroladores que faltan
-Judgerole
-Judgespermatch
+Judgespermatch // terminado pero hay que ver si quedó bien
 machtevent
 
+
+Hacer el mapper y los controllers arregrarlos...
+
+En los controladores arreglar:
+ @GetMapping(value = "/obtenerTeams")
+    public List<TeamDTO> obtenerTeams() {
+        List<Team>listaTeams = teamRepository.findAll();
+        List<TeamDTO> teamsDTO = TeamMapper.domainToDTOList(listaTeams);
+        return teamsDTO;
+    }
