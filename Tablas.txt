@@ -75,6 +75,8 @@ machtevent
 
 
 Hacer el mapper y los controllers arregrarlos...
+Mapper hecho:
+TeamMapper
 
 En los controladores arreglar:
  @GetMapping(value = "/obtenerTeams")
