@@ -68,15 +68,19 @@ match
 player
 standing
 Judgerole
-
-Constroladores que faltan
-Judgespermatch // terminado pero hay que ver si quedó bien
 machtevent
+Judgespermatch
 
 
-Hacer el mapper y los controllers arregrarlos...
+
+Hacer el mapper y los controllers arregrarlos (PARA LOS INDEPENDIENTES SOLAMENTE...
 Mapper hecho:
-TeamMapper
+---TeamMapper
+
+Controlador arreglado:
+TeamController
+
+
 
 En los controladores arreglar:
  @GetMapping(value = "/obtenerTeams")

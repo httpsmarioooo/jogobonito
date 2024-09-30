@@ -14,7 +14,7 @@ public class MatchEventController {
         this.matchEventRepository = matchEventRepository;
     }
 
-    @GetMapping(value = "/obtenerMatchEvent")
+    @GetMapping(value = "/obtenerMatchEvents")
     public List<MatchEvent> obtenerMatchEvent() {
         return matchEventRepository.findAll();
 

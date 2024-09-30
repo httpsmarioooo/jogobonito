@@ -14,7 +14,7 @@ public class JudgesPerMatchController {
         this.judgesPerMatchRepository = judgesPerMatchRepository;
     }
 
-    @GetMapping(value = "/obtenerJudgePerMatch")
+    @GetMapping(value = "/obtenerJudgesPerMatch")
     public List<JudgesPerMatch> obtenerJudgePerMatch() {
         return judgesPerMatchRepository.findAll();
     }
