@@ -4,7 +4,6 @@ import com.league.jogobonito.dto.TeamDTO;
 import com.league.jogobonito.mapper.TeamMapper;
 import com.league.jogobonito.repository.TeamRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
