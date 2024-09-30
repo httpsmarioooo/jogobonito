@@ -9,8 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class TeamDTO {
+public class StadiumDTO {
     private Integer id;
     private String name;
     private String city;
+    private Integer capacity;
+    private String country;
 }

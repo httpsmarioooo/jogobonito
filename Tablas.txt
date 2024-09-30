@@ -74,13 +74,24 @@ Judgespermatch
 
 
 Hacer el mapper y los controllers arregrarlos (PARA LOS INDEPENDIENTES SOLAMENTE...
+
+
 Mapper hecho:
----TeamMapper
+TeamMapper
+StadiumMapper
 
 Controlador arreglado:
 TeamController
+StadiumController
 
 
+
+----
+FALTA TODO
+event_type
+judge_roles
+judges
+-----
 
 En los controladores arreglar:
  @GetMapping(value = "/obtenerTeams")

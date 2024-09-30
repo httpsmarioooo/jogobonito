@@ -1,4 +1,5 @@
 package com.league.jogobonito.controller;
+
 import com.league.jogobonito.domain.Team;
 import com.league.jogobonito.dto.TeamDTO;
 import com.league.jogobonito.mapper.TeamMapper;
@@ -13,6 +14,7 @@ import java.util.List;
 @RequestMapping("/team")
 public class TeamController {
     private TeamRepository teamRepository;
+
     public TeamController(TeamRepository teamRepository) {
         this.teamRepository = teamRepository;
     }
