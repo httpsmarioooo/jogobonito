@@ -22,9 +22,9 @@ public class StadiumController {
     @GetMapping(value = "/obtenerStadiums")
     public List<StadiumDTO> obtenerStadiums() {
         List<Stadium> listaStadiums = stadiumRepository.findAll();
-        List<StadiumDTO> stadiumDTO = StadiumMapper.domainToDTOList(listaStadiums);  // Cambiado a StadiumMapper
+        List<StadiumDTO> stadiumsDTO = StadiumMapper.domainToDTOList(listaStadiums);  // Cambiado a StadiumMapper
 
-        return stadiumDTO;
+        return stadiumsDTO;
     }
 
     @PostMapping(value = "/crearNuevoStadium")
@@ -35,7 +35,6 @@ public class StadiumController {
         stadium = stadiumRepository.save(stadium);
 
         stadiumDTOResponse = StadiumMapper.domainToDTO(stadium);  // Cambiado el nombre de la variable
-
         return new ResponseEntity<>(stadiumDTOResponse, HttpStatus.CREATED);  // Variable en minúsculas
     }
 }
