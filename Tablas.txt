@@ -79,16 +79,21 @@ Hacer el mapper y los controllers arregrarlos (PARA LOS INDEPENDIENTES SOLAMENTE
 Mapper hecho:
 TeamMapper
 StadiumMapper
+event_type
+
+DTO
+TeamController
+StadiumController
+event_type
 
 Controlador arreglado:
 TeamController
 StadiumController
-
+event_type
 
 
 ----
 FALTA TODO
-event_type
 judge_roles
 judges
 -----

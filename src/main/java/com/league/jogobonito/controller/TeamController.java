@@ -7,7 +7,6 @@ import com.league.jogobonito.repository.TeamRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -23,6 +22,7 @@ public class TeamController {
     public List<TeamDTO> obtenerTeams() {
         List<Team>listaTeams = teamRepository.findAll();
         List<TeamDTO> teamsDTO = TeamMapper.domainToDTOList(listaTeams);
+
         return teamsDTO;
     }
 

@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/stadium")
 public class StadiumController {
-    private final StadiumRepository stadiumRepository;
+    private StadiumRepository stadiumRepository;
 
     public StadiumController(StadiumRepository stadiumRepository) {
         this.stadiumRepository = stadiumRepository;
