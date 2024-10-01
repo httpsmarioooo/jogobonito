@@ -80,22 +80,23 @@ Mapper hecho:
 TeamMapper
 StadiumMapper
 event_type
+judges
 
 DTO
 TeamController
 StadiumController
 event_type
+judges
 
 Controlador arreglado:
 TeamController
 StadiumController
 event_type
-
+judges
 
 ----
 FALTA TODO
 judge_roles
-judges
 -----
 
 En los controladores arreglar:

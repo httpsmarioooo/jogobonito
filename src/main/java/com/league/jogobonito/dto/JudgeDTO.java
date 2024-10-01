@@ -10,8 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class TeamDTO {
+public class JudgeDTO {
     private Integer id;
-    private String name;
-    private String city;
+    private String nombre;
+    private String countryOfBirth;
+
 }

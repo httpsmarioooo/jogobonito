@@ -20,6 +20,7 @@ public class TeamController {
 
     @GetMapping(value = "/obtenerTeams")
     public List<TeamDTO> obtenerTeams() {
+
         List<Team>listaTeams = teamRepository.findAll();
         List<TeamDTO> teamsDTO = TeamMapper.domainToDTOList(listaTeams);
 
