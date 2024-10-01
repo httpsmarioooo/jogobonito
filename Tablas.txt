@@ -97,6 +97,7 @@ event_type
 judges
 judge_roles
 
+
 En los controladores arreglar:
  @GetMapping(value = "/obtenerTeams")
     public List<TeamDTO> obtenerTeams() {

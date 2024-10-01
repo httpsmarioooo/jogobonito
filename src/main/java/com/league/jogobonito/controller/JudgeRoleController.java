@@ -35,7 +35,7 @@ public class JudgeRoleController {
         JudgeRole judgeRole = JudgeRoleMapper.dtoToDomain(judgeRoleDTO);
         judgeRole = judgeRoleRepository.save(judgeRole);
 
-        judgeRoleDTOResponse = JudgeRoleMapper.domainToDTO(judgeRole);
+        judgeRoleDTOResponse = JudgeRoleMapper.domainToDT0(judgeRole);
         return new ResponseEntity<>(judgeRoleDTOResponse, HttpStatus.CREATED);
     }
 
