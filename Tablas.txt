@@ -81,23 +81,21 @@ TeamMapper
 StadiumMapper
 event_type
 judges
+judge_roles
 
 DTO
 TeamController
 StadiumController
 event_type
 judges
+judge_roles
 
 Controlador arreglado:
 TeamController
 StadiumController
 event_type
 judges
-
-----
-FALTA TODO
 judge_roles
------
 
 En los controladores arreglar:
  @GetMapping(value = "/obtenerTeams")
