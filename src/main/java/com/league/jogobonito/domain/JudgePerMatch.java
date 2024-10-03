@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "judges_per_match")
 
-public class JudgesPerMatch {
+public class JudgePerMatch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
