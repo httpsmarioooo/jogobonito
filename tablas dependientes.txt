@@ -24,7 +24,7 @@ No depende de ninguna otra tabla.
 
 Dependientes
 
-1.
+'1'.
 players:
 Depende de la tabla teams a través de team_id.
 
