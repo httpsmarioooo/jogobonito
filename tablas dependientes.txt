@@ -1,18 +1,22 @@
 Independientes
 
 1.
-teams:
+stadiums:
 No depende de ninguna otra tabla.
 
 2.
-event_type:
+teams:
 No depende de ninguna otra tabla.
 
 3.
-judges:
+event_type:
 No depende de ninguna otra tabla.
 
 4.
+judges:
+No depende de ninguna otra tabla.
+
+5.
 judge_roles:
 No depende de ninguna otra tabla.
 
