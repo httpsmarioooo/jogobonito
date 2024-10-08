@@ -1,7 +1,6 @@
 package com.league.jogobonito.controller;
 
 import com.league.jogobonito.dto.JudgePerMatchDTO;
-import com.league.jogobonito.dto.JudgeRoleDTO;
 import com.league.jogobonito.repository.JudgePerMatchRepository;
 import com.league.jogobonito.service.JudgePerMatchService;
 import org.springframework.http.HttpStatus;
@@ -26,7 +25,7 @@ public class JudgePerMatchController {
     }
 
     @PostMapping(value = "/guardarNuevoJudgePerMatch")
-    public ResponseEntity<JudgePerMatchDTO> guardarNuevoJudgePerMatch(@RequestBody JudgePerMatchDTO judgePerMatchDTO) {
+    public ResponseEntity<JudgePerMatchDTO> guardarNuevoJudgePerMatch(@RequestBody JudgePerMatchDTO judgePerMatchDTO) throws Exception {
         JudgePerMatchDTO judgePerMatchResponse = judgePerMatchService.guardarNuevoJudgePerMatch(judgePerMatchDTO);
         return new ResponseEntity<>(judgePerMatchResponse, HttpStatus.CREATED);
     }

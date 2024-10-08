@@ -1,0 +1,8 @@
+1. Crear el Repository
+2. Crear el DTO
+3. Crear SERVICE
+4. Crear SERVICEIMPL
+5. Crear Mapper
+6. Ajustar el Controller
+
+6. Luego nos vamos a Servicesimpl y le damos a la FX funcion y entramos a las excepciones pero en Services (solito)
