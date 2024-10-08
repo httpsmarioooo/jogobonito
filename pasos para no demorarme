@@ -6,4 +6,5 @@
 6. Ajustar el Controller
 
 6. Luego nos vamos a Servicesimpl y le damos a la FX funcion y entramos a las excepciones pero en Services (solito)
-7. Comenzamos a hacer las validaciones.
+7. Comenzamos a hacer las validaciones. Validaciones de la tabla dependiente a independiente
+8.Ultimas validaciones en el mismo impl en la parte final---
