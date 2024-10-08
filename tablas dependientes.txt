@@ -39,7 +39,7 @@ No depende de ninguna otra tabla.
 judge_roles:
 No depende de ninguna otra tabla.
 
-judges_per_match terminado:
+judges_per_match TERMINADO:
 Depende de la tabla matches a través de match_id.
 Depende de la tabla judges a través de judge_id.
 Depende de la tabla judge_roles a través de role_id.
