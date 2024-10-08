@@ -28,5 +28,5 @@ public class JudgeRoleMapper {
 
         public static List<JudgeRoleDTO> domainToDTOList(List<JudgeRole> judgeRoles){
         return judgeRoles.stream().map(JudgeRoleMapper::domainToDT0).toList();
-        }
+    }
 }
