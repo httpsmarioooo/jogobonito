@@ -1,44 +1,63 @@
+Independientes
+
+1.
 teams:
 No depende de ninguna otra tabla.
 
+2.
+event_type:
+No depende de ninguna otra tabla.
+
+3.
+judges:
+No depende de ninguna otra tabla.
+
+4.
+judge_roles:
+No depende de ninguna otra tabla.
+
+
+
+Dependientes
+
+1.
 players:
 Depende de la tabla teams a través de team_id.
 
+2.
 matches:
 Depende de la tabla teams a través de home_team_id y away_team_id.
 Depende de la tabla stadiums a través de stadium_id.
 
+3.
 goals:
 Depende de la tabla matches a través de match_id.
 Depende de la tabla players a través de player_id.
 
+4.
 assists:
 Depende de la tabla matches a través de match_id.
 Depende de la tabla players a través de player_id.
 
+5.
 standings:
 Depende de la tabla teams a través de team_id.
 
+6.
 awards:
 Depende de la tabla players a través de player_id.
 
+7.
 coaches:
 Depende de la tabla teams a través de team_id.
 
-event_type:
-No depende de ninguna otra tabla.
-
+8.
 match_events:
 Depende de la tabla matches a través de match_id.
 Depende de la tabla players a través de player_id y player2_id.
 Depende de la tabla event_type a través de event_type_id.
 
-judges:
-No depende de ninguna otra tabla.
-
-judge_roles:
-No depende de ninguna otra tabla.
-
+9.
 judges_per_match TERMINADO:
 Depende de la tabla matches a través de match_id.
 Depende de la tabla judges a través de judge_id.
