@@ -1,8 +1,6 @@
 package com.league.jogobonito.mapper;
 
-import com.league.jogobonito.domain.Player;
 import com.league.jogobonito.domain.Standing;
-import com.league.jogobonito.dto.PlayerDTO;
 import com.league.jogobonito.dto.StandingDTO;
 
 import java.util.List;
@@ -11,7 +9,8 @@ public class StandingMapper {
 
     public static Standing dtoToDomain (StandingDTO standingDTO){
         return Standing.builder()
-                .id(standingDTO.getId())
+
+                //agregar el id????????
                 .points(standingDTO.getPoints())
                 .goalsFor(standingDTO.getGoalsFor())
                 .goalsAgainst(standingDTO.getGoalsAgainst())
@@ -20,11 +19,10 @@ public class StandingMapper {
 
     public static StandingDTO domainToDto (Standing standing){
         return StandingDTO.builder()
-                .id(standing.getId())
+                .teamId((standing.getTeam() != null) ? standing.getTeam().getId() : null)
                 .points(standing.getPoints())
                 .goalsFor(standing.getGoalsFor())
                 .goalsAgainst(standing.getGoalsAgainst())
-                .teamId((standing.getTeam() != null) ? standing.getTeam().getId() : null)
                 .build();
     }
 
