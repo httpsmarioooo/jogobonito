@@ -105,5 +105,53 @@
 ### 11. Comenzar a Hacer Validaciones
 - **Acción**: Realizar validaciones de la tabla dependiente a independiente en el ServiceImpl.
 
+        //1. Validacion id debe de ser null
+
+        if(playerDTO.getId() != null) {
+            throw new Exception("El id debe de ser nulo");
+        }
+
+        //2. Validaciones dependencias, llaves etc
+
+        if (playerDTO.getName() == null || playerDTO.getName().isBlank()) {
+            throw new Exception("El nombre no debe ser nulo o vacío");
+        }
+
+        if (playerDTO.getPosition() == null || playerDTO.getPosition().isBlank()) {
+            throw new Exception("La posición no debe ser nula o vacía");
+        }
+
+        if (playerDTO.getJerseyNumber() == null || playerDTO.getJerseyNumber().isBlank()) {
+            throw new Exception("El número del jersey no debe ser nulo o vacío");
+        }
+
+        if (playerDTO.getBirthDate() == null || playerDTO.getBirthDate().after(new Date())) {
+            throw new Exception("La fecha de nacimiento no debe ser nula ni futura");
+        }
+
+        if (playerDTO.getHeightCm() == null || playerDTO.getHeightCm() <= 0) {
+            throw new Exception("La altura en cm debe ser mayor a 0");
+        }
+
+        if (playerDTO.getCountryOfBirth() == null || playerDTO.getCountryOfBirth().isBlank()) {
+            throw new Exception("El país de nacimiento no debe ser nulo o vacío");
+        }
+
+        if(playerDTO.getTeamId() == null) {
+            throw new Exception("El TeamId no debe ser nulo");
+        }
+
 ### 12. Últimas Validaciones
 - **Acción**: Completar las validaciones finales en la parte final del ServiceImpl.
+
+ //Ultimas validaciones en el mismo impl en la parte final---
+        Player player = PlayerMapper.dtoToDomain(playerDTO);
+        Team team = teamRepository.getReferenceById(playerDTO.getTeamId());
+
+        if (team == null){
+            throw new Exception("El Team no existe");
+        }
+
+        player.setTeam(team);
+        player = playerRepository.save(player);
+        return PlayerMapper.domainToDto(player);
