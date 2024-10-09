@@ -1,9 +1,7 @@
 package com.league.jogobonito.mapper;
 
 import com.league.jogobonito.domain.JudgePerMatch;
-import com.league.jogobonito.domain.JudgeRole;
 import com.league.jogobonito.dto.JudgePerMatchDTO;
-import com.league.jogobonito.dto.JudgeRoleDTO;
 
 import java.util.List;
 

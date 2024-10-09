@@ -1,8 +1,73 @@
-1. Crear el Repository
-2. Crear el DTO
-3. Crear SERVICE
-4. Crear SERVICEIMPL
+1. Crear el Repository validar que el repository exista
+2. Crear el DTO hacer el dto, copiar y pegar los:
+
+ DECORADORES:
+
+ EJEMPLO
+ @Data
+ @Builder
+ @AllArgsConstructor
+ @NoArgsConstructor
+
+ Y traer todos los private de la clase domain correspondiente
+
+
+3. Agregar el controler y luego las inyecciones con su constructor:
+
+  Inyecciones
+
+  EJEMPLO
+  private JudgePerMatchRepository judgePerMatchRepository;
+  private JudgePerMatchService judgePerMatchService;
+
+    Constructores
+
+    EJEMPLO
+    public JudgePerMatchController(JudgePerMatchRepository judgePerMatchRepository, JudgePerMatchService judgePerMatchService) {
+        this.judgePerMatchRepository = judgePerMatchRepository;
+        this.judgePerMatchService = judgePerMatchService;
+    }
+
+4. Crear SERVICE
+
+EJEMPLO
+public interface PlayerService {
+    PlayerDTO guardarNuevoPlaye(PlayerDTO playerDTO);
+}
+
+5. Crear SERVICEIMPL
+
+Comenzar a agregar el:
+
+import org.springframework.stereotype.Service;
+@Service
+
+y poner el implements PlayerService
+
+EJEMPLO
+public class PlayerServiceImpl >implements PlayerService< {
+}
+
+Luego pararce en el error y undir la opcion implementar metodos:
+EJEMPLO
+@Override
+    public PlayerDTO guardarNuevoPlaye(PlayerDTO playerDTO) {
+        return null;
+    }
+
+
+6. Nos devolvemos al controlador y veremos que ya no esta el error en las ultimas lineas del codigo.
+7. Vamos a copiar el metodo para guardar.
+
+EJEMPLO
+@PostMapping(value = "/guardarNuevoPlayer")
+    public ResponseEntity<PlayerDTO> guardarNuevoPlayer(@RequestBody PlayerDTO playerDTO){
+        PlayerDTO playerResponse = playerService.guardarNuevoPlayer(playerDTO);
+        return new ResponseEntity<>(playerResponse, HttpStatus.CREATED);
+    }
+
 5. Crear Mapper
+
 6. Ajustar el Controller
 
 6. Luego nos vamos a Servicesimpl y le damos a la FX funcion y entramos a las excepciones pero en Services (solito)

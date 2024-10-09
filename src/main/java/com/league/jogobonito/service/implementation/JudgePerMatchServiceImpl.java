@@ -40,15 +40,15 @@ public class JudgePerMatchServiceImpl implements JudgePerMatchService {
 
         //2. Validaciones dependencias, llaves etc
 
-        if(judgePerMatchDTO.getMatchId() != null) {
+        if(judgePerMatchDTO.getMatchId() == null) {
             throw new Exception("El MatchId no debe ser nulo");
         }
 
-        if(judgePerMatchDTO.getJudgeId() != null) {
+        if(judgePerMatchDTO.getJudgeId() == null) {
             throw new Exception("El JudgeId no debe ser nulo");
         }
 
-        if(judgePerMatchDTO.getRoleId() != null) {
+        if(judgePerMatchDTO.getRoleId() == null) {
             throw new Exception("El RoleId no debe ser nulo");
         }
 

@@ -22,7 +22,7 @@ No depende de ninguna otra tabla.
 
 
 
-Dependientes
+Dependientes-----------------------------------------------------------------------
 
 '1'.
 players:
