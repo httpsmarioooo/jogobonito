@@ -44,7 +44,7 @@ Depende de la tabla matches a través de match_id.
 Depende de la tabla players a través de player_id.
 
 5.
-standings:
+standings: EN PROCESO Y EN DUDA
 Depende de la tabla teams a través de team_id.
 
 6.

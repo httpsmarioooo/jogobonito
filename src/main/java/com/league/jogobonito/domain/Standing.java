@@ -13,7 +13,22 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "standings")
 public class Standing {
+
     @Id
+    @ManyToOne
+    @JoinColumn(name = "team_id", referencedColumnName = "id", nullable = false)
+    private Team team;
+
+    @Column(nullable = false)
+    private Integer points;
+
+    @Column(nullable = false, name = "goals_for")
+    private Integer goalsFor;
+
+    @Column(nullable = false, name = "goals_against")
+    private Integer goalsAgainst;
+
+    /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -28,6 +43,6 @@ public class Standing {
 
     @ManyToOne
     @JoinColumn (name = "team_id" , referencedColumnName = "id", nullable = false)
-    private Team team;
+    private Team team;*/
 
 }
