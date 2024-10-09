@@ -12,7 +12,6 @@ public class StadiumMapper {
         stadium.setCity(stadiumDTO.getCity());
         stadium.setCapacity(stadiumDTO.getCapacity());
         stadium.setCountry(stadiumDTO.getCountry());
-
         return stadium;
     }
 

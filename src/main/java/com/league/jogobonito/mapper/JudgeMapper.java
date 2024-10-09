@@ -23,7 +23,7 @@ public class JudgeMapper {
                 build();
     }
 
-    public static List<Judge> dtoDomainList(List<JudgeDTO> judgesDTO){
+    public static List<Judge> dtoToDomainList(List<JudgeDTO> judgesDTO){
         return judgesDTO.stream().map(JudgeMapper::dtoToDomain).toList();
     }
 

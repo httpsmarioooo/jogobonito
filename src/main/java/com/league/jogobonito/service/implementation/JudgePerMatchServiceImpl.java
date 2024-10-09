@@ -56,6 +56,7 @@ public class JudgePerMatchServiceImpl implements JudgePerMatchService {
 
         //Ultimas validaciones en el mismo impl en la parte final---
         JudgePerMatch judgePerMatch = JudgePerMatchMapper.dtoToDomain(judgePerMatchDTO);
+
         Match match = matchRepository.getReferenceById(judgePerMatchDTO.getMatchId());
         Judge judge = judgeRepository.getReferenceById(judgePerMatchDTO.getJudgeId());
         JudgeRole judgeRole = judgeRoleRepository.getReferenceById(judgePerMatchDTO.getRoleId());

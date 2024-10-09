@@ -15,7 +15,7 @@ public class CoachMapper {
                 .build();
     }
 
-    public static CoachDTO domainToDto (Coach coach){
+    public static CoachDTO domainToDto(Coach coach){
         return CoachDTO.builder()
                 .id(coach.getId())
                 .name(coach.getName())

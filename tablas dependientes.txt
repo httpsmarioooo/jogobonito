@@ -29,7 +29,7 @@ players: TERMINADO
 Depende de la tabla teams a través de team_id.
 
 2.
-matches:
+matches TERMINADO:
 Depende de la tabla teams a través de home_team_id y away_team_id.
 Depende de la tabla stadiums a través de stadium_id.
 

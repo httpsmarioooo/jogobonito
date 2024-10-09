@@ -23,7 +23,7 @@ public class JudgePerMatchMapper {
                 .build();
     }
 
-    public static List<JudgePerMatch> dtoToDomainList(List<JudgePerMatchDTO>judgePerMatchDTO){
+    public static List<JudgePerMatch> dtoToDomain(List<JudgePerMatchDTO>judgePerMatchDTO){
         return judgePerMatchDTO.stream().map(JudgePerMatchMapper::dtoToDomain).toList();
     }
 
