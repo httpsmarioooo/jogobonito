@@ -11,10 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class StandingDTO {
-    private Integer id;
+    private Integer teamId;
     private Integer points;
     private Integer goalsFor;
     private Integer goalsAgainst;
-    private Integer teamId;
-
 }

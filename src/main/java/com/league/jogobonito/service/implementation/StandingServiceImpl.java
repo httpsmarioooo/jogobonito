@@ -19,6 +19,24 @@ public class StandingServiceImpl implements StandingService {
 
     @Override
     public StandingDTO guardarNuevoStanding(StandingDTO standingDTO) throws Exception {
+
+        //Hacer las validaciones correspondientes, luego de solucionar la duda en el mapper
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         return null;
     }
 }
