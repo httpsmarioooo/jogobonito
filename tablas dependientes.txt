@@ -26,7 +26,7 @@ Dependientes--------------------------------------------------------------------
 
 '1'.
 players TERMINADO:
-Depende de la tabla teams a través de team_id.ch
+Depende de la tabla teams a través de team_id.
 
 2.
 matches:
@@ -52,7 +52,7 @@ awards:
 Depende de la tabla players a través de player_id.
 
 7.
-coaches:
+coaches TERMINADO:
 Depende de la tabla teams a través de team_id.
 
 8.

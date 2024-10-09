@@ -1,21 +1,31 @@
 package com.league.jogobonito.controller;
-import com.league.jogobonito.domain.Standing;
+
+import com.league.jogobonito.dto.StandingDTO;
 import com.league.jogobonito.repository.StandingRepository;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.league.jogobonito.service.StandingService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.List;
 
 @RestController
 @RequestMapping("/standing")
 public class StandingController {
+
     private StandingRepository standingRepository;
-    public StandingController(StandingRepository standingRepository) {
+    private StandingService standingService;
+
+    public StandingController(StandingRepository standingRepository, StandingService standingService) {
         this.standingRepository = standingRepository;
+        this.standingService = standingService;
     }
 
-    @GetMapping(value = "/obtenerStandings")
-    public List<Standing> obtenerStandings() {
-        return standingRepository.findAll();
+    @PostMapping(value = "/guardarNuevoStanding")
+    public ResponseEntity<StandingDTO> guardarNuevoStanding(@RequestBody StandingDTO standingDTO) throws Exception {
+        StandingDTO standingResponse = standingService.guardarNuevoStanding(standingDTO);
+        return new ResponseEntity<>(standingResponse, HttpStatus.CREATED);
     }
+
 }

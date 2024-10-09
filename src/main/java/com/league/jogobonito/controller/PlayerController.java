@@ -1,6 +1,5 @@
 package com.league.jogobonito.controller;
 
-import com.league.jogobonito.dto.JudgePerMatchDTO;
 import com.league.jogobonito.dto.PlayerDTO;
 import com.league.jogobonito.repository.PlayerRepository;
 import com.league.jogobonito.service.PlayerService;
