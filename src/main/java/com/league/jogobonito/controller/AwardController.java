@@ -1,21 +1,27 @@
 package com.league.jogobonito.controller;
-import com.league.jogobonito.domain.Award;
+
+import com.league.jogobonito.dto.AwardDTO;
 import com.league.jogobonito.repository.AwardRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import java.util.List;
+import com.league.jogobonito.service.AwardService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/award")
 public class AwardController {
+
     private AwardRepository awardRepository;
-    public AwardController(AwardRepository awardRepository) {
+    private AwardService awardService;
+
+    public AwardController(AwardRepository awardRepository, AwardService awardService) {
         this.awardRepository = awardRepository;
+        this.awardService = awardService;
     }
 
-    @GetMapping(value = "/obtenerAwards")
-    public List<Award> obtenerStadiums() {
-        return awardRepository.findAll();
+    @PostMapping(value = "/guardarNuevoAward")
+    public ResponseEntity<AwardDTO> guardarNuevoAward(@RequestBody AwardDTO awardDTO) throws Exception {
+        AwardDTO awardResponse = awardService.guardarNuevoAward(awardDTO);
+        return new ResponseEntity<>(awardResponse, HttpStatus.CREATED);
     }
 }

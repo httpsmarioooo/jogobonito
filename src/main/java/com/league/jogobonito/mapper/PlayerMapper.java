@@ -2,7 +2,6 @@ package com.league.jogobonito.mapper;
 
 import com.league.jogobonito.domain.Player;
 import com.league.jogobonito.dto.PlayerDTO;
-
 import java.util.List;
 
 public class PlayerMapper{

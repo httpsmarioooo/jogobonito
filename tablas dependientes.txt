@@ -25,7 +25,7 @@ No depende de ninguna otra tabla.
 Dependientes-----------------------------------------------------------------------
 
 '1'.
-players TERMINADO:
+players: TERMINADO
 Depende de la tabla teams a través de team_id.
 
 2.
@@ -48,11 +48,11 @@ standings: EN PROCESO Y EN DUDA
 Depende de la tabla teams a través de team_id.
 
 6.
-awards:
+awards: TERMINADO
 Depende de la tabla players a través de player_id.
 
 7.
-coaches TERMINADO:
+coaches: TERMINADO
 Depende de la tabla teams a través de team_id.
 
 8.
@@ -62,7 +62,7 @@ Depende de la tabla players a través de player_id y player2_id.
 Depende de la tabla event_type a través de event_type_id.
 
 9.
-judges_per_match TERMINADO:
+judges_per_match: TERMINADO
 Depende de la tabla matches a través de match_id.
 Depende de la tabla judges a través de judge_id.
 Depende de la tabla judge_roles a través de role_id.
