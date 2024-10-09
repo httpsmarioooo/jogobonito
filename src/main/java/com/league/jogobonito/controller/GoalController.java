@@ -1,22 +1,28 @@
 package com.league.jogobonito.controller;
-import com.league.jogobonito.domain.Goal;
-import com.league.jogobonito.repository.GoalRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.league.jogobonito.dto.GoalDTO;
+import com.league.jogobonito.repository.GoalRepository;
+import com.league.jogobonito.service.GoalService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/goal")
 public class GoalController {
+
     private GoalRepository goalRepository;
-    public GoalController(GoalRepository goalRepository) {
+    private GoalService goalService;
+
+    public GoalController(GoalRepository goalRepository, GoalService goalService) {
         this.goalRepository = goalRepository;
+        this.goalService = goalService;
     }
 
-    @GetMapping(value = "/obtenerGoal")
-    public List<Goal> obtenerGoal() {
-        return goalRepository.findAll();
+    @PostMapping(value = "/guardarNuevoGoal")
+    public ResponseEntity<GoalDTO> guardarNuevoGoal(@RequestBody GoalDTO goalDTO) throws Exception {
+        GoalDTO goalResponse = goalService.guardarNuevoGoal(goalDTO);
+        return new ResponseEntity<>(goalResponse, HttpStatus.CREATED);
     }
+
 }

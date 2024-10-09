@@ -34,7 +34,7 @@ Depende de la tabla teams a través de home_team_id y away_team_id.
 Depende de la tabla stadiums a través de stadium_id.
 
 3.
-goals:
+goals: TERMINADO
 Depende de la tabla matches a través de match_id.
 Depende de la tabla players a través de player_id.
 

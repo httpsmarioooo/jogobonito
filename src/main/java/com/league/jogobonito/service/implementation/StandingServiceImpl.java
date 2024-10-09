@@ -22,21 +22,6 @@ public class StandingServiceImpl implements StandingService {
 
         //Hacer las validaciones correspondientes, luego de solucionar la duda en el mapper
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         return null;
     }
 }

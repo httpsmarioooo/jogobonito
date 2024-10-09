@@ -14,6 +14,7 @@ public class AwardServiceImpl implements AwardService {
 
 
     private final AwardRepository awardRepository;
+
     private final PlayerRepository playerRepository;
 
     public AwardServiceImpl(AwardRepository awardRepository, PlayerRepository playerRepository) {
@@ -39,6 +40,7 @@ public class AwardServiceImpl implements AwardService {
         if(awardDTO.getPlayerId() == null) {
             throw new Exception("El PlayerId no debe ser nulo");
         }
+
 
         //Ultimas validaciones en el mismo impl en la parte final---
         Award award = AwardMapper.dtoToDomain(awardDTO);

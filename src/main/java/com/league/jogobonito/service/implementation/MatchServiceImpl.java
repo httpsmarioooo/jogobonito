@@ -54,16 +54,16 @@ public class MatchServiceImpl implements MatchService {
             throw new Exception("La AwayTeamScore no puede ser nula");
         }
 
-        if(matchDTO.getStadiumId() != null) {
-            throw new Exception("El StadiumId debe de ser nulo");
+        if(matchDTO.getStadiumId() == null) {
+            throw new Exception("El StadiumId no debe de ser nulo");
         }
 
-        if(matchDTO.getTeamId() != null) {
-            throw new Exception("El TeamId debe de ser nulo");
+        if(matchDTO.getTeamId() == null) {
+            throw new Exception("El TeamId no debe de ser nulo");
         }
 
-        if(matchDTO.getTeamId2() != null) {
-            throw new Exception("El TeamId2 debe de ser nulo");
+        if(matchDTO.getTeamId2() == null) {
+            throw new Exception("El TeamId2 no debe de ser nulo");
         }
 
         Match match = MatchMapper.dtoToDomain(matchDTO);
