@@ -41,12 +41,24 @@ CREATE TABLE public.assists (
     player_id integer references players(id),
     minute integer not null
 );
-CREATE TABLE public.standings (
+
+/*CREATE TABLE public.standings (
     team_id integer primary key references teams(id),
     points integer not null default 0,
     goals_for integer not null default 0,
     goals_against integer not null default 0
+);*/
+
+CREATE TABLE public.standings (
+    id serial primary key,
+    team_id integer references public.teams(id),
+    points integer not null default 0,
+    goals_for integer not null default 0,
+    goals_against integer not null default 0
 );
+
+
+
 CREATE TABLE public.awards (
     id serial primary key,
     name text not null,

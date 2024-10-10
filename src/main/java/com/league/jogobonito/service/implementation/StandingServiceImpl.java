@@ -24,4 +24,5 @@ public class StandingServiceImpl implements StandingService {
 
         return null;
     }
+
 }
