@@ -9,8 +9,7 @@ public class StandingMapper {
 
     public static Standing dtoToDomain (StandingDTO standingDTO){
         return Standing.builder()
-
-                //agregar el id????????
+                .id(standingDTO.getId())
                 .points(standingDTO.getPoints())
                 .goalsFor(standingDTO.getGoalsFor())
                 .goalsAgainst(standingDTO.getGoalsAgainst())
@@ -19,10 +18,10 @@ public class StandingMapper {
 
     public static StandingDTO domainToDto (Standing standing){
         return StandingDTO.builder()
-                .teamId((standing.getTeam() != null) ? standing.getTeam().getId() : null)
                 .points(standing.getPoints())
                 .goalsFor(standing.getGoalsFor())
                 .goalsAgainst(standing.getGoalsAgainst())
+                .teamId((standing.getTeam() != null) ? standing.getTeam().getId() : null)
                 .build();
     }
 

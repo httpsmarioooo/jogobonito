@@ -1,6 +1,11 @@
 package com.league.jogobonito.service.implementation;
 
+import com.league.jogobonito.domain.Coach;
+import com.league.jogobonito.domain.Standing;
+import com.league.jogobonito.domain.Team;
 import com.league.jogobonito.dto.StandingDTO;
+import com.league.jogobonito.mapper.CoachMapper;
+import com.league.jogobonito.mapper.StandingMapper;
 import com.league.jogobonito.repository.StandingRepository;
 import com.league.jogobonito.repository.TeamRepository;
 import com.league.jogobonito.service.StandingService;
@@ -20,9 +25,36 @@ public class StandingServiceImpl implements StandingService {
     @Override
     public StandingDTO guardarNuevoStanding(StandingDTO standingDTO) throws Exception {
 
-        //Hacer las validaciones correspondientes, luego de solucionar la duda en el mapper
+        if(standingDTO.getId() != null) {
+            throw new Exception("El id debe de ser nulo");
+        }
 
-        return null;
+        if (standingDTO.getPoints() == null ) {
+            throw new Exception("Los puntos no debe ser nulo o vacío");
+        }
+
+        if (standingDTO.getGoalsFor() == null ) {
+            throw new Exception("Los goles for no debe ser nulo o vacío");
+        }
+
+        if (standingDTO.getGoalsAgainst() == null ) {
+            throw new Exception("Los goles against no debe ser nulo o vacío");
+        }
+
+        if(standingDTO.getTeamId() == null) {
+            throw new Exception("El TeamId no debe ser nulo");
+        }
+
+        Standing standing = StandingMapper.dtoToDomain(standingDTO);
+        Team team = teamRepository.getReferenceById(standingDTO.getTeamId());
+
+
+        if (team == null){
+            throw new Exception("El Team no existe");
+        }
+
+        standing.setTeam(team);
+        standing = standingRepository.save(standing);
+        return StandingMapper.domainToDto(standing);
     }
-
 }
