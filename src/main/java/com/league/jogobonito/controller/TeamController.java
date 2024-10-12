@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/team")
 public class TeamController {
+
     private TeamRepository teamRepository;
 
     public TeamController(TeamRepository teamRepository) {

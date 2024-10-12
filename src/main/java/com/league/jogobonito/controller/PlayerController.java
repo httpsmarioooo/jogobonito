@@ -30,20 +30,17 @@ public class PlayerController {
         return new ResponseEntity<>(playerResponse, HttpStatus.CREATED);
     }
 
-
     @GetMapping(value = "/obtenerPlayer")
     public List<PlayerDTO>obtenerPlayer(){
         List<Player>listaPlayers = playerRepository.findAll();
         return PlayerMapper.domainToDTOList(listaPlayers);
     }
 
-
     @GetMapping("/buscarPlayerPorId/{id}")
     public ResponseEntity<PlayerDTO> buscarPlayerPorId (Integer id)throws Exception {
         PlayerDTO playerResponse = playerService.buscarPlayerPorId(id);
         return new ResponseEntity<>(playerResponse, HttpStatus.OK);
     }
-
 
     @PutMapping(value = "/modificarPlayer")
     public ResponseEntity<PlayerDTO> modificarPlayer(@RequestBody PlayerDTO playerDTO) throws Exception {
