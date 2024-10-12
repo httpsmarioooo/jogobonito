@@ -39,12 +39,12 @@ Depende de la tabla matches a través de match_id.
 Depende de la tabla players a través de player_id.
 
 4.
-assists:
+assists: COMPLETADO
 Depende de la tabla matches a través de match_id.
 Depende de la tabla players a través de player_id.
 
 5.
-standings: EN PROCESO Y EN DUDA
+standings: COMPLETADO
 Depende de la tabla teams a través de team_id.
 
 6.
@@ -56,7 +56,7 @@ coaches: TERMINADO
 Depende de la tabla teams a través de team_id.
 
 8.
-match_events:
+match_events: COMPLETADO
 Depende de la tabla matches a través de match_id.
 Depende de la tabla players a través de player_id y player2_id.
 Depende de la tabla event_type a través de event_type_id.
