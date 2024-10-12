@@ -1,10 +1,8 @@
 package com.league.jogobonito.service.implementation;
 
-import com.league.jogobonito.domain.Coach;
 import com.league.jogobonito.domain.Standing;
 import com.league.jogobonito.domain.Team;
 import com.league.jogobonito.dto.StandingDTO;
-import com.league.jogobonito.mapper.CoachMapper;
 import com.league.jogobonito.mapper.StandingMapper;
 import com.league.jogobonito.repository.StandingRepository;
 import com.league.jogobonito.repository.TeamRepository;
