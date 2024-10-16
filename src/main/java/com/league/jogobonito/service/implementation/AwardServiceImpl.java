@@ -105,7 +105,7 @@ public class AwardServiceImpl implements AwardService {
 
         award.setPlayer(player);
         award = awardRepository.save(award);
-        
+
         return AwardMapper.domainToDto(award);
     }
 }
