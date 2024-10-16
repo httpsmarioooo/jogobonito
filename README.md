@@ -35,6 +35,7 @@
   }
   ```
 
+
 ### 4. Crear el Service
 - **Interfaz**:
   
@@ -157,3 +158,14 @@
         player.setTeam(team);
         player = playerRepository.save(player);
         return PlayerMapper.domainToDto(player);
+
+
+
+
+PASOS DE LA TEMPORADA 2 -------------------------------------------------------
+
+1. Copiar los metodos.
+2. Agregarlos en el service
+3. Arreglar el impl que es copiar todo ese mogollon de codigo (dependecias).
+ a. Pero primero, saldra un error, hay que agregar los metodos y ya se quitara ese error.
+ b. Ya podemos copiar las dependecias.
