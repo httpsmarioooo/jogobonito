@@ -96,7 +96,7 @@ judges,
 judge_roles.
 
 POST, GET (sin PUT):
-goals,
+goals, HAY QUE VER
 assists,
 match_events,
 judges_per_match.

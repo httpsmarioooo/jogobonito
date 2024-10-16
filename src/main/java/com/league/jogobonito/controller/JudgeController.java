@@ -22,10 +22,8 @@ public class JudgeController {
 
     @GetMapping(value = "/obtenerJudges")
     public List<JudgeDTO> obtenerJudges() {
-
         List<Judge>listaJudges = judgeRepository.findAll();
         List<JudgeDTO> judgesDTO = JudgeMapper.domainToDTOList(listaJudges);
-
         return judgesDTO;
     }
 
@@ -34,7 +32,6 @@ public class JudgeController {
         JudgeDTO judgeDTOResponse = null;
         Judge judge = JudgeMapper.dtoToDomain(judgeDTO);
         judge = judgeRepository.save(judge);
-
         judgeDTOResponse = JudgeMapper.domainToDTO(judge);
         return new ResponseEntity<>(judgeDTOResponse, HttpStatus.CREATED);
     }
