@@ -76,6 +76,9 @@ public class PlayerServiceImpl implements PlayerService  {
         return PlayerMapper.domainToDto(player);
     }
 
+
+    ////////////////////////////////////////////////////////////////////////
+
     @Override
     @Transactional(readOnly = true)
     public PlayerDTO buscarPlayerPorId(Integer id) throws Exception {
@@ -92,6 +95,8 @@ public class PlayerServiceImpl implements PlayerService  {
         PlayerDTO playerDTO = PlayerMapper.domainToDto(player);
         return playerDTO;
     }
+
+    ////////////////////////////////////////////////////////////////////////
 
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
@@ -141,6 +146,7 @@ public class PlayerServiceImpl implements PlayerService  {
 
         player.setTeam(team);
         player = playerRepository.save(player);
+        
         return PlayerMapper.domainToDto(player);
     }
 }
