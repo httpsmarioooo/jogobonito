@@ -1,11 +1,18 @@
 package com.league.jogobonito.controller;
 
+import com.league.jogobonito.domain.Match;
+import com.league.jogobonito.domain.Player;
 import com.league.jogobonito.dto.MatchDTO;
+import com.league.jogobonito.dto.PlayerDTO;
+import com.league.jogobonito.mapper.MatchMapper;
+import com.league.jogobonito.mapper.PlayerMapper;
 import com.league.jogobonito.repository.MatchRepository;
 import com.league.jogobonito.service.MatchService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/match")
@@ -22,6 +29,12 @@ public class MatchController {
     public ResponseEntity<MatchDTO> guardarNuevoMatch(@RequestBody MatchDTO matchDTO) throws Exception {
         MatchDTO matchResponse = matchService.guardarNuevoMatch(matchDTO);
         return new ResponseEntity<>(matchResponse, HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = "/obtenerMatch")
+    public List<MatchDTO> obtenerMatch(){
+        List<Match>listaMatches = matchRepository.findAll();
+        return MatchMapper.domainToDTOList(listaMatches);
     }
 
     @GetMapping("/buscarMatchPorId/{id}")
