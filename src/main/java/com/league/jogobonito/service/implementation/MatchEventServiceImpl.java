@@ -14,7 +14,7 @@ import com.league.jogobonito.service.MatchEventService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class matchEventServiceImpl implements MatchEventService{
+public class MatchEventServiceImpl implements MatchEventService{
 
     private final MatchEventRepository matchEventRepository;
 
@@ -22,7 +22,7 @@ public class matchEventServiceImpl implements MatchEventService{
     private final PlayerRepository playerRepository;
     private final EventTypeRepository eventTypeRepository;
 
-    public matchEventServiceImpl(MatchEventRepository matchEventRepository, MatchRepository matchRepository, PlayerRepository playerRepository, EventTypeRepository eventTypeRepository) {
+    public MatchEventServiceImpl(MatchEventRepository matchEventRepository, MatchRepository matchRepository, PlayerRepository playerRepository, EventTypeRepository eventTypeRepository) {
         this.matchEventRepository = matchEventRepository;
         this.matchRepository = matchRepository;
         this.playerRepository = playerRepository;

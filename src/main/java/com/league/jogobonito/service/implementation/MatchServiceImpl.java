@@ -84,4 +84,14 @@ public class MatchServiceImpl implements MatchService {
         match = matchRepository.save(match);
         return MatchMapper.domainToDto(match);
     }
+
+    @Override
+    public MatchDTO buscarMatchPorId(Integer Id) throws Exception {
+        return null;
+    }
+
+    @Override
+    public MatchDTO modificarMatch(MatchDTO playerDTO) throws Exception {
+        return null;
+    }
 }
