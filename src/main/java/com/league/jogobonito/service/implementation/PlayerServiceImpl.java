@@ -146,7 +146,7 @@ public class PlayerServiceImpl implements PlayerService  {
 
         player.setTeam(team);
         player = playerRepository.save(player);
-        
+
         return PlayerMapper.domainToDto(player);
     }
 }

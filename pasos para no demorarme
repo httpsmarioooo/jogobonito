@@ -82,18 +82,18 @@ POST, GET, PUT:
 stadiums,
 teams,
 players, TERMINADO
-matches,
-standings,
+matches, TERMINADO
+standings, 
 awards, coaches,
 event_type,
 judges,
 judge_roles.
 
 POST, GET (sin PUT):
-goals, HAY QUE VER
-assists,  HAY QUE VER
-match_events, HAY QUE VER
-judges_per_match. HAY QUE VER
+goals, HAY QUE VER PERO TERMINADO
+assists,  HAY QUE VER PERO TERMINADO
+match_events, HAY QUE VER PERO TERMINADO
+judges_per_match. HAY QUE VER PERO TERMINADO
 
 
 

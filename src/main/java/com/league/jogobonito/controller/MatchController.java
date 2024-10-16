@@ -1,7 +1,6 @@
 package com.league.jogobonito.controller;
 
 import com.league.jogobonito.dto.MatchDTO;
-import com.league.jogobonito.dto.PlayerDTO;
 import com.league.jogobonito.repository.MatchRepository;
 import com.league.jogobonito.service.MatchService;
 import org.springframework.http.HttpStatus;
