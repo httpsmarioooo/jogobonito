@@ -97,6 +97,6 @@ judge_roles.
 
 POST, GET (sin PUT):
 goals, HAY QUE VER
-assists,
-match_events,
-judges_per_match.
+assists,  HAY QUE VER
+match_events, HAY QUE VER
+judges_per_match. HAY QUE VER

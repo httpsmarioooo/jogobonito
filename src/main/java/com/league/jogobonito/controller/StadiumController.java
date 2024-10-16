@@ -15,6 +15,7 @@ import java.util.List;
 public class StadiumController {
     private StadiumRepository stadiumRepository;
 
+
     public StadiumController(StadiumRepository stadiumRepository) {
         this.stadiumRepository = stadiumRepository;
     }
