@@ -73,3 +73,30 @@ EJEMPLO
 6. Luego nos vamos a Servicesimpl y le damos a la FX funcion y entramos a las excepciones pero en Services (solito)
 7. Comenzamos a hacer las validaciones. Validaciones de la tabla dependiente a independiente IMPL
 8. Ultimas validaciones en el mismo impl en la parte final---
+
+
+
+
+
+
+---------------------------TEMPORADA 2----------------------------------------
+POST: Para crear nuevos registros en una tabla. Se necesita en las tablas donde se puedan agregar nuevos elementos desde la aplicación.
+GET: Para obtener información de la tabla. Todas las tablas deberían tenerlo, ya que siempre es útil poder consultar los datos.
+PUT: Para actualizar registros existentes en la tabla. Es necesario en las tablas donde se pueden modificar los datos.
+
+POST, GET, PUT:
+stadiums,
+teams,
+players, TERMINADO
+matches,
+standings,
+awards, coaches,
+event_type,
+judges,
+judge_roles.
+
+POST, GET (sin PUT):
+goals,
+assists,
+match_events,
+judges_per_match.
