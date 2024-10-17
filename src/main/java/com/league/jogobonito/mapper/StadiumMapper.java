@@ -15,7 +15,7 @@ public class StadiumMapper {
         return stadium;
     }
 
-    public static StadiumDTO domainToDTO(Stadium stadium) {
+    public static StadiumDTO domainToDto(Stadium stadium) {
         return StadiumDTO.builder()
                 .id(stadium.getId())
                 .name(stadium.getName())
@@ -30,6 +30,6 @@ public class StadiumMapper {
     }
 
     public static List<StadiumDTO> domainToDTOList(List<Stadium>stadiums){
-        return stadiums.stream().map(StadiumMapper::domainToDTO).toList();
+        return stadiums.stream().map(StadiumMapper::domainToDto).toList();
     }
 }
