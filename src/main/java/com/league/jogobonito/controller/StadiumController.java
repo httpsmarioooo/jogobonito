@@ -53,7 +53,7 @@ public class StadiumController {
     @PutMapping(value = "/modificarStadium")
     public ResponseEntity<StadiumDTO> modificarStadium(@RequestBody StadiumDTO stadiumDTO) throws Exception {
         StadiumDTO stadiumResponse = stadiumService.modificarStadium(stadiumDTO);
-        return new ResponseEntity<>(stadiumResponse, HttpStatus.OK);
+        return new ResponseEntity<>(stadiumResponse, HttpStatus.CREATED);
     }
 
 }

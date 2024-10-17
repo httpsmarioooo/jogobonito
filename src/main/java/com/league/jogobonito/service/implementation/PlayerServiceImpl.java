@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 
 @Service
@@ -148,5 +149,13 @@ public class PlayerServiceImpl implements PlayerService  {
         player = playerRepository.save(player);
 
         return PlayerMapper.domainToDto(player);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<PlayerDTO> obtenerPlayers() {
+        List<Player>listaPlayers = playerRepository.findAll();
+        List<PlayerDTO>playersDTO = PlayerMapper.domainToDTOList(listaPlayers);
+        return PlayerMapper.domainToDTOList(listaPlayers);
     }
 }
