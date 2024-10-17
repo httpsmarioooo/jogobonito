@@ -14,12 +14,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/stadium")
 public class StadiumController {
-    private StadiumRepository stadiumRepository;
     private StadiumService stadiumService;
 
 
-    public StadiumController(StadiumRepository stadiumRepository) {
-        this.stadiumRepository = stadiumRepository;
+    public StadiumController(StadiumService stadiumService) {
+        this.stadiumService = stadiumService;
     }
 
     /*@PostMapping(value = "/crearNuevoStadium")
@@ -40,8 +39,7 @@ public class StadiumController {
 
     @GetMapping(value = "/obtenerStadium")
     public List<StadiumDTO>obtenerStadium(){
-        List<Stadium>listaStadiums = stadiumRepository.findAll();
-        return StadiumMapper.domainToDTOList(listaStadiums);
+        return stadiumService.obtenerStadiums();
     }
 
     @GetMapping("/buscarStadiumPorId/{id}")

@@ -1,13 +1,18 @@
 package com.league.jogobonito.service.implementation;
 
+import com.league.jogobonito.domain.Player;
 import com.league.jogobonito.domain.Stadium;
+import com.league.jogobonito.dto.PlayerDTO;
 import com.league.jogobonito.dto.StadiumDTO;
+import com.league.jogobonito.mapper.PlayerMapper;
 import com.league.jogobonito.mapper.StadiumMapper;
 import com.league.jogobonito.repository.StadiumRepository;
 import com.league.jogobonito.service.StadiumService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
 @Service
@@ -47,5 +52,13 @@ public class StadiumServiceImpl implements StadiumService {
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public StadiumDTO modificarStadium(StadiumDTO stadiumDTO) throws Exception {
         return null;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<StadiumDTO> obtenerStadiums() {
+        List<Stadium>listaStadiums = stadiumRepository.findAll();
+        List<StadiumDTO>stadiumdDTO = StadiumMapper.domainToDTOList(listaStadiums);
+        return StadiumMapper.domainToDTOList(listaStadiums);
     }
 }
