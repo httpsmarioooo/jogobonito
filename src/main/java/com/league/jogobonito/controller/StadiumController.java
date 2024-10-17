@@ -1,9 +1,6 @@
 package com.league.jogobonito.controller;
 
-import com.league.jogobonito.domain.Stadium;
 import com.league.jogobonito.dto.StadiumDTO;
-import com.league.jogobonito.mapper.StadiumMapper;
-import com.league.jogobonito.repository.StadiumRepository;
 import com.league.jogobonito.service.StadiumService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
