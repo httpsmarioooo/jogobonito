@@ -32,7 +32,6 @@ public class AwardController {
         return new ResponseEntity<>(awardResponse, HttpStatus.CREATED);
     }
 
-
     @GetMapping(value = "/obtenerAward")
     public List<AwardDTO>obtenerAward(){
         List<Award>listaAwards = awardRepository.findAll();
