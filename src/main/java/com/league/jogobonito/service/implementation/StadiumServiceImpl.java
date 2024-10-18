@@ -25,8 +25,8 @@ public class StadiumServiceImpl implements StadiumService {
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public StadiumDTO guardarNuevoStadium(StadiumDTO stadiumDTO) throws Exception {
 
-        if(stadiumDTO.getId() == null) {
-            throw new Exception("El id no puede ser nulo");
+        if(stadiumDTO.getId() != null) {
+            throw new Exception("El id debe de ser nulo");
         }
 
         if (stadiumDTO.getName() == null || stadiumDTO.getName().isBlank()) {

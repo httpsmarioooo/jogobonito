@@ -25,8 +25,8 @@ public class TeamServiceImpl implements TeamService {
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public TeamDTO guardarNuevoTeam(TeamDTO teamDTO) throws Exception {
 
-        if(teamDTO.getId() == null) {
-            throw new Exception("El id no puede ser nulo");
+        if(teamDTO.getId() != null) {
+            throw new Exception("El id debe de ser nulo");
         }
 
         if (teamDTO.getName() == null || teamDTO.getName().isBlank()) {
