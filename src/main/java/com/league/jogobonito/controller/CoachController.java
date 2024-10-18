@@ -1,11 +1,6 @@
 package com.league.jogobonito.controller;
 
-import com.league.jogobonito.domain.Coach;
-import com.league.jogobonito.domain.Player;
 import com.league.jogobonito.dto.CoachDTO;
-import com.league.jogobonito.dto.PlayerDTO;
-import com.league.jogobonito.mapper.CoachMapper;
-import com.league.jogobonito.mapper.PlayerMapper;
 import com.league.jogobonito.repository.CoachRepository;
 import com.league.jogobonito.service.CoachService;
 import org.springframework.http.HttpStatus;
@@ -33,12 +28,9 @@ public class CoachController {
         return new ResponseEntity<>(coachResponse, HttpStatus.CREATED);
     }
 
-    /////////
-
-    @GetMapping(value = "/obtenerCoach")
-    public List<CoachDTO> obtenerCoach(){
-        List<Coach>listaCoaches = coachRepository.findAll();
-        return CoachMapper.domainToDTOList(listaCoaches);
+    @GetMapping(value = "/obtenerCoaches")
+    public List<CoachDTO>obtenerCoaches(){
+        return coachService.obtenerCoaches();
     }
 
     @GetMapping("/buscarCoachPorId/{id}")

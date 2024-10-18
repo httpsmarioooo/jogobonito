@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class CoachServiceImpl implements CoachService {
 
@@ -96,5 +98,14 @@ public class CoachServiceImpl implements CoachService {
         coach = coachRepository.save(coach);
 
         return CoachMapper.domainToDto(coach);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+
+    public List<CoachDTO> obtenerCoaches() {
+        List<Coach>listaCoaches = coachRepository.findAll();
+        List<CoachDTO>coachDTO = CoachMapper.domainToDTOList(listaCoaches);
+        return CoachMapper.domainToDTOList(listaCoaches);
     }
 }

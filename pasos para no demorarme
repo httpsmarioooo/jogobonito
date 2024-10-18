@@ -108,3 +108,14 @@ PASOS-------------------------------------------------------
  b. Ya podemos copiar las dependecias.
 
 
+
+
+CAMBIOS_:
+Meter el método obtener en el services y en el impl de TODAS LAS TABLAS y dejar como dependecia solo el
+private CoachService coachService en los contraladores;
+
+Player: Completado
+Stadium: Completado
+Coache: Completado
+
+
