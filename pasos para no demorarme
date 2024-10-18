@@ -80,7 +80,7 @@ PUT: Para actualizar registros existentes en la tabla. Es necesario en las tabla
 
 POST, GET, PUT:
 stadiums, COMPLETADO
-teams,  ESPERAR
+teams,  COMPLETADO
 
 players, TERMINADO PRINCIPAL
 matches, TERMINADO

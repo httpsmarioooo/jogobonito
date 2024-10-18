@@ -101,7 +101,7 @@ public class StadiumServiceImpl implements StadiumService {
     @Transactional(readOnly = true)
     public List<StadiumDTO> obtenerStadiums() {
         List<Stadium>listaStadiums = stadiumRepository.findAll();
-        List<StadiumDTO>stadiumdDTO = StadiumMapper.domainToDTOList(listaStadiums);
+        List<StadiumDTO>stadiumDTO = StadiumMapper.domainToDTOList(listaStadiums);
         return StadiumMapper.domainToDTOList(listaStadiums);
     }
 }
