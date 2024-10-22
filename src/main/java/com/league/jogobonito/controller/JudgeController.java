@@ -1,9 +1,7 @@
 package com.league.jogobonito.controller;
 
-import com.league.jogobonito.domain.Judge;
 import com.league.jogobonito.dto.JudgeDTO;
-import com.league.jogobonito.mapper.JudgeMapper;
-import com.league.jogobonito.repository.JudgeRepository;
+import com.league.jogobonito.service.JudgeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,28 +11,37 @@ import java.util.List;
 @RestController
 @RequestMapping ("/judge")
 public class JudgeController {
-    private JudgeRepository judgeRepository;
+    private JudgeService judgeService;
 
-    public JudgeController(JudgeRepository judgeRepository) {
-        this.judgeRepository = judgeRepository;
+    public JudgeController(JudgeService judgeService) {
+        this.judgeService = judgeService;
     }
 
+    @PostMapping(value = "/guardarNuevoJudge")
+    public ResponseEntity<JudgeDTO> guardarNuevoJudge(@RequestBody JudgeDTO judgeDTO) throws Exception {
+        JudgeDTO judgeResponse = judgeService.guardarNuevoJudge(judgeDTO);
+        return new ResponseEntity<>(judgeResponse, HttpStatus.CREATED);
+    }
 
     @GetMapping(value = "/obtenerJudges")
-    public List<JudgeDTO> obtenerJudges() {
-        List<Judge>listaJudges = judgeRepository.findAll();
-        List<JudgeDTO> judgesDTO = JudgeMapper.domainToDTOList(listaJudges);
-        return judgesDTO;
+    public List<JudgeDTO>obtenerJudges(){
+        return judgeService.obtenerJudges();
     }
 
-    @PostMapping(value = "/crearNuevoJudge")
-    public ResponseEntity<JudgeDTO>crearNuevoJudge(@RequestBody JudgeDTO judgeDTO){
-        JudgeDTO judgeDTOResponse = null;
-        Judge judge = JudgeMapper.dtoToDomain(judgeDTO);
-        judge = judgeRepository.save(judge);
-        judgeDTOResponse = JudgeMapper.domainToDTO(judge);
-        return new ResponseEntity<>(judgeDTOResponse, HttpStatus.CREATED);
+    @GetMapping("/buscarJudgePorId/{id}")
+    public ResponseEntity<JudgeDTO> buscarJudgePorId (Integer id)throws Exception {
+        JudgeDTO judgeResponse = judgeService.buscarJudgePorId(id);
+        return new ResponseEntity<>(judgeResponse, HttpStatus.OK);
     }
+
+    @PutMapping(value = "/modificarJudge")
+    public ResponseEntity<JudgeDTO> modificarJudge(@RequestBody JudgeDTO judgeDTO) throws Exception {
+        JudgeDTO judgeResponse = judgeService.modificarJudge(judgeDTO);
+        return new ResponseEntity<>(judgeResponse, HttpStatus.CREATED);
+    }
+
+
+
 }
 
 

@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 
 public class JudgeDTO {
     private Integer id;
-    private String nombre;
+    private String name;
     private String countryOfBirth;
 
 }

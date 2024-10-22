@@ -26,7 +26,7 @@ public class EventTypeMapper {
     }
 
     public static List<EventTypeDTO> domainToDTOList(List<EventType> eventTypes) {
-        return eventTypes.stream().map(EventTypeMapper::domainToDTO).toList();
+        return eventTypes.stream().map(EventTypeMapper::domainToDT0).toList();
     }
 
 

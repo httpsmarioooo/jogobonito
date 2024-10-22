@@ -39,13 +39,31 @@ public class EventTypeServiceImpl implements EventTypeService {
 
     @Override
     public EventTypeDTO buscarEventTypePorId(Integer id) throws Exception {
-        return null;
+        if(id == null || id.equals(0)) {
+            throw new Exception("El id no puede estar vacio ni ser 0");
+        }
+
+        EventType eventType = eventTypeRepository.findById(id)
+                .orElseThrow (() -> new Exception("No se encuentra el jugador con el id" +id));
+        return EventTypeMapper.domainToDT0(eventType);
     }
 
     @Override
     public EventTypeDTO modificarEventType(EventTypeDTO eventTypeDTO) throws Exception {
-        return null;
+        if(eventTypeDTO.getId() != null) {
+            throw new Exception("El id debe de ser nulo");
+        }
+
+        if (eventTypeDTO.getName() == null || eventTypeDTO.getName().isBlank()) {
+            throw new Exception("El nombre no debe ser nulo o vacío");
+        }
+
+        EventType eventType = EventTypeMapper.dtoToDomain(eventTypeDTO);
+        eventType = eventTypeRepository.save(eventType);
+        return EventTypeMapper.domainToDT0(eventType);
     }
+
+
 
     @Override
     public List<EventTypeDTO> obtenerEventType() {

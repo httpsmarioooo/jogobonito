@@ -9,16 +9,16 @@ public class JudgeMapper {
     public static Judge dtoToDomain(JudgeDTO judgeDTO){
         Judge judge = new Judge();
         judge.setId(judgeDTO.getId());
-        judge.setName(judgeDTO.getNombre());
+        judge.setName(judgeDTO.getName());
         judge.setCountryOfBirth(judgeDTO.getCountryOfBirth());
 
         return judge;
     }
 
-    public static JudgeDTO domainToDTO(Judge judge){
+    public static JudgeDTO domainToDto(Judge judge){
         return JudgeDTO.builder().
                 id(judge.getId()).
-                nombre(judge.getName()).
+                name(judge.getName()).
                 countryOfBirth(judge.getCountryOfBirth()).
                 build();
     }
@@ -28,7 +28,7 @@ public class JudgeMapper {
     }
 
     public static List<JudgeDTO>domainToDTOList(List<Judge> judges){
-        return judges.stream().map(JudgeMapper::domainToDTO).toList();
+        return judges.stream().map(JudgeMapper::domainToDto).toList();
     }
 
 }
