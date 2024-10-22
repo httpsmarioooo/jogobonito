@@ -14,7 +14,7 @@ public class EventTypeMapper {
         return eventType;
     }
 
-    public static EventTypeDTO domainToDTO(EventType eventType) {
+    public static EventTypeDTO domainToDT0(EventType eventType) {
         return EventTypeDTO.builder().
                 id(eventType.getId()).
                 name(eventType.getName()).

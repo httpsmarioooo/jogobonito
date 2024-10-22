@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class EventTypeDTO {
-    private int id;
+    private Integer id;
     private String name;
     
 }

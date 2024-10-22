@@ -1,17 +1,40 @@
 package com.league.jogobonito.service.implementation;
 
+import com.league.jogobonito.domain.EventType;
 import com.league.jogobonito.dto.EventTypeDTO;
+import com.league.jogobonito.mapper.EventTypeMapper;
+import com.league.jogobonito.repository.EventTypeRepository;
 import com.league.jogobonito.service.EventTypeService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 public class EventTypeServiceImpl implements EventTypeService {
 
+    private final EventTypeRepository eventTypeRepository;
+
+    public EventTypeServiceImpl(EventTypeRepository eventTypeRepository) {
+        this.eventTypeRepository = eventTypeRepository;
+    }
+
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public EventTypeDTO guardarNuevoEventType(EventTypeDTO eventTypeDTO) throws Exception {
-        return null;
+
+        if(eventTypeDTO.getId() != null) {
+            throw new Exception("El id debe de ser nulo");
+        }
+
+        if (eventTypeDTO.getName() == null || eventTypeDTO.getName().isBlank()) {
+            throw new Exception("El nombre no debe ser nulo o vacío");
+        }
+
+        EventType eventType = EventTypeMapper.dtoToDomain(eventTypeDTO);
+        eventType = eventTypeRepository.save(eventType);
+        return EventTypeMapper.domainToDT0(eventType);
     }
 
     @Override
@@ -26,6 +49,8 @@ public class EventTypeServiceImpl implements EventTypeService {
 
     @Override
     public List<EventTypeDTO> obtenerEventType() {
-        return List.of();
+        List<EventType>listaEventTypes = eventTypeRepository.findAll();
+        List<EventTypeDTO>eventTypeDTO = EventTypeMapper.domainToDTOList(listaEventTypes);
+        return EventTypeMapper.domainToDTOList(listaEventTypes);
     }
 }
