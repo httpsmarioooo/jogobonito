@@ -82,15 +82,16 @@ POST, GET, PUT:
 Independientes
 stadiums, TERMINADO
 teams,  TERMINADO
-players, TERMINADO PRINCIPAL
-matches, TERMINADO
-awards, TERMINADO
-coaches, TERMINADO
 event_type, TERMINADO
 judges, TERMINADO
 judge_roles. TERMINADO
 
 Dependientes
+players, TERMINADO PRINCIPAL
+matches, TERMINADO
+awards, TERMINADO
+coaches, TERMINADO
+
 standings, ESPERAR
 
 POST, GET (sin PUT):
