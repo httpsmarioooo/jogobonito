@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "event_type")
+@Table(name = "event_types")
 public class EventType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
