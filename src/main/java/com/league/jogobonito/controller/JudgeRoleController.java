@@ -1,9 +1,7 @@
 package com.league.jogobonito.controller;
 
-import com.league.jogobonito.domain.JudgeRole;
 import com.league.jogobonito.dto.JudgeRoleDTO;
-import com.league.jogobonito.mapper.JudgeRoleMapper;
-import com.league.jogobonito.repository.JudgeRoleRepository;
+import com.league.jogobonito.service.JudgeRoleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,30 +11,33 @@ import java.util.List;
 @RestController
 @RequestMapping("/judge-role")
 public class JudgeRoleController {
-    private JudgeRoleRepository judgeRoleRepository;
+    private JudgeRoleService judgeRoleService;
 
-    public JudgeRoleController(JudgeRoleRepository judgeRoleRepository) {
-        this.judgeRoleRepository = judgeRoleRepository;
+    public JudgeRoleController(JudgeRoleService judgeRoleService) {
+        this.judgeRoleService = judgeRoleService;
+    }
+
+    @PostMapping(value = "/guardarNuevoJudgeRole")
+    public ResponseEntity<JudgeRoleDTO> guardarNuevoJudgeRole(@RequestBody JudgeRoleDTO judgeRoleDTO) throws Exception {
+        JudgeRoleDTO judgeRoleResponse = judgeRoleService.guardarNuevoJudgeRole(judgeRoleDTO);
+        return new ResponseEntity<>(judgeRoleResponse, HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/obtenerJudgeRole")
-    public List<JudgeRoleDTO> obtenerJudgeRole() {
-
-        List<JudgeRole>listaJudgeRoles = judgeRoleRepository.findAll();
-        List<JudgeRoleDTO> judgeRolesDTO = JudgeRoleMapper.domainToDTOList(listaJudgeRoles);
-
-        return judgeRolesDTO;
+    public List<JudgeRoleDTO>obtenerJudgeRole(){
+        return judgeRoleService.obtenerJudgeRole();
     }
 
-    @PostMapping(value = "/cearNuevoJudgeRole")
-    public ResponseEntity<JudgeRoleDTO> cearNuevoJudgeRole (@RequestBody JudgeRoleDTO judgeRoleDTO) {
-        JudgeRoleDTO judgeRoleDTOResponse = null;
+    @GetMapping("/buscarJudgeRolePorId/{id}")
+    public ResponseEntity<JudgeRoleDTO> buscarJudgeRolePorId (Integer id)throws Exception {
+        JudgeRoleDTO judgeRoleResponse = judgeRoleService.buscarJudgeRolePorId(id);
+        return new ResponseEntity<>(judgeRoleResponse, HttpStatus.OK);
+    }
 
-        JudgeRole judgeRole = JudgeRoleMapper.dtoToDomain(judgeRoleDTO);
-        judgeRole = judgeRoleRepository.save(judgeRole);
-
-        judgeRoleDTOResponse = JudgeRoleMapper.domainToDT0(judgeRole);
-        return new ResponseEntity<>(judgeRoleDTOResponse, HttpStatus.CREATED);
+    @PutMapping(value = "/modificarJudgeRole")
+    public ResponseEntity<JudgeRoleDTO> modificarJudgeRole(@RequestBody JudgeRoleDTO judgeRoleDTO) throws Exception {
+        JudgeRoleDTO judgeRoleResponse = judgeRoleService.modificarJudgeRole(judgeRoleDTO);
+        return new ResponseEntity<>(judgeRoleResponse, HttpStatus.CREATED);
     }
 
 }

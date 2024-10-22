@@ -15,7 +15,7 @@ public class JudgeRoleMapper {
         return judgeRole;
     }
 
-    public static JudgeRoleDTO domainToDT0(JudgeRole judgeRole){
+    public static JudgeRoleDTO domainToDto(JudgeRole judgeRole){
         return JudgeRoleDTO.builder().
                 id(judgeRole.getId()).
                 roleName(judgeRole.getRoleName()).
@@ -27,6 +27,6 @@ public class JudgeRoleMapper {
     }
 
         public static List<JudgeRoleDTO> domainToDTOList(List<JudgeRole> judgeRoles){
-        return judgeRoles.stream().map(JudgeRoleMapper::domainToDT0).toList();
+        return judgeRoles.stream().map(JudgeRoleMapper::domainToDto).toList();
     }
 }
