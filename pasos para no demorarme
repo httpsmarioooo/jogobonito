@@ -79,6 +79,7 @@ GET: Para obtener información de la tabla. Todas las tablas deberían tenerlo, 
 PUT: Para actualizar registros existentes en la tabla. Es necesario en las tablas donde se pueden modificar los datos.
 
 POST, GET, PUT:
+Independientes
 stadiums, TERMINADO
 teams,  TERMINADO
 players, TERMINADO PRINCIPAL
@@ -86,11 +87,12 @@ matches, TERMINADO
 awards, TERMINADO
 coaches, TERMINADO
 event_type, TERMINADO
+judges, TERMINADO
 
-judges, ESPERAR
+
 judge_roles. ESPERAR
 
-
+Dependientes
 standings, ESPERAR
 
 POST, GET (sin PUT):
