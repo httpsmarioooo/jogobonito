@@ -38,6 +38,7 @@ public class EventTypeServiceImpl implements EventTypeService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public EventTypeDTO buscarEventTypePorId(Integer id) throws Exception {
         if(id == null || id.equals(0)) {
             throw new Exception("El id no puede estar vacio ni ser 0");
@@ -49,6 +50,7 @@ public class EventTypeServiceImpl implements EventTypeService {
     }
 
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public EventTypeDTO modificarEventType(EventTypeDTO eventTypeDTO) throws Exception {
         if(eventTypeDTO.getId() != null) {
             throw new Exception("El id debe de ser nulo");
@@ -66,6 +68,7 @@ public class EventTypeServiceImpl implements EventTypeService {
 
 
     @Override
+    @Transactional(readOnly = true)
     public List<EventTypeDTO> obtenerEventType() {
         List<EventType>listaEventTypes = eventTypeRepository.findAll();
         List<EventTypeDTO>eventTypeDTO = EventTypeMapper.domainToDTOList(listaEventTypes);

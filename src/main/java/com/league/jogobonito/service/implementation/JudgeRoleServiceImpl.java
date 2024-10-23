@@ -6,6 +6,8 @@ import com.league.jogobonito.mapper.JudgeRoleMapper;
 import com.league.jogobonito.repository.JudgeRoleRepository;
 import com.league.jogobonito.service.JudgeRoleService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,6 +20,7 @@ public class JudgeRoleServiceImpl implements JudgeRoleService {
     }
 
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public JudgeRoleDTO guardarNuevoJudgeRole(JudgeRoleDTO judgeRoleDTO) throws Exception {
 
         if(judgeRoleDTO.getId() != null) {
@@ -35,6 +38,7 @@ public class JudgeRoleServiceImpl implements JudgeRoleService {
 
 
     @Override
+    @Transactional(readOnly = true)
     public JudgeRoleDTO buscarJudgeRolePorId(Integer id) throws Exception {
         if(id == null || id.equals(0)) {
             throw new Exception("El id no puede estar vacio ni ser 0");
@@ -48,6 +52,7 @@ public class JudgeRoleServiceImpl implements JudgeRoleService {
 
 
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public JudgeRoleDTO modificarJudgeRole(JudgeRoleDTO judgeRoleDTO) throws Exception {
         if(judgeRoleDTO.getId() == null) {
             throw new Exception("El id debe de ser nulo");
@@ -63,6 +68,7 @@ public class JudgeRoleServiceImpl implements JudgeRoleService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<JudgeRoleDTO> obtenerJudgeRole() {
         List<JudgeRole>listaJudgeRoles = judgeRoleRepository.findAll();
         List<JudgeRoleDTO>judgeRoleDTO = JudgeRoleMapper.domainToDTOList(listaJudgeRoles);
