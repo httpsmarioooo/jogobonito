@@ -110,8 +110,6 @@ PASOS-------------------------------------------------------
  b. Ya podemos copiar las dependecias.
 
 
-
-
 CAMBIOS_:
 Meter el método obtener en el services y en el impl de TODAS LAS TABLAS y dejar como dependecia solo el
 private CoachService coachService en los contraladores;
@@ -119,5 +117,25 @@ private CoachService coachService en los contraladores;
 Player: Completado
 Stadium: Completado
 Coache: Completado
+
+
+Tablas donde sí se puede agregar DELETE:
+stadiums
+teams
+players
+goals
+assists
+awards
+coaches
+event_type
+match_events
+judges
+judge_roles
+judges_per_match
+
+
+Tablas donde NO se debería agregar DELETE:
+matches (por el riesgo de afectar goles, asistencias, y eventos relacionados)
+standings (se actualiza automáticamente y depende de los resultados de los partidos)
 
 
