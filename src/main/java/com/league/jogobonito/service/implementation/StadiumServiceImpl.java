@@ -3,6 +3,7 @@ package com.league.jogobonito.service.implementation;
 import com.league.jogobonito.domain.Stadium;
 import com.league.jogobonito.dto.StadiumDTO;
 import com.league.jogobonito.mapper.StadiumMapper;
+import com.league.jogobonito.repository.MatchRepository;
 import com.league.jogobonito.repository.StadiumRepository;
 import com.league.jogobonito.service.StadiumService;
 import org.springframework.stereotype.Service;
@@ -16,9 +17,11 @@ import java.util.List;
 public class StadiumServiceImpl implements StadiumService {
 
     private final StadiumRepository stadiumRepository;
+    private final MatchRepository matchRepository;
 
-    public StadiumServiceImpl(StadiumRepository stadiumRepository) {
+    public StadiumServiceImpl(StadiumRepository stadiumRepository, MatchRepository matchRepository ) {
         this.stadiumRepository = stadiumRepository;
+        this. matchRepository = matchRepository;
     }
 
     @Override
@@ -103,5 +106,26 @@ public class StadiumServiceImpl implements StadiumService {
         List<Stadium>listaStadiums = stadiumRepository.findAll();
         List<StadiumDTO>stadiumDTO = StadiumMapper.domainToDTOList(listaStadiums);
         return StadiumMapper.domainToDTOList(listaStadiums);
+    }
+
+    @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+    public void eliminarStadium(Integer id) throws Exception {
+        if (id == null || id.equals(0)) {
+            throw new Exception("El id no puede ser nulo o cero");
+        }
+
+        Boolean existePais = stadiumRepository.existsById(id);
+        if (existePais ==false) {
+            throw new Exception("El id del pais no existe" +id+"Por lo tanto no se puede eliminar");
+        }
+
+
+        Boolean existeAlgunStadiumAsociadoAMatch = matchRepository.existsByStadiumId(id);
+        if (existeAlgunStadiumAsociadoAMatch) {
+            throw new Exception("El Stadium con el id"+id+"tiene matches asociados por lo tanto no se puede eliminar");
+        }
+
+        stadiumRepository.deleteById(id);
     }
 }

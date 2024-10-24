@@ -5,4 +5,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MatchRepository extends JpaRepository<Match, Integer> {
+
+    Boolean existsByStadiumId(Integer stadiumId);
 }

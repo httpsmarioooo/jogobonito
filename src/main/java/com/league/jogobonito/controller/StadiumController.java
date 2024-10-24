@@ -51,4 +51,10 @@ public class StadiumController {
         return new ResponseEntity<>(stadiumResponse, HttpStatus.CREATED);
     }
 
+    @DeleteMapping(value = "/eliminarStadium/{id}")
+    public ResponseEntity<Void> eliminarStadium(@PathVariable("id") Integer idStadium) throws Exception {
+        stadiumService.eliminarStadium(idStadium);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
