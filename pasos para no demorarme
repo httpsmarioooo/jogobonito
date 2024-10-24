@@ -93,12 +93,12 @@ awards, TERMINADO
 coaches, TERMINADO
 standings, TERMINADO
 
-POST, GET (sin PUT):
-goals, HAY QUE VER PERO TERMINADO
-assists,  HAY QUE VER PERO TERMINADO
-match_events, HAY QUE VER PERO TERMINADO
-judges_per_match. HAY QUE VER PERO TERMINADO
 
+Dependientes pero POST, GET (sin PUT):
+goals
+assists
+match_events,
+judges_per_match.
 
 
 PASOS-------------------------------------------------------
