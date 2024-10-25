@@ -1,9 +1,6 @@
 package com.league.jogobonito.service.implementation;
 
-import com.league.jogobonito.domain.EventType;
-import com.league.jogobonito.domain.Match;
-import com.league.jogobonito.domain.MatchEvent;
-import com.league.jogobonito.domain.Player;
+import com.league.jogobonito.domain.*;
 import com.league.jogobonito.dto.MatchEventDTO;
 import com.league.jogobonito.mapper.MatchEventMapper;
 import com.league.jogobonito.repository.EventTypeRepository;
@@ -12,6 +9,9 @@ import com.league.jogobonito.repository.MatchRepository;
 import com.league.jogobonito.repository.PlayerRepository;
 import com.league.jogobonito.service.MatchEventService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class MatchEventServiceImpl implements MatchEventService{
@@ -82,4 +82,30 @@ public class MatchEventServiceImpl implements MatchEventService{
 
         return MatchEventMapper.domainToDto(matchEvent);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public MatchEventDTO buscarMatchEventPorId(Integer id) throws Exception {
+        if(id == null || id.equals(0)) {
+            throw new Exception("El id no puede estar vacio ni ser 0");
+        }
+
+
+        MatchEvent matchEvent = matchEventRepository.getReferenceById(id);
+        if (matchEvent == null) {
+            throw new Exception("No se encuentra el player con el id"+id);
+        }
+
+        MatchEventDTO matchEventDTO = MatchEventMapper.domainToDto(matchEvent);
+        return matchEventDTO;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<MatchEventDTO> obtenerMatchEvents() {
+        List<MatchEvent>listaMatchEvents = matchEventRepository.findAll();
+        List<MatchEventDTO>matchEventsDTO = MatchEventMapper.domainToDTOList(listaMatchEvents);
+        return MatchEventMapper.domainToDTOList(listaMatchEvents);
+    }
+
 }

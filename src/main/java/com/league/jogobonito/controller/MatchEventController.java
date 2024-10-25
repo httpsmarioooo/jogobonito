@@ -1,7 +1,6 @@
 package com.league.jogobonito.controller;
 
 import com.league.jogobonito.dto.MatchEventDTO;
-import com.league.jogobonito.repository.MatchEventRepository;
 import com.league.jogobonito.service.MatchEventService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,12 +11,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/match-event")
 public class MatchEventController {
-
-    private MatchEventRepository matchEventRepository;
     private MatchEventService matchEventService;
 
-    public MatchEventController(MatchEventRepository matchEventRepository, MatchEventService matchEventService) {
-        this.matchEventRepository = matchEventRepository;
+    public MatchEventController(MatchEventService matchEventService) {
         this.matchEventService = matchEventService;
     }
 
@@ -25,6 +21,17 @@ public class MatchEventController {
     public ResponseEntity<MatchEventDTO> guardarNuevoMatchEvent(@RequestBody MatchEventDTO matchEventDTO) throws Exception {
         MatchEventDTO matchEventResponse = matchEventService.guardarNuevoMatchEvent(matchEventDTO);
         return new ResponseEntity<>(matchEventResponse, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/buscarMatchEventPorId/{id}")
+    public ResponseEntity<MatchEventDTO> buscarMatchEventPorId (Integer id)throws Exception {
+        MatchEventDTO matchEventResponse = matchEventService.buscarMatchEventPorId(id);
+        return new ResponseEntity<>(matchEventResponse, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/obtenerMatchEvents")
+    public List<MatchEventDTO>obtenerMatchEvents(){
+        return matchEventService.obtenerMatchEvents();
     }
 
     /*@GetMapping(value = "/obtenerMatchEvent")

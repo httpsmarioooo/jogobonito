@@ -96,8 +96,8 @@ standings, TERMINADO
 
 Dependientes pero POST, GET (sin PUT):
 goals TERMINADO
-assists
-match_events,
+assists TERMINADO
+match_events TERMINADO
 judges_per_match.
 
 

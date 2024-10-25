@@ -10,6 +10,7 @@ import com.league.jogobonito.repository.MatchRepository;
 import com.league.jogobonito.repository.PlayerRepository;
 import com.league.jogobonito.service.AssistService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -66,6 +67,7 @@ public class AssistServiceImpl implements AssistService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public AssistDTO buscarAssistPorId(Integer id) throws Exception {
         if(id == null || id.equals(0)) {
             throw new Exception("El id no puede estar vacio ni ser 0");
@@ -82,6 +84,7 @@ public class AssistServiceImpl implements AssistService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<AssistDTO> obtenerAssists() {
         List<Assist>listaAssits = assistRepository.findAll();
         List<AssistDTO>assitsDTO = AssistMapper.domainToDTOList(listaAssits);
