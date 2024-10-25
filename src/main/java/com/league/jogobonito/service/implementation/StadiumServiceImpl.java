@@ -62,7 +62,7 @@ public class StadiumServiceImpl implements StadiumService {
         }
 
         Stadium stadium = stadiumRepository.findById(id)
-         .orElseThrow (() -> new Exception("No se encuentra el jugador con el id" +id));
+         .orElseThrow (() -> new Exception("No se encuentra el Stadium con el id" +id));
         return StadiumMapper.domainToDto(stadium);
 
         /*if (stadium == null) {
