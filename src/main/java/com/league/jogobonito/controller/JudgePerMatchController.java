@@ -1,12 +1,6 @@
 package com.league.jogobonito.controller;
 
-import com.league.jogobonito.domain.JudgePerMatch;
-import com.league.jogobonito.domain.MatchEvent;
 import com.league.jogobonito.dto.JudgePerMatchDTO;
-import com.league.jogobonito.dto.MatchEventDTO;
-import com.league.jogobonito.mapper.JudgePerMatchMapper;
-import com.league.jogobonito.mapper.MatchEventMapper;
-import com.league.jogobonito.repository.JudgePerMatchRepository;
 import com.league.jogobonito.service.JudgePerMatchService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +14,9 @@ import java.util.List;
 public class JudgePerMatchController {
 
     //Inyeccion de dependecias hacia CiudadServices
-    private JudgePerMatchRepository judgePerMatchRepository;
     private JudgePerMatchService judgePerMatchService;
 
-    public JudgePerMatchController(JudgePerMatchRepository judgePerMatchRepository, JudgePerMatchService judgePerMatchService) {
-        this.judgePerMatchRepository = judgePerMatchRepository;
+    public JudgePerMatchController(JudgePerMatchService judgePerMatchService) {
         this.judgePerMatchService = judgePerMatchService;
     }
 
@@ -32,6 +24,17 @@ public class JudgePerMatchController {
     public ResponseEntity<JudgePerMatchDTO> guardarNuevoJudgePerMatch(@RequestBody JudgePerMatchDTO judgePerMatchDTO) throws Exception {
         JudgePerMatchDTO judgePerMatchResponse = judgePerMatchService.guardarNuevoJudgePerMatch(judgePerMatchDTO);
         return new ResponseEntity<>(judgePerMatchResponse, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/buscarJudgePerMatchPorId/{id}")
+    public ResponseEntity<JudgePerMatchDTO> buscarJudgePerMatchPorId (Integer id)throws Exception {
+        JudgePerMatchDTO judgePerMatchResponse = judgePerMatchService.buscarJudgePerMatchPorId(id);
+        return new ResponseEntity<>(judgePerMatchResponse, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/obtenerJudgesPerMatch")
+    public List<JudgePerMatchDTO>obtenerJudgesPerMatch(){
+        return judgePerMatchService.obtenerJudgesPerMatch();
     }
 
 
