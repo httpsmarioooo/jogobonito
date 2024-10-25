@@ -11,6 +11,9 @@ import com.league.jogobonito.repository.MatchRepository;
 import com.league.jogobonito.repository.PlayerRepository;
 import com.league.jogobonito.service.GoalService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class GoalServiceImpl implements GoalService {
@@ -64,5 +67,30 @@ public class GoalServiceImpl implements GoalService {
         return GoalMapper.domainToDto(goal);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+
+    public GoalDTO buscarGoalPorId(Integer id) throws Exception {
+        if(id == null || id.equals(0)) {
+            throw new Exception("El id no puede estar vacio ni ser 0");
+        }
+
+
+        Goal goal = goalRepository.getReferenceById(id);
+        if (goal == null) {
+            throw new Exception("No se encuentra el player con el id"+id);
+        }
+
+        GoalDTO goalDTO = GoalMapper.domainToDto(goal);
+        return goalDTO;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<GoalDTO> obtenerGoals() {
+        List<Goal>listaGoals = goalRepository.findAll();
+        List<GoalDTO>goalsDTO = GoalMapper.domainToDTOList(listaGoals);
+        return GoalMapper.domainToDTOList(listaGoals);
+    }
 
 }

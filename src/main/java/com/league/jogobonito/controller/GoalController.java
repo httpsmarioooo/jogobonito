@@ -19,11 +19,9 @@ import java.util.List;
 @RequestMapping("/goal")
 public class GoalController {
 
-    private GoalRepository goalRepository;
     private GoalService goalService;
 
-    public GoalController(GoalRepository goalRepository, GoalService goalService) {
-        this.goalRepository = goalRepository;
+    public GoalController(GoalService goalService) {
         this.goalService = goalService;
     }
 
@@ -33,6 +31,18 @@ public class GoalController {
         return new ResponseEntity<>(goalResponse, HttpStatus.CREATED);
     }
 
+    @GetMapping("/buscarGoalPorId/{id}")
+    public ResponseEntity<GoalDTO> buscarGoalPorId (Integer id)throws Exception {
+        GoalDTO goalResponse = goalService.buscarGoalPorId(id);
+        return new ResponseEntity<>(goalResponse, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/obtenerGoals")
+    public List<GoalDTO>obtenerGoals(){
+        return goalService.obtenerGoals();
+    }
+
+
     /*@GetMapping(value = "/obtenerGoal")
     public List<GoalDTO>obtenerGoal(){
         List<Goal>listaGoals = goalRepository.findAll();
@@ -40,6 +50,5 @@ public class GoalController {
     }
 
      */
-
 
 }
