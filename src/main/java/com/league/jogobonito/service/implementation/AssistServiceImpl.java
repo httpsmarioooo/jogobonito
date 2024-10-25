@@ -11,6 +11,8 @@ import com.league.jogobonito.repository.PlayerRepository;
 import com.league.jogobonito.service.AssistService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AssistServiceImpl implements AssistService {
 
@@ -61,5 +63,28 @@ public class AssistServiceImpl implements AssistService {
         assist = assistRepository.save(assist);
         return AssistMapper.domainToDto(assist);
 
+    }
+
+    @Override
+    public AssistDTO buscarAssistPorId(Integer id) throws Exception {
+        if(id == null || id.equals(0)) {
+            throw new Exception("El id no puede estar vacio ni ser 0");
+        }
+
+
+        Assist assist = assistRepository.getReferenceById(id);
+        if (assist == null) {
+            throw new Exception("No se encuentra el player con el id"+id);
+        }
+
+        AssistDTO assistDTO = AssistMapper.domainToDto(assist);
+        return assistDTO;
+    }
+
+    @Override
+    public List<AssistDTO> obtenerAssists() {
+        List<Assist>listaAssits = assistRepository.findAll();
+        List<AssistDTO>assitsDTO = AssistMapper.domainToDTOList(listaAssits);
+        return AssistMapper.domainToDTOList(listaAssits);
     }
 }

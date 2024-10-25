@@ -58,7 +58,7 @@ public class GoalServiceImpl implements GoalService {
         }
 
         if (match == null){
-            throw new Exception("El Player no existe");
+            throw new Exception("El Match no existe");
         }
 
         goal.setPlayer(player);
