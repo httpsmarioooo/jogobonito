@@ -76,7 +76,7 @@ public class AssistServiceImpl implements AssistService {
 
         Assist assist = assistRepository.getReferenceById(id);
         if (assist == null) {
-            throw new Exception("No se encuentra el player con el id"+id);
+            throw new Exception("No se encuentra la asistencia con el id"+id);
         }
 
         AssistDTO assistDTO = AssistMapper.domainToDto(assist);
