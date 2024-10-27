@@ -140,15 +140,15 @@ standings (se actualiza automáticamente y depende de los resultados de los part
 
 
 
-Los Post (Create) de todas las entidades
-Los Put (Update) de todas las entidades
-Buscar por Id (Get)
-Buscar por código o algúna otra llave por la cual se pueda buscar
+Los Post (Create) de todas las entidades - TERMINADO
+Los Put (Update) de todas las entidades - TERMINADO
+Buscar por Id (Get) - TERMINADO
+Buscar por código o algúna otra llave por la cual se pueda buscar / TERMINADO  se puede decir porque no pienso hacerlas en todas)
 
-Debe funcionar con Swagger, y manejando los errores con el RestAdviceController.
+Debe funcionar con Swagger, y manejando los errores con el RestAdviceController. HECHO
 
-Recuerden que para que funcione los controllers, debe funcionar los Service, ServiceImpl, Repository y Mappers.
+Recuerden que para que funcione los controllers, debe funcionar los Service, ServiceImpl, Repository y Mappers. HECHO
 
-Debe trabajar con DTO's y Entities.
+Debe trabajar con DTO's y Entities. HECHO
 
 
