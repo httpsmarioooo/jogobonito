@@ -139,3 +139,16 @@ matches (por el riesgo de afectar goles, asistencias, y eventos relacionados)
 standings (se actualiza automáticamente y depende de los resultados de los partidos)
 
 
+
+Los Post (Create) de todas las entidades
+Los Put (Update) de todas las entidades
+Buscar por Id (Get)
+Buscar por código o algúna otra llave por la cual se pueda buscar
+
+Debe funcionar con Swagger, y manejando los errores con el RestAdviceController.
+
+Recuerden que para que funcione los controllers, debe funcionar los Service, ServiceImpl, Repository y Mappers.
+
+Debe trabajar con DTO's y Entities.
+
+

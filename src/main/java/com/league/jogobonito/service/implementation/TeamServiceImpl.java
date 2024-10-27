@@ -55,6 +55,22 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public TeamDTO buscarEquipoPorInicial(String initial) throws Exception {
+        // Validar el codigo que llegue al servicio
+        if(initial == null || initial.equals("")) {
+            throw new Exception("El código del país no puede ser nulo o vacío");
+        }
+
+        // Buscar el país por codigo si no existe lanzar una excepción
+        Team team = teamRepository.findByInitial(initial)
+                .orElseThrow(() -> new Exception("No se encuentra el país con el código " + initial));
+
+        // Convertir el país a un DTO y retornar
+        return TeamMapper.domainToDT0(team);
+    }
+
+    @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public TeamDTO modificarTeam(TeamDTO teamDTO) throws Exception {
         if(teamDTO.getId() == null) {

@@ -35,11 +35,19 @@ public class TeamController {
         return new ResponseEntity<>(teamResponse, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/buscarEquipoPorInicial/{initial}")
+    public ResponseEntity<TeamDTO> buscarEquipoPorInicial(@PathVariable("initial") String initial) throws Exception {
+        TeamDTO teamDTO = teamService.buscarEquipoPorInicial(initial);
+        return new ResponseEntity<>(teamDTO, HttpStatus.OK);
+    }
+
     @PutMapping(value = "/modificarTeam")
     public ResponseEntity<TeamDTO> modificarTeam(@RequestBody TeamDTO teamDTO) throws Exception {
         TeamDTO teamResponse = teamService.modificarTeam(teamDTO);
         return new ResponseEntity<>(teamResponse, HttpStatus.CREATED);
     }
+
+
 
 }
 

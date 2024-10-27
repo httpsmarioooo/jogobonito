@@ -23,6 +23,9 @@ public class Team {
 
     @Column
     private String city;
+
+    @Column
+    private String initial;
 }
 
 

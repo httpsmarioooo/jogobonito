@@ -14,4 +14,5 @@ public class TeamDTO {
     private Integer id;
     private String name;
     private String city;
+    private String initial;
 }

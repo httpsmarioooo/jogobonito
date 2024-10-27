@@ -10,7 +10,7 @@ public class TeamMapper {
         team.setId(teamDTO.getId());
         team.setName(teamDTO.getName());
         team.setCity(teamDTO.getCity());
-
+        team.setInitial(teamDTO.getInitial());
         return team;
     }
 
@@ -19,6 +19,7 @@ public class TeamMapper {
                 .id(team.getId())
                 .name(team.getName())
                 .city(team.getCity())
+                .initial(team.getInitial())
                 .build();
     }
 
