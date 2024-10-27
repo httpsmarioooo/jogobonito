@@ -78,7 +78,7 @@ public class GoalServiceImpl implements GoalService {
 
         Goal goal = goalRepository.getReferenceById(id);
         if (goal == null) {
-            throw new Exception("No se encuentra el player con el id"+id);
+            throw new Exception("No se encuentra el goal con el id "+id);
         }
 
         GoalDTO goalDTO = GoalMapper.domainToDto(goal);

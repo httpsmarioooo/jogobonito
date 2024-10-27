@@ -96,7 +96,7 @@ public class MatchServiceImpl implements MatchService {
 
         Match match = matchRepository.getReferenceById(id);
         if (match == null) {
-            throw new Exception("No se encuentra el player con el id"+id);
+            throw new Exception("No se encuentra el match con el id"+id);
         }
 
         MatchDTO matchDTO = MatchMapper.domainToDto(match);

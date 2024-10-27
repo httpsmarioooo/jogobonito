@@ -1,12 +1,9 @@
 package com.league.jogobonito.service.implementation;
 
 import com.league.jogobonito.domain.Coach;
-import com.league.jogobonito.domain.Player;
 import com.league.jogobonito.domain.Team;
 import com.league.jogobonito.dto.CoachDTO;
-import com.league.jogobonito.dto.PlayerDTO;
 import com.league.jogobonito.mapper.CoachMapper;
-import com.league.jogobonito.mapper.PlayerMapper;
 import com.league.jogobonito.repository.CoachRepository;
 import com.league.jogobonito.repository.TeamRepository;
 import com.league.jogobonito.service.CoachService;
@@ -64,7 +61,7 @@ public class CoachServiceImpl implements CoachService {
 
         Coach coach = coachRepository.getReferenceById(id);
         if (coach == null) {
-            throw new Exception("No se encuentra el player con el id"+id);
+            throw new Exception("No se encuentra el Coach con el id"+id);
         }
 
         CoachDTO coachDTO = CoachMapper.domainToDto(coach);

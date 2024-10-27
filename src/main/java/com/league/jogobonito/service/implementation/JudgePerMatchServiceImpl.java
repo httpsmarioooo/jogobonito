@@ -86,7 +86,7 @@ public class JudgePerMatchServiceImpl implements JudgePerMatchService {
 
         JudgePerMatch judgePerMatch = judgePerMatchRepository.getReferenceById(id);
         if (judgePerMatch == null) {
-            throw new Exception("No se encuentra el player con el id"+id);
+            throw new Exception("No se encuentra el judge per match con el id "+id);
         }
 
         JudgePerMatchDTO judgePerMatchDTO = JudgePerMatchMapper.domainToDto(judgePerMatch);

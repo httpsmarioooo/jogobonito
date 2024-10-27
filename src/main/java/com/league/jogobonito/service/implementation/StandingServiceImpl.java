@@ -71,7 +71,7 @@ public class StandingServiceImpl implements StandingService {
 
         Standing standing = standingRepository.getReferenceById(id);
         if (standing == null) {
-            throw new Exception("No se encuentra el player con el id"+id);
+            throw new Exception("No se encuentra el Standing con el id"+id);
         }
 
         StandingDTO standingDTO = StandingMapper.domainToDto(standing);

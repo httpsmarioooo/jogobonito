@@ -45,7 +45,7 @@ public class EventTypeServiceImpl implements EventTypeService {
         }
 
         EventType eventType = eventTypeRepository.findById(id)
-                .orElseThrow (() -> new Exception("No se encuentra el jugador con el id" +id));
+                .orElseThrow (() -> new Exception("No se encuentra el event type con el id " +id));
         return EventTypeMapper.domainToDT0(eventType);
     }
 

@@ -46,7 +46,7 @@ public class JudgeServiceImpl implements JudgeService {
         }
 
         Judge judge = judgeRepository.findById(id)
-                .orElseThrow (() -> new Exception("No se encuentra el jugador con el id" +id));
+                .orElseThrow (() -> new Exception("No se encuentra el judgde con el id" +id));
         return JudgeMapper.domainToDto(judge);
     }
 

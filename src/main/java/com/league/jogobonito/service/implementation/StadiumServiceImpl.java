@@ -117,7 +117,7 @@ public class StadiumServiceImpl implements StadiumService {
 
         Boolean existePais = stadiumRepository.existsById(id);
         if (existePais ==false) {
-            throw new Exception("El id del pais no existe" +id+"Por lo tanto no se puede eliminar");
+            throw new Exception("El id del stadium no existe" +id+"Por lo tanto no se puede eliminar");
         }
 
 

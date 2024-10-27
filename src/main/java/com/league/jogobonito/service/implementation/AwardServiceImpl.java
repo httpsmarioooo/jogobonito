@@ -50,7 +50,7 @@ public class AwardServiceImpl implements AwardService {
         Player player = playerRepository.getReferenceById(awardDTO.getPlayerId());
 
         if (player == null){
-            throw new Exception("El Player no existe");
+            throw new Exception("El Award no existe");
         }
 
         award.setPlayer(player);
@@ -68,7 +68,7 @@ public class AwardServiceImpl implements AwardService {
 
         Award award = awardRepository.getReferenceById(id);
         if (award == null) {
-            throw new Exception("No se encuentra el player con el id"+id);
+            throw new Exception("No se encuentra el award con el id"+id);
         }
 
         AwardDTO awardDTO = AwardMapper.domainToDto(award);

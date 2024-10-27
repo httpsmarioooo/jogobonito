@@ -45,7 +45,7 @@ public class JudgeRoleServiceImpl implements JudgeRoleService {
         }
 
         JudgeRole judgeRole = judgeRoleRepository.findById(id)
-                .orElseThrow (() -> new Exception("No se encuentra el jugador con el id" +id));
+                .orElseThrow (() -> new Exception("No se encuentra el judge role con el id " +id));
         return JudgeRoleMapper.domainToDto(judgeRole);
     }
 
