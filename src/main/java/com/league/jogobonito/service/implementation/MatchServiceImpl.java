@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 
 @Service
@@ -60,27 +61,33 @@ public class MatchServiceImpl implements MatchService {
             throw new Exception("El StadiumId no debe de ser nulo");
         }
 
-        if(matchDTO.getTeamId() == null) {
+        if(matchDTO.getHomeTeamId() == null) {
             throw new Exception("El TeamId no debe de ser nulo");
         }
 
-        if(matchDTO.getTeamId2() == null) {
+        if(matchDTO.getAwayTeamId() == null) {
             throw new Exception("El TeamId2 no debe de ser nulo");
         }
 
         Match match = MatchMapper.dtoToDomain(matchDTO);
-        Team team = teamRepository.getReferenceById(matchDTO.getTeamId());
+        Team homeTeam = teamRepository.getReferenceById(matchDTO.getHomeTeamId());
+        Team awayTeam = teamRepository.getReferenceById(matchDTO.getAwayTeamId());
+
+
         Stadium stadium  = stadiumRepository.getReferenceById(matchDTO.getStadiumId());
 
-        if (team == null){
-            throw new Exception("El Team no existe");
+        if (homeTeam == null) {
+            throw new Exception("El Home Team no existe");
+        }
+        if (awayTeam == null) { // Agrega esta validación
+            throw new Exception("El Away Team no existe");
+        }
+        if (stadium == null) {
+            throw new Exception("El Stadium no existe");
         }
 
-        if (stadium == null){
-            throw new Exception("El stadium no existe");
-        }
-
-        match.setTeam(team);
+        match.setTeam(homeTeam);
+        match.setTeam2(awayTeam); // Asigna el equipo visitante
         match.setStadium(stadium);
 
         match = matchRepository.save(match);
@@ -109,7 +116,7 @@ public class MatchServiceImpl implements MatchService {
     public MatchDTO modificarMatch(MatchDTO matchDTO) throws Exception {
 
         if(matchDTO.getId() == null) {
-            throw new Exception("El id no puede ser nulo");
+            throw new Exception("El id no debe de ser nulo");
         }
 
         // Validar la fecha después de validar el ID
@@ -135,32 +142,47 @@ public class MatchServiceImpl implements MatchService {
             throw new Exception("El StadiumId no debe de ser nulo");
         }
 
-        if(matchDTO.getTeamId() == null) {
+        if(matchDTO.getHomeTeamId() == null) {
             throw new Exception("El TeamId no debe de ser nulo");
         }
 
-        if(matchDTO.getTeamId2() == null) {
+        if(matchDTO.getAwayTeamId() == null) {
             throw new Exception("El TeamId2 no debe de ser nulo");
         }
 
         Match match = MatchMapper.dtoToDomain(matchDTO);
-        Team team = teamRepository.getReferenceById(matchDTO.getTeamId());
+        Team homeTeam = teamRepository.getReferenceById(matchDTO.getHomeTeamId());
+        Team awayTeam = teamRepository.getReferenceById(matchDTO.getAwayTeamId());
+
+
         Stadium stadium  = stadiumRepository.getReferenceById(matchDTO.getStadiumId());
 
-        if (team == null){
-            throw new Exception("El Team no existe");
+        if (homeTeam == null) {
+            throw new Exception("El Home Team no existe");
+        }
+        if (awayTeam == null) { // Agrega esta validación
+            throw new Exception("El Away Team no existe");
+        }
+        if (stadium == null) {
+            throw new Exception("El Stadium no existe");
         }
 
-        if (stadium == null){
-            throw new Exception("El stadium no existe");
-        }
 
-        match.setTeam(team);
+        match.setTeam(homeTeam);
+        match.setTeam2(awayTeam); // Asigna el equipo visitante
         match.setStadium(stadium);
-        match = matchRepository.save(match);
 
+        match = matchRepository.save(match);
         return MatchMapper.domainToDto(match);
 
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<MatchDTO> obtenerMatches() {
+        List<Match>listaMatches = matchRepository.findAll();
+        List<MatchDTO>matchesDTO = MatchMapper.domainToDTOList(listaMatches);
+        return MatchMapper.domainToDTOList(listaMatches);
     }
 
 }

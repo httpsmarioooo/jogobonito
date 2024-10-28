@@ -18,6 +18,7 @@ public class StandingMapper {
 
     public static StandingDTO domainToDto (Standing standing){
         return StandingDTO.builder()
+                .id(standing.getId())
                 .points(standing.getPoints())
                 .goalsFor(standing.getGoalsFor())
                 .goalsAgainst(standing.getGoalsAgainst())

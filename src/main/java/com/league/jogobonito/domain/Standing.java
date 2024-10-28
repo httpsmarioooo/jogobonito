@@ -13,8 +13,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "standings")
 public class Standing {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

@@ -19,6 +19,6 @@ public class MatchDTO {
     private Integer homeTeamScore;
     private Integer awayTeamScore;
     private Integer stadiumId;
-    private Integer teamId;
-    private Integer teamId2;
+    private Integer homeTeamId;
+    private Integer awayTeamId;
 }

@@ -2,9 +2,7 @@ package com.league.jogobonito.mapper;
 
 import com.league.jogobonito.domain.Match;
 import com.league.jogobonito.dto.MatchDTO;
-import lombok.Data;
 
-import java.util.Date;
 import java.util.List;
 
 
@@ -27,8 +25,8 @@ public class MatchMapper {
                 .homeTeamScore(match.getHomeTeamScore())
                 .awayTeamScore(match.getAwayTeamScore())
                 .stadiumId((match.getStadium().getId() != null) ? match.getStadium().getId() : null)
-                .teamId(match.getHomeTeamScore() != null ? match.getHomeTeamScore() : null)
-                .teamId2(match.getAwayTeamScore() != null ? match.getAwayTeamScore() : null)
+                .homeTeamId(match.getTeam() != null ? match.getTeam().getId() : null)
+                .awayTeamId(match.getTeam2() != null ? match.getTeam2(). getId() : null)
                 .build();
     }
 
