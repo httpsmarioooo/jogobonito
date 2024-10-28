@@ -27,6 +27,18 @@ public class MatchMapper {
                 .stadiumId((match.getStadium().getId() != null) ? match.getStadium().getId() : null)
                 .homeTeamId(match.getTeam() != null ? match.getTeam().getId() : null)
                 .awayTeamId(match.getTeam2() != null ? match.getTeam2(). getId() : null)
+
+                // Mapeo del ID y nombre del estadio
+                .stadiumId(match.getStadium().getId())
+                .stadiumName(match.getStadium().getName()) // Obtener el nombre del estadio
+
+                // Mapeo del ID y nombre del equipo local
+                .homeTeamId(match.getTeam().getId())
+                .homeTeamName(match.getTeam().getName()) // Obtener el nombre del equipo local
+
+                // Mapeo del ID y nombre del equipo visitante
+                .awayTeamId(match.getTeam2().getId())
+                .awayTeamName(match.getTeam2().getName()) // Obtener el nombre del equipo visitante
                 .build();
     }
 

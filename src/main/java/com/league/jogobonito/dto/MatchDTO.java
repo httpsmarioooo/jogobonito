@@ -18,7 +18,15 @@ public class MatchDTO {
     private Date date;
     private Integer homeTeamScore;
     private Integer awayTeamScore;
+
     private Integer stadiumId;
+    private String stadiumName;
+
+    // Si quieres también incluir el nombre del estadio
     private Integer homeTeamId;
+    private String homeTeamName;
+
     private Integer awayTeamId;
+    private String awayTeamName;
+
 }
