@@ -12,6 +12,8 @@ import com.league.jogobonito.service.AwardService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class AwardServiceImpl implements AwardService {
 
@@ -107,5 +109,13 @@ public class AwardServiceImpl implements AwardService {
         award = awardRepository.save(award);
 
         return AwardMapper.domainToDto(award);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<AwardDTO> obtenerAwards() {
+        List<Award>listaAwards = awardRepository.findAll();
+        List<AwardDTO>awardsDTO = AwardMapper.domainToDTOList(listaAwards);
+        return AwardMapper.domainToDTOList(listaAwards);
     }
 }

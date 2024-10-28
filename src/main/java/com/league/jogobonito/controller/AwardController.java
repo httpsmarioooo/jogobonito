@@ -1,11 +1,6 @@
 package com.league.jogobonito.controller;
 
-import com.league.jogobonito.domain.Award;
-import com.league.jogobonito.domain.Player;
 import com.league.jogobonito.dto.AwardDTO;
-import com.league.jogobonito.dto.PlayerDTO;
-import com.league.jogobonito.mapper.AwardMapper;
-import com.league.jogobonito.mapper.PlayerMapper;
 import com.league.jogobonito.repository.AwardRepository;
 import com.league.jogobonito.service.AwardService;
 import org.springframework.http.HttpStatus;
@@ -18,11 +13,10 @@ import java.util.List;
 @RequestMapping("/award")
 public class AwardController {
 
-    private AwardRepository awardRepository;
+
     private AwardService awardService;
 
-    public AwardController(AwardRepository awardRepository, AwardService awardService) {
-        this.awardRepository = awardRepository;
+    public AwardController(AwardService awardService) {
         this.awardService = awardService;
     }
 
@@ -32,11 +26,11 @@ public class AwardController {
         return new ResponseEntity<>(awardResponse, HttpStatus.CREATED);
     }
 
-    @GetMapping(value = "/obtenerAward")
-    public List<AwardDTO>obtenerAward(){
-        List<Award>listaAwards = awardRepository.findAll();
-        return AwardMapper.domainToDTOList(listaAwards);
+    @GetMapping(value = "/obtenerAwards")
+    public List<AwardDTO>obtenerAwards(){
+        return awardService.obtenerAwards();
     }
+
 
     @GetMapping("/buscarAwardPorId/{id}")
     public ResponseEntity<AwardDTO> buscarAwardPorId (Integer id)throws Exception {
