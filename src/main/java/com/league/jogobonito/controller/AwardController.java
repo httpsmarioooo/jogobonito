@@ -1,7 +1,6 @@
 package com.league.jogobonito.controller;
 
 import com.league.jogobonito.dto.AwardDTO;
-import com.league.jogobonito.repository.AwardRepository;
 import com.league.jogobonito.service.AwardService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +29,6 @@ public class AwardController {
     public List<AwardDTO>obtenerAwards(){
         return awardService.obtenerAwards();
     }
-
 
     @GetMapping("/buscarAwardPorId/{id}")
     public ResponseEntity<AwardDTO> buscarAwardPorId (Integer id)throws Exception {
