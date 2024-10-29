@@ -10,6 +10,7 @@ import com.league.jogobonito.repository.MatchRepository;
 import com.league.jogobonito.repository.PlayerRepository;
 import com.league.jogobonito.service.AssistService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public class AssistServiceImpl implements AssistService {
     }
 
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public AssistDTO guardarNuevoAssists(AssistDTO assistDTO) throws Exception {
 
         if(assistDTO.getId() != null) {
@@ -84,6 +86,7 @@ public class AssistServiceImpl implements AssistService {
     }
 
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public AssistDTO modificarAssist(AssistDTO assistDTO) throws Exception {
         if(assistDTO.getId() == null) {
             throw new Exception("El id no puede ser nulo");
