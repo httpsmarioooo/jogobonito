@@ -1,6 +1,5 @@
 package com.league.jogobonito.dto;
 
-import com.league.jogobonito.domain.Stadium;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

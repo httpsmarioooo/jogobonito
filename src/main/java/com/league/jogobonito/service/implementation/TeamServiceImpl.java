@@ -62,7 +62,7 @@ public class TeamServiceImpl implements TeamService {
             throw new Exception("La inicial del Team no puede ser nulo o vacío");
         }
 
-        // Buscar el país por codigo si no existe lanzar una excepción
+        // Buscar el país por incicial si no existe lanzar una excepción
         Team team = teamRepository.findByInitial(initial)
                 .orElseThrow(() -> new Exception("No se encuentra el Team con la inicial " + initial));
 

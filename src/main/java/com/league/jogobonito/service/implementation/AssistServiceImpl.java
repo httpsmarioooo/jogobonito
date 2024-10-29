@@ -84,6 +84,42 @@ public class AssistServiceImpl implements AssistService {
     }
 
     @Override
+    public AssistDTO modificarAssist(AssistDTO assistDTO) throws Exception {
+        if(assistDTO.getId() == null) {
+            throw new Exception("El id no puede ser nulo");
+        }
+
+        if(assistDTO.getMinute() == null) {
+            throw new Exception("El minuto no debe de ser nulo");
+        }
+
+        if(assistDTO.getMatchId() == null) {
+            throw new Exception("El Matchid debe no debe de ser nulo");
+        }
+
+        if(assistDTO.getPlayerId() == null) {
+            throw new Exception("El Playerid no debe de ser nulo");
+        }
+
+        Assist assist = AssistMapper.dtoToDomain(assistDTO);
+        Player player = playerRepository.getReferenceById(assistDTO.getPlayerId());
+        Match match = matchRepository.getReferenceById(assistDTO.getMatchId());
+
+        if (player == null){
+            throw new Exception("El Player no existe");
+        }
+
+        if (match == null){
+            throw new Exception("El Player no existe");
+        }
+
+        assist.setPlayer(player);
+        assist.setMatch(match);
+        assist = assistRepository.save(assist);
+        return AssistMapper.domainToDto(assist);
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public List<AssistDTO> obtenerAssists() {
         List<Assist>listaAssits = assistRepository.findAll();

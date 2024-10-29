@@ -31,7 +31,7 @@ public class StadiumController {
     @PostMapping(value = "/guardarNuevoStadium")
     public ResponseEntity<StadiumDTO> guardarNuevoStadium(@RequestBody StadiumDTO stadiumDTO) throws Exception {
         StadiumDTO stadiumResponse = stadiumService.guardarNuevoStadium(stadiumDTO);
-        return new ResponseEntity<>(stadiumResponse, HttpStatus.CREATED);
+        return new ResponseEntity<>(stadiumResponse, HttpStatus.CREATED); //201
     }
 
     @GetMapping(value = "/obtenerStadium")
@@ -42,7 +42,7 @@ public class StadiumController {
     @GetMapping("/buscarStadiumPorId/{id}")
     public ResponseEntity<StadiumDTO> buscarStadiumPorId (Integer id)throws Exception {
         StadiumDTO stadiumResponse = stadiumService.buscarStadiumPorId(id);
-        return new ResponseEntity<>(stadiumResponse, HttpStatus.OK);
+        return new ResponseEntity<>(stadiumResponse, HttpStatus.OK); //200
     }
 
     @PutMapping(value = "/modificarStadium")
