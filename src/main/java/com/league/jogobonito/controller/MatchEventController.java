@@ -1,6 +1,7 @@
 package com.league.jogobonito.controller;
 
 import com.league.jogobonito.dto.MatchEventDTO;
+import com.league.jogobonito.dto.PlayerDTO;
 import com.league.jogobonito.service.MatchEventService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +33,12 @@ public class MatchEventController {
     @GetMapping(value = "/obtenerMatchEvents")
     public List<MatchEventDTO>obtenerMatchEvents(){
         return matchEventService.obtenerMatchEvents();
+    }
+
+    @PutMapping(value = "/modificarMatchEvent")
+    public ResponseEntity<MatchEventDTO> modificarMatchEvent(@RequestBody MatchEventDTO matchEventDTO) throws Exception {
+        MatchEventDTO matchEventResponse = matchEventService.modificarMatchEvent(matchEventDTO);
+        return new ResponseEntity<>(matchEventResponse, HttpStatus.CREATED);
     }
 
     /*@GetMapping(value = "/obtenerMatchEvent")
