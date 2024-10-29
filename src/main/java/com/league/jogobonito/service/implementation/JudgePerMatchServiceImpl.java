@@ -94,6 +94,56 @@ public class JudgePerMatchServiceImpl implements JudgePerMatchService {
     }
 
     @Override
+    public JudgePerMatchDTO modificarJudgePerMatch(JudgePerMatchDTO judgePerMatchDTO) throws Exception {
+        if(judgePerMatchDTO.getId() == null) {
+            throw new Exception("El id no debe de ser nulo");
+        }
+
+        //2. Validaciones dependencias, llaves etc
+
+        if(judgePerMatchDTO.getMatchId() == null) {
+            throw new Exception("El MatchId no debe ser nulo");
+        }
+
+        if(judgePerMatchDTO.getJudgeId() == null) {
+            throw new Exception("El JudgeId no debe ser nulo");
+        }
+
+        if(judgePerMatchDTO.getRoleId() == null) {
+            throw new Exception("El RoleId no debe ser nulo");
+        }
+
+        //Ultimas validaciones en el mismo impl en la parte final---
+        JudgePerMatch judgePerMatch = JudgePerMatchMapper.dtoToDomain(judgePerMatchDTO);
+
+        Match match = matchRepository.getReferenceById(judgePerMatchDTO.getMatchId());
+        Judge judge = judgeRepository.getReferenceById(judgePerMatchDTO.getJudgeId());
+        JudgeRole judgeRole = judgeRoleRepository.getReferenceById(judgePerMatchDTO.getRoleId());
+
+        if (match == null){
+            throw new Exception("El Match no existe");
+        }
+
+
+        if (judge == null){
+            throw new Exception("El Judge no existe");
+        }
+
+
+        if (judgeRole == null){
+            throw new Exception("El JudgeRole no existe");
+        }
+
+        judgePerMatch.setMatch(match);
+        judgePerMatch.setJudge(judge);
+        judgePerMatch.setJudgeRole(judgeRole);
+
+        judgePerMatch = judgePerMatchRepository.save(judgePerMatch);
+
+        return JudgePerMatchMapper.domainToDto(judgePerMatch);
+    }
+
+    @Override
     public List<JudgePerMatchDTO> obtenerJudgesPerMatch() {
         List<JudgePerMatch>listaJudgesPerMatch = judgePerMatchRepository.findAll();
         List<JudgePerMatchDTO>judgesPerMatchDTO = JudgePerMatchMapper.domainToDTOList(listaJudgesPerMatch);
