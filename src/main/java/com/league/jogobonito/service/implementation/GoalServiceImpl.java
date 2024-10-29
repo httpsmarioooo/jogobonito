@@ -86,6 +86,42 @@ public class GoalServiceImpl implements GoalService {
     }
 
     @Override
+    public GoalDTO modificarGoal(GoalDTO goalDTO) throws Exception {
+        if(goalDTO.getId() == null) {
+            throw new Exception("El id no debe de ser nulo");
+        }
+
+        if(goalDTO.getMinute() == null) {
+            throw new Exception("El minuto no debe de ser nulo");
+        }
+
+        if(goalDTO.getMatchId() == null) {
+            throw new Exception("El Matchid debe no debe de ser nulo");
+        }
+
+        if(goalDTO.getPlayerId() == null) {
+            throw new Exception("El Playerid no debe de ser nulo");
+        }
+
+        Goal goal = GoalMapper.dtoToDomain(goalDTO);
+        Player player = playerRepository.getReferenceById(goalDTO.getPlayerId());
+        Match match = matchRepository.getReferenceById(goalDTO.getMatchId());
+
+        if (player == null){
+            throw new Exception("El Player no existe");
+        }
+
+        if (match == null){
+            throw new Exception("El Match no existe");
+        }
+
+        goal.setPlayer(player);
+        goal.setMatch(match);
+        goal = goalRepository.save(goal);
+        return GoalMapper.domainToDto(goal);
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public List<GoalDTO> obtenerGoals() {
         List<Goal>listaGoals = goalRepository.findAll();

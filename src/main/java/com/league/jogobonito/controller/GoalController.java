@@ -35,6 +35,12 @@ public class GoalController {
         return goalService.obtenerGoals();
     }
 
+    @PutMapping(value = "/modificarGoal")
+    public ResponseEntity<GoalDTO> modificarGoal(@RequestBody GoalDTO goalDTO) throws Exception {
+        GoalDTO goalResponse = goalService.modificarGoal(goalDTO);
+        return new ResponseEntity<>(goalResponse, HttpStatus.CREATED);
+    }
+
 
     /*@GetMapping(value = "/obtenerGoal")
     public List<GoalDTO>obtenerGoal(){
