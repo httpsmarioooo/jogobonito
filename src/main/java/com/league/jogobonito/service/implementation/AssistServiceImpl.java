@@ -42,11 +42,11 @@ public class AssistServiceImpl implements AssistService {
         }
 
         if(assistDTO.getMatchId() == null) {
-            throw new Exception("El Matchid debe no debe de ser nulo");
+            throw new Exception("El MatchId debe no debe de ser nulo");
         }
 
         if(assistDTO.getPlayerId() == null) {
-            throw new Exception("El Playerid no debe de ser nulo");
+            throw new Exception("El PlayerId no debe de ser nulo");
         }
 
         Assist assist = AssistMapper.dtoToDomain(assistDTO);

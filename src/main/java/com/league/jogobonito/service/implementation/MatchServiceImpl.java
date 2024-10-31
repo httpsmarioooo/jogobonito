@@ -69,6 +69,11 @@ public class MatchServiceImpl implements MatchService {
             throw new Exception("El AwayTeamId  no debe de ser nulo");
         }
 
+        // Validar que los equipos local y visitante no sean los mismos
+        if (matchDTO.getHomeTeamId().equals(matchDTO.getAwayTeamId())) {
+            throw new Exception("No se puede crear un partido con el mismo equipo como local y visitante");
+        }
+
         Match match = MatchMapper.dtoToDomain(matchDTO);
         Team homeTeam = teamRepository.getReferenceById(matchDTO.getHomeTeamId());
         Team awayTeam = teamRepository.getReferenceById(matchDTO.getAwayTeamId());

@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class StadiumDTO {
     private Integer id;
     private String name;

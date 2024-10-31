@@ -10,7 +10,6 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class PlayerDTO {
     private Integer id;
     private String name;
