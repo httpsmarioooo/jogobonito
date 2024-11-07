@@ -2,6 +2,7 @@ package com.league.jogobonito.controller;
 
 import com.league.jogobonito.dto.PlayerDTO;
 import com.league.jogobonito.service.PlayerService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
