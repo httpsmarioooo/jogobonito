@@ -1,7 +1,6 @@
 package com.league.jogobonito.controller;
 
 import com.league.jogobonito.dto.AssistDTO;
-import com.league.jogobonito.dto.PlayerDTO;
 import com.league.jogobonito.service.AssistService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,12 +40,6 @@ public class AssistController {
         AssistDTO assistResponse = assistService.modificarAssist(assistDTO);
         return new ResponseEntity<>(assistResponse, HttpStatus.CREATED);
     }
-
-
-
-
-
-
 
     /*@GetMapping(value = "/obtenerAssists")
     public List<AssistDTO>obtenerAssists(){
