@@ -9,7 +9,6 @@ public class JudgeMapper {
     public static Judge dtoToDomain(JudgeDTO judgeDTO){
         Judge judge = new Judge();
         judge.setId(judgeDTO.getId());
-        judge.setId(judgeDTO.getId());
         judge.setName(judgeDTO.getName());
         judge.setCountryOfBirth(judgeDTO.getCountryOfBirth());
 
