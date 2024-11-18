@@ -11,7 +11,6 @@ public class JudgeMapper {
         judge.setId(judgeDTO.getId());
         judge.setName(judgeDTO.getName());
         judge.setCountryOfBirth(judgeDTO.getCountryOfBirth());
-
         return judge;
     }
 
