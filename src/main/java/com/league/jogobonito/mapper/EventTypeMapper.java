@@ -6,12 +6,12 @@ import com.league.jogobonito.dto.EventTypeDTO;
 import java.util.List;
 
 public class EventTypeMapper {
-    public static EventType dtoToDomain(EventTypeDTO eventTypeDTO){
-        EventType eventType = new EventType();
-        eventType.setId(eventTypeDTO.getId());
-        eventType.setName(eventTypeDTO.getName());
 
-        return eventType;
+    public static EventType dtoToDomain(EventTypeDTO eventTypeDTO){
+        return EventType.builder()
+                .id(eventTypeDTO.getId())
+                .name(eventTypeDTO.getName())
+                .build();
     }
 
     public static EventTypeDTO domainToDT0(EventType eventType) {
