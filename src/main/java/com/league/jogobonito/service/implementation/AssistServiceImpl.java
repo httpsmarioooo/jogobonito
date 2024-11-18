@@ -65,7 +65,6 @@ public class AssistServiceImpl implements AssistService {
         assist.setMatch(match);
         assist = assistRepository.save(assist);
         return AssistMapper.domainToDto(assist);
-
     }
 
     @Override

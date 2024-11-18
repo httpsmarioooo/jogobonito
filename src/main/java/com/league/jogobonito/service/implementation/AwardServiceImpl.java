@@ -8,6 +8,7 @@ import com.league.jogobonito.repository.AwardRepository;
 import com.league.jogobonito.repository.PlayerRepository;
 import com.league.jogobonito.service.AwardService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -26,6 +27,7 @@ public class AwardServiceImpl implements AwardService {
     }
 
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public AwardDTO guardarNuevoAward(AwardDTO awardDTO) throws Exception {
 
         if(awardDTO.getId() != null) {
@@ -43,7 +45,6 @@ public class AwardServiceImpl implements AwardService {
         if(awardDTO.getPlayerId() == null) {
             throw new Exception("El PlayerId no debe ser nulo");
         }
-
 
         //Ultimas validaciones en el mismo impl en la parte final---
         Award award = AwardMapper.dtoToDomain(awardDTO);
@@ -77,6 +78,7 @@ public class AwardServiceImpl implements AwardService {
 
 
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public AwardDTO modificarAward(AwardDTO awardDTO) throws Exception {
         if(awardDTO.getId() == null) {
             throw new Exception("El id debe de ser nulo");

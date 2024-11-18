@@ -11,6 +11,7 @@ import com.league.jogobonito.repository.MatchRepository;
 import com.league.jogobonito.repository.PlayerRepository;
 import com.league.jogobonito.service.GoalService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public class GoalServiceImpl implements GoalService {
     }
 
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public GoalDTO guardarNuevoGoal(GoalDTO goalDTO) throws Exception {
 
         if(goalDTO.getId() != null) {
@@ -69,7 +71,6 @@ public class GoalServiceImpl implements GoalService {
 
     @Override
     @Transactional(readOnly = true)
-
     public GoalDTO buscarGoalPorId(Integer id) throws Exception {
         if(id == null || id.equals(0)) {
             throw new Exception("El id no puede estar vacio ni ser 0");
@@ -86,6 +87,7 @@ public class GoalServiceImpl implements GoalService {
     }
 
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public GoalDTO modificarGoal(GoalDTO goalDTO) throws Exception {
         if(goalDTO.getId() == null) {
             throw new Exception("El id no debe de ser nulo");

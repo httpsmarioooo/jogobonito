@@ -65,8 +65,6 @@ public class EventTypeServiceImpl implements EventTypeService {
         return EventTypeMapper.domainToDT0(eventType);
     }
 
-
-
     @Override
     @Transactional(readOnly = true)
     public List<EventTypeDTO> obtenerEventType() {

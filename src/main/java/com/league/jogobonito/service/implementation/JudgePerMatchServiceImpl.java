@@ -6,6 +6,8 @@ import com.league.jogobonito.mapper.JudgePerMatchMapper;
 import com.league.jogobonito.repository.*;
 import com.league.jogobonito.service.JudgePerMatchService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -26,6 +28,7 @@ public class JudgePerMatchServiceImpl implements JudgePerMatchService {
     }
 
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public JudgePerMatchDTO guardarNuevoJudgePerMatch(JudgePerMatchDTO judgePerMatchDTO) throws Exception {
 
         //1. Validacion id debe de ser null
@@ -79,6 +82,7 @@ public class JudgePerMatchServiceImpl implements JudgePerMatchService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public JudgePerMatchDTO buscarJudgePerMatchPorId(Integer id) throws Exception {
         if(id == null || id.equals(0)) {
             throw new Exception("El id no puede estar vacio ni ser 0");
@@ -94,6 +98,7 @@ public class JudgePerMatchServiceImpl implements JudgePerMatchService {
     }
 
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public JudgePerMatchDTO modificarJudgePerMatch(JudgePerMatchDTO judgePerMatchDTO) throws Exception {
         if(judgePerMatchDTO.getId() == null) {
             throw new Exception("El id no debe de ser nulo");
@@ -144,6 +149,7 @@ public class JudgePerMatchServiceImpl implements JudgePerMatchService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<JudgePerMatchDTO> obtenerJudgesPerMatch() {
         List<JudgePerMatch>listaJudgesPerMatch = judgePerMatchRepository.findAll();
         List<JudgePerMatchDTO>judgesPerMatchDTO = JudgePerMatchMapper.domainToDTOList(listaJudgesPerMatch);

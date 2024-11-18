@@ -25,6 +25,7 @@ public class CoachServiceImpl implements CoachService {
     }
 
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public CoachDTO guardarNuevoCoach(CoachDTO coachDTO) throws Exception {
 
         if(coachDTO.getId() != null) {
@@ -99,7 +100,6 @@ public class CoachServiceImpl implements CoachService {
 
     @Override
     @Transactional(readOnly = true)
-
     public List<CoachDTO> obtenerCoaches() {
         List<Coach>listaCoaches = coachRepository.findAll();
         List<CoachDTO>coachDTO = CoachMapper.domainToDTOList(listaCoaches);

@@ -32,6 +32,7 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public MatchDTO guardarNuevoMatch(MatchDTO matchDTO) throws Exception {
 
         if(matchDTO.getId() != null) {

@@ -9,6 +9,7 @@ import com.league.jogobonito.repository.MatchRepository;
 import com.league.jogobonito.repository.PlayerRepository;
 import com.league.jogobonito.service.MatchEventService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -30,8 +31,8 @@ public class MatchEventServiceImpl implements MatchEventService{
     }
 
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public MatchEventDTO guardarNuevoMatchEvent(MatchEventDTO matchEventDTO) throws Exception {
-
         if(matchEventDTO.getId() != null) {
             throw new Exception("El id debe de ser nulo");
         }
@@ -101,6 +102,7 @@ public class MatchEventServiceImpl implements MatchEventService{
     }
 
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public MatchEventDTO modificarMatchEvent(MatchEventDTO matchEventDTO) throws Exception {
         if(matchEventDTO.getId() == null) {
             throw new Exception("El id no debe de ser nulo");
