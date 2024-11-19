@@ -9,5 +9,4 @@ public interface MatchService {
     MatchDTO buscarMatchPorId(Integer id) throws Exception;
     MatchDTO modificarMatch(MatchDTO MatchDTO) throws Exception;
     List<MatchDTO> obtenerMatches();
-
 }

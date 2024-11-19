@@ -10,5 +10,4 @@ public interface TeamService {
     TeamDTO buscarEquipoPorInicial(String initial) throws Exception;
     TeamDTO modificarTeam(TeamDTO teamDTO) throws Exception;
     List<TeamDTO> obtenerTeams();
-
 }

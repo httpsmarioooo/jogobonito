@@ -9,7 +9,5 @@ public interface MatchEventService {
     MatchEventDTO guardarNuevoMatchEvent (MatchEventDTO matchEventDTO) throws Exception;
     MatchEventDTO buscarMatchEventPorId(Integer id) throws Exception;
     MatchEventDTO modificarMatchEvent(MatchEventDTO matchEventDTO) throws Exception;
-
     List<MatchEventDTO> obtenerMatchEvents();
-
 }
