@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
 @Table(name = "judge_roles")
+
 public class JudgeRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,4 @@ public class JudgeRole {
 
     @Column(nullable = false, name = "role_name")
     private String roleName;
-
-
-
 }

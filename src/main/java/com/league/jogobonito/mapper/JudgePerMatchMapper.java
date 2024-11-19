@@ -2,17 +2,14 @@ package com.league.jogobonito.mapper;
 
 import com.league.jogobonito.domain.JudgePerMatch;
 import com.league.jogobonito.dto.JudgePerMatchDTO;
-
 import java.util.List;
 
 public class JudgePerMatchMapper {
-
     public static JudgePerMatch dtoToDomain(JudgePerMatchDTO judgePerMatchDTO){
         return JudgePerMatch.builder()
                 .id(judgePerMatchDTO.getId())
                 .build();
     }
-
     // Duda ES domainToDto O domainToDTO
     public static JudgePerMatchDTO domainToDto(JudgePerMatch judgePerMatch){
         return JudgePerMatchDTO.builder()
@@ -30,6 +27,4 @@ public class JudgePerMatchMapper {
     public static List<JudgePerMatchDTO> domainToDTOList(List<JudgePerMatch> judgePerMatches){
         return judgePerMatches.stream().map(JudgePerMatchMapper::domainToDto).toList();
     }
-
-
 }

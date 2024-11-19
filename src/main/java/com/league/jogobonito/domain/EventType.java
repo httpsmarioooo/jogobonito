@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
 @Table(name = "event_types")
 public class EventType {
@@ -19,6 +18,4 @@ public class EventType {
 
     @Column(nullable = false)
     private String name;
-
-
 }

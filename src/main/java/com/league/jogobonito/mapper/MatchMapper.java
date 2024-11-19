@@ -2,9 +2,7 @@ package com.league.jogobonito.mapper;
 
 import com.league.jogobonito.domain.Match;
 import com.league.jogobonito.dto.MatchDTO;
-
 import java.util.List;
-
 
 public class MatchMapper {
     public static Match dtoToDomain (MatchDTO matchDTO){

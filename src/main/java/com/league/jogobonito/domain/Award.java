@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
 @Table(name = "awards")
 
@@ -27,8 +26,6 @@ public class Award {
     @ManyToOne
     @JoinColumn(name = "player_id", referencedColumnName = "id", nullable = false)
     private Player player;
-
-
 }
 
 

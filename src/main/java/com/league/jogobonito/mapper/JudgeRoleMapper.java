@@ -2,11 +2,9 @@ package com.league.jogobonito.mapper;
 
 import com.league.jogobonito.domain.JudgeRole;
 import com.league.jogobonito.dto.JudgeRoleDTO;
-
 import java.util.List;
 
 public class JudgeRoleMapper {
-
     public static JudgeRole dtoToDomain(JudgeRoleDTO judgeRoleDTO){
         JudgeRole judgeRole = new JudgeRole();
         judgeRole.setId(judgeRoleDTO.getId());

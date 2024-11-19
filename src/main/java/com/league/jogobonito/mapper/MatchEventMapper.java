@@ -2,7 +2,6 @@ package com.league.jogobonito.mapper;
 
 import com.league.jogobonito.domain.MatchEvent;
 import com.league.jogobonito.dto.MatchEventDTO;
-
 import java.util.List;
 
 public class MatchEventMapper {

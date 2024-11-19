@@ -2,11 +2,9 @@ package com.league.jogobonito.mapper;
 
 import com.league.jogobonito.domain.EventType;
 import com.league.jogobonito.dto.EventTypeDTO;
-
 import java.util.List;
 
 public class EventTypeMapper {
-
     public static EventType dtoToDomain(EventTypeDTO eventTypeDTO){
         return EventType.builder()
                 .id(eventTypeDTO.getId())
@@ -28,9 +26,6 @@ public class EventTypeMapper {
     public static List<EventTypeDTO> domainToDTOList(List<EventType> eventTypes) {
         return eventTypes.stream().map(EventTypeMapper::domainToDto).toList();
     }
-
-
-
 }
 
 

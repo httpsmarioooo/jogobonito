@@ -2,11 +2,9 @@ package com.league.jogobonito.mapper;
 
 import com.league.jogobonito.domain.Goal;
 import com.league.jogobonito.dto.GoalDTO;
-
 import java.util.List;
 
 public class GoalMapper {
-
     public static Goal dtoToDomain (GoalDTO goalDTO){
         return Goal.builder()
                 .id(goalDTO.getId())
@@ -30,5 +28,4 @@ public class GoalMapper {
     public static List<GoalDTO> domainToDTOList(List<Goal> goals){
         return goals.stream().map(GoalMapper::domainToDto).toList();
     }
-
 }

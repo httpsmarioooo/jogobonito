@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
 @Table(name = "standings")
+
 public class Standing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +29,4 @@ public class Standing {
     @ManyToOne
     @JoinColumn (name = "team_id" , referencedColumnName = "id", nullable = false)
     private Team team;
-
-
 }

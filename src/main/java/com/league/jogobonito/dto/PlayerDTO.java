@@ -11,8 +11,8 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PlayerDTO {
 
+public class PlayerDTO {
     private Integer id;
 
     @NotBlank(message = "El nombre no puede estar vacío")

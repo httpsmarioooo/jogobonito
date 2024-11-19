@@ -9,13 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
 @Table(name = "stadiums")
 
-
 public class Stadium {
-
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +29,4 @@ public class Stadium {
 
     @Column(nullable = false)
     private String country;
-
-
 }

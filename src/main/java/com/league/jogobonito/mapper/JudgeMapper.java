@@ -2,7 +2,6 @@ package com.league.jogobonito.mapper;
 
 import com.league.jogobonito.domain.Judge;
 import com.league.jogobonito.dto.JudgeDTO;
-
 import java.util.List;
 
 public class JudgeMapper {
@@ -29,5 +28,4 @@ public class JudgeMapper {
     public static List<JudgeDTO>domainToDTOList(List<Judge> judges){
         return judges.stream().map(JudgeMapper::domainToDto).toList();
     }
-
 }

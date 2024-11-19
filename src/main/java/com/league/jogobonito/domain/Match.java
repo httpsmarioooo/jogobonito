@@ -10,7 +10,6 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
 @Table(name = "matches")
 
@@ -40,8 +39,4 @@ public class Match {
     @ManyToOne
     @JoinColumn (name = "away_team_id", referencedColumnName = "id" , nullable = false)
     private Team team2;
-
-
-
-
 }

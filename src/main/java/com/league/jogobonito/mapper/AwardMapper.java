@@ -2,11 +2,9 @@ package com.league.jogobonito.mapper;
 
 import com.league.jogobonito.domain.Award;
 import com.league.jogobonito.dto.AwardDTO;
-
 import java.util.List;
 
 public class AwardMapper {
-
     public static Award dtoToDomain (AwardDTO awardDTO){
         return Award.builder()
                 .id(awardDTO.getId())
@@ -14,7 +12,6 @@ public class AwardMapper {
                 .description(awardDTO.getDescription())
                 .build();
     }
-
 
     public static AwardDTO domainToDto (Award award){
         return AwardDTO.builder()

@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
 @Table(name = "match_events")
 
@@ -39,7 +38,6 @@ public class MatchEvent {
     @ManyToOne
     @JoinColumn(name = "event_type_id", referencedColumnName = "id", nullable = false)
     private EventType eventType;
-
 }
 
 

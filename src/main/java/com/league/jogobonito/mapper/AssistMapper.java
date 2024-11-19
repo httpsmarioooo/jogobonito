@@ -2,11 +2,9 @@ package com.league.jogobonito.mapper;
 
 import com.league.jogobonito.domain.Assist;
 import com.league.jogobonito.dto.AssistDTO;
-
 import java.util.List;
 
 public class AssistMapper {
-
     public static Assist dtoToDomain (AssistDTO assistDTO){
         return Assist.builder()
                 .id(assistDTO.getId())
@@ -30,6 +28,4 @@ public class AssistMapper {
     public static List<AssistDTO> domainToDTOList(List<Assist> assists){
         return assists.stream().map(AssistMapper::domainToDto).toList();
     }
-
-
 }

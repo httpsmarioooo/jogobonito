@@ -27,5 +27,4 @@ public class MatchDTO {
 
     private Integer awayTeamId;
     private String awayTeamName;
-
 }

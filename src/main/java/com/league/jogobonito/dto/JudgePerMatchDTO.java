@@ -14,6 +14,4 @@ public class JudgePerMatchDTO {
     private Integer matchId;
     private Integer judgeId;
     private Integer roleId;
-
-
 }

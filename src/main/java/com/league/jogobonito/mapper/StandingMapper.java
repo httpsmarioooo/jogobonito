@@ -2,7 +2,6 @@ package com.league.jogobonito.mapper;
 
 import com.league.jogobonito.domain.Standing;
 import com.league.jogobonito.dto.StandingDTO;
-
 import java.util.List;
 
 public class StandingMapper {
@@ -33,5 +32,4 @@ public class StandingMapper {
     public static List<StandingDTO> domainToDTOList(List<Standing> standings){
         return standings.stream().map(StandingMapper::domainToDto).toList();
     }
-
 }

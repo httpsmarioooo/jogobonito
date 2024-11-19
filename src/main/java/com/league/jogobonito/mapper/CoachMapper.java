@@ -2,9 +2,7 @@ package com.league.jogobonito.mapper;
 
 import com.league.jogobonito.domain.Coach;
 import com.league.jogobonito.dto.CoachDTO;
-
 import java.util.List;
-
 
 public class CoachMapper {
 

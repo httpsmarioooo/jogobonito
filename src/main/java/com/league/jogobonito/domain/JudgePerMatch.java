@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
 @Table(name = "judges_per_match")
 
@@ -18,11 +17,9 @@ public class JudgePerMatch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
     @ManyToOne
     @JoinColumn (name = "judge_id", referencedColumnName = "id", nullable = false)
     private Judge judge;
-
 
     @ManyToOne
     @JoinColumn (name = "match_id" , referencedColumnName =  "id" , nullable = false)
@@ -31,9 +28,5 @@ public class JudgePerMatch {
     @ManyToOne
     @JoinColumn (name = "role_id" , referencedColumnName = "id", nullable = false)
     private JudgeRole judgeRole;
-
-
-
-
 }
 
