@@ -76,14 +76,9 @@ public class GoalServiceImpl implements GoalService {
             throw new Exception("El id no puede estar vacio ni ser 0");
         }
 
-
-        Goal goal = goalRepository.getReferenceById(id);
-        if (goal == null) {
-            throw new Exception("No se encuentra el goal con el id "+id);
-        }
-
-        GoalDTO goalDTO = GoalMapper.domainToDto(goal);
-        return goalDTO;
+        Goal goal = goalRepository.findById(id)
+                .orElseThrow (() -> new Exception("No se encuentra el Goal con el id " +id));
+        return GoalMapper.domainToDto(goal);
     }
 
     @Override

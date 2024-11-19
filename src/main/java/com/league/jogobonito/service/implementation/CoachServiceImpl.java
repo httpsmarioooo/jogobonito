@@ -59,14 +59,9 @@ public class CoachServiceImpl implements CoachService {
             throw new Exception("El id no puede estar vacio ni ser 0");
         }
 
-
-        Coach coach = coachRepository.getReferenceById(id);
-        if (coach == null) {
-            throw new Exception("No se encuentra el Coach con el id"+id);
-        }
-
-        CoachDTO coachDTO = CoachMapper.domainToDto(coach);
-        return coachDTO;
+        Coach coach = coachRepository.findById(id)
+                .orElseThrow (() -> new Exception("No se encuentra el Coach con el id " +id));
+        return CoachMapper.domainToDto(coach);
     }
 
 

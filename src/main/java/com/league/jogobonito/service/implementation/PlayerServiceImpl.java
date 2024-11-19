@@ -87,14 +87,9 @@ public class PlayerServiceImpl implements PlayerService  {
             throw new Exception("El id no puede estar vacio ni ser 0");
         }
 
-
-        Player player = playerRepository.getReferenceById(id);
-        if (player == null) {
-            throw new Exception("No se encuentra el player con el id"+id);
-        }
-
-        PlayerDTO playerDTO = PlayerMapper.domainToDto(player);
-        return playerDTO;
+        Player player = playerRepository.findById(id)
+                .orElseThrow (() -> new Exception("No se encuentra el Player con el id" +id));
+        return PlayerMapper.domainToDto(player);
     }
 
     ////////////////////////////////////////////////////////////////////////

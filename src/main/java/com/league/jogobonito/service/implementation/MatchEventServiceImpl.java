@@ -91,14 +91,9 @@ public class MatchEventServiceImpl implements MatchEventService{
             throw new Exception("El id no puede estar vacio ni ser 0");
         }
 
-
-        MatchEvent matchEvent = matchEventRepository.getReferenceById(id);
-        if (matchEvent == null) {
-            throw new Exception("No se encuentra el match event con el id"+id);
-        }
-
-        MatchEventDTO matchEventDTO = MatchEventMapper.domainToDto(matchEvent);
-        return matchEventDTO;
+        MatchEvent matchEvent = matchEventRepository.findById(id)
+                .orElseThrow (() -> new Exception("No se encuentra el MatchEvent con el id " +id));
+        return MatchEventMapper.domainToDto(matchEvent);
     }
 
     @Override

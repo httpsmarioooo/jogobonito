@@ -4,6 +4,7 @@ import com.league.jogobonito.domain.Standing;
 import com.league.jogobonito.domain.Team;
 import com.league.jogobonito.dto.StandingDTO;
 import com.league.jogobonito.mapper.StandingMapper;
+import com.league.jogobonito.mapper.TeamMapper;
 import com.league.jogobonito.repository.StandingRepository;
 import com.league.jogobonito.repository.TeamRepository;
 import com.league.jogobonito.service.StandingService;
@@ -68,14 +69,9 @@ public class StandingServiceImpl implements StandingService {
             throw new Exception("El id no puede estar vacio ni ser 0");
         }
 
-
-        Standing standing = standingRepository.getReferenceById(id);
-        if (standing == null) {
-            throw new Exception("No se encuentra el Standing con el id"+id);
-        }
-
-        StandingDTO standingDTO = StandingMapper.domainToDto(standing);
-        return standingDTO;
+        Standing standing = standingRepository.findById(id)
+                .orElseThrow (() -> new Exception("No se encuentra el Standing con el id " +id));
+        return StandingMapper.domainToDto(standing);
     }
 
     @Override

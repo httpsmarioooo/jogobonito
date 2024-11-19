@@ -105,13 +105,9 @@ public class MatchServiceImpl implements MatchService {
             throw new Exception("El id no puede estar vacio ni ser 0");
         }
 
-        Match match = matchRepository.getReferenceById(id);
-        if (match == null) {
-            throw new Exception("No se encuentra el match con el id"+id);
-        }
-
-        MatchDTO matchDTO = MatchMapper.domainToDto(match);
-        return matchDTO;
+        Match match = matchRepository.findById(id)
+                .orElseThrow (() -> new Exception("No se encuentra el Match  con el id" +id));
+        return MatchMapper.domainToDto(match);
     }
 
 

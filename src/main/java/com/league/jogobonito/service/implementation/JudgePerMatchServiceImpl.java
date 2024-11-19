@@ -88,13 +88,9 @@ public class JudgePerMatchServiceImpl implements JudgePerMatchService {
             throw new Exception("El id no puede estar vacio ni ser 0");
         }
 
-        JudgePerMatch judgePerMatch = judgePerMatchRepository.getReferenceById(id);
-        if (judgePerMatch == null) {
-            throw new Exception("No se encuentra el judge per match con el id "+id);
-        }
-
-        JudgePerMatchDTO judgePerMatchDTO = JudgePerMatchMapper.domainToDto(judgePerMatch);
-        return judgePerMatchDTO;
+        JudgePerMatch judgePerMatch = judgePerMatchRepository.findById(id)
+                .orElseThrow (() -> new Exception("No se encuentra el JudgePerMatch con el id " +id));
+        return JudgePerMatchMapper.domainToDto(judgePerMatch);
     }
 
     @Override

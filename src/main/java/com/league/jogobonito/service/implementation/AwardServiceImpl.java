@@ -1,9 +1,11 @@
 package com.league.jogobonito.service.implementation;
 
 import com.league.jogobonito.domain.Award;
+import com.league.jogobonito.domain.Coach;
 import com.league.jogobonito.domain.Player;
 import com.league.jogobonito.dto.AwardDTO;
 import com.league.jogobonito.mapper.AwardMapper;
+import com.league.jogobonito.mapper.CoachMapper;
 import com.league.jogobonito.repository.AwardRepository;
 import com.league.jogobonito.repository.PlayerRepository;
 import com.league.jogobonito.service.AwardService;
@@ -66,14 +68,9 @@ public class AwardServiceImpl implements AwardService {
             throw new Exception("El id no puede estar vacio ni ser 0");
         }
 
-
-        Award award = awardRepository.getReferenceById(id);
-        if (award == null) {
-            throw new Exception("No se encuentra el award con el id"+id);
-        }
-
-        AwardDTO awardDTO = AwardMapper.domainToDto(award);
-        return awardDTO;
+        Award award = awardRepository.findById(id)
+                .orElseThrow (() -> new Exception("No se encuentra el Coach con el id " +id));
+        return AwardMapper.domainToDto(award);
     }
 
 

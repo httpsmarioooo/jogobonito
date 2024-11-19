@@ -1,10 +1,12 @@
 package com.league.jogobonito.service.implementation;
 
 import com.league.jogobonito.domain.Assist;
+import com.league.jogobonito.domain.Award;
 import com.league.jogobonito.domain.Match;
 import com.league.jogobonito.domain.Player;
 import com.league.jogobonito.dto.AssistDTO;
 import com.league.jogobonito.mapper.AssistMapper;
+import com.league.jogobonito.mapper.AwardMapper;
 import com.league.jogobonito.repository.AssistRepository;
 import com.league.jogobonito.repository.MatchRepository;
 import com.league.jogobonito.repository.PlayerRepository;
@@ -74,14 +76,9 @@ public class AssistServiceImpl implements AssistService {
             throw new Exception("El id no puede estar vacio ni ser 0");
         }
 
-
-        Assist assist = assistRepository.getReferenceById(id);
-        if (assist == null) {
-            throw new Exception("No se encuentra la asistencia con el id"+id);
-        }
-
-        AssistDTO assistDTO = AssistMapper.domainToDto(assist);
-        return assistDTO;
+        Assist assist = assistRepository.findById(id)
+                .orElseThrow (() -> new Exception("No se encuentra el Coach con el id " +id));
+        return AssistMapper.domainToDto(assist);
     }
 
     @Override
