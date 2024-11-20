@@ -4,14 +4,12 @@ import com.league.jogobonito.domain.Standing;
 import com.league.jogobonito.domain.Team;
 import com.league.jogobonito.dto.StandingDTO;
 import com.league.jogobonito.mapper.StandingMapper;
-import com.league.jogobonito.mapper.TeamMapper;
 import com.league.jogobonito.repository.StandingRepository;
 import com.league.jogobonito.repository.TeamRepository;
 import com.league.jogobonito.service.StandingService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 @Service

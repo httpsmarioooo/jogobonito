@@ -1,6 +1,5 @@
 package com.league.jogobonito.service.implementation;
 
-
 import com.league.jogobonito.domain.Goal;
 import com.league.jogobonito.domain.Match;
 import com.league.jogobonito.domain.Player;
