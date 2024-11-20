@@ -1,7 +1,6 @@
 package com.league.jogobonito.service;
 
 import com.league.jogobonito.dto.EventTypeDTO;
-
 import java.util.List;
 
 public interface EventTypeService {

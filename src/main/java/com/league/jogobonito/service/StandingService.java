@@ -1,7 +1,6 @@
 package com.league.jogobonito.service;
 
 import com.league.jogobonito.dto.StandingDTO;
-
 import java.util.List;
 
 public interface StandingService {

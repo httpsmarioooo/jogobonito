@@ -1,7 +1,6 @@
 package com.league.jogobonito.service;
 
 import com.league.jogobonito.dto.MatchDTO;
-
 import java.util.List;
 
 public interface MatchService {

@@ -1,8 +1,6 @@
 package com.league.jogobonito.service;
 
 import com.league.jogobonito.dto.AssistDTO;
-import com.league.jogobonito.dto.PlayerDTO;
-
 import java.util.List;
 
 public interface AssistService {

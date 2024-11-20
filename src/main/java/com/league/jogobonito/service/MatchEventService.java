@@ -1,8 +1,6 @@
 package com.league.jogobonito.service;
 
 import com.league.jogobonito.dto.MatchEventDTO;
-import com.league.jogobonito.dto.PlayerDTO;
-
 import java.util.List;
 
 public interface MatchEventService {

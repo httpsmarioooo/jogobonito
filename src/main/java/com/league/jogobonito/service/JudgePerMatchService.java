@@ -1,7 +1,6 @@
 package com.league.jogobonito.service;
 
 import com.league.jogobonito.dto.JudgePerMatchDTO;
-
 import java.util.List;
 
 public interface JudgePerMatchService {
