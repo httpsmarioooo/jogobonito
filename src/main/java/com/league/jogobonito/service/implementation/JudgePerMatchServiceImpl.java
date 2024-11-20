@@ -30,9 +30,7 @@ public class JudgePerMatchServiceImpl implements JudgePerMatchService {
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public JudgePerMatchDTO guardarNuevoJudgePerMatch(JudgePerMatchDTO judgePerMatchDTO) throws Exception {
-
         //1. Validacion id debe de ser null
-
         if(judgePerMatchDTO.getId() != null) {
             throw new Exception("El id debe de ser nulo");
         }
@@ -54,30 +52,41 @@ public class JudgePerMatchServiceImpl implements JudgePerMatchService {
         //Ultimas validaciones en el mismo impl en la parte final---
         JudgePerMatch judgePerMatch = JudgePerMatchMapper.dtoToDomain(judgePerMatchDTO);
 
-        Match match = matchRepository.getReferenceById(judgePerMatchDTO.getMatchId());
-        Judge judge = judgeRepository.getReferenceById(judgePerMatchDTO.getJudgeId());
-        JudgeRole judgeRole = judgeRoleRepository.getReferenceById(judgePerMatchDTO.getRoleId());
+//        Match match = matchRepository.getReferenceById(judgePerMatchDTO.getMatchId());
+//        Judge judge = judgeRepository.getReferenceById(judgePerMatchDTO.getJudgeId());
+//        JudgeRole judgeRole = judgeRoleRepository.getReferenceById(judgePerMatchDTO.getRoleId());
+//
+//        if (match == null){
+//            throw new Exception("El Match no existe");
+//        }
+//
+//
+//        if (judge == null){
+//            throw new Exception("El Judge no existe");
+//        }
+//
+//
+//        if (judgeRole == null){
+//            throw new Exception("El JudgeRole no existe");
+//        }
+//
+//        judgePerMatch.setMatch(match);
+//        judgePerMatch.setJudge(judge);
+//        judgePerMatch.setJudgeRole(judgeRole);
 
-        if (match == null){
-            throw new Exception("El Match no existe");
-        }
-
-
-        if (judge == null){
-            throw new Exception("El Judge no existe");
-        }
-
-
-        if (judgeRole == null){
-            throw new Exception("El JudgeRole no existe");
-        }
-
+        Match match = matchRepository.findById(judgePerMatchDTO.getMatchId())
+                .orElseThrow(() -> new Exception("El Match no existe"));
         judgePerMatch.setMatch(match);
+
+        Judge judge = judgeRepository.findById(judgePerMatchDTO.getJudgeId())
+                .orElseThrow(() -> new Exception("El Judge no existe"));
         judgePerMatch.setJudge(judge);
+
+        JudgeRole judgeRole = judgeRoleRepository.findById(judgePerMatchDTO.getRoleId())
+                .orElseThrow(() -> new Exception("El Judge no existe"));
         judgePerMatch.setJudgeRole(judgeRole);
 
         judgePerMatch = judgePerMatchRepository.save(judgePerMatch);
-
         return JudgePerMatchMapper.domainToDto(judgePerMatch);
     }
 
@@ -117,30 +126,41 @@ public class JudgePerMatchServiceImpl implements JudgePerMatchService {
         //Ultimas validaciones en el mismo impl en la parte final---
         JudgePerMatch judgePerMatch = JudgePerMatchMapper.dtoToDomain(judgePerMatchDTO);
 
-        Match match = matchRepository.getReferenceById(judgePerMatchDTO.getMatchId());
-        Judge judge = judgeRepository.getReferenceById(judgePerMatchDTO.getJudgeId());
-        JudgeRole judgeRole = judgeRoleRepository.getReferenceById(judgePerMatchDTO.getRoleId());
+//        Match match = matchRepository.getReferenceById(judgePerMatchDTO.getMatchId());
+//        Judge judge = judgeRepository.getReferenceById(judgePerMatchDTO.getJudgeId());
+//        JudgeRole judgeRole = judgeRoleRepository.getReferenceById(judgePerMatchDTO.getRoleId());
+//
+//        if (match == null){
+//            throw new Exception("El Match no existe");
+//        }
+//
+//
+//        if (judge == null){
+//            throw new Exception("El Judge no existe");
+//        }
+//
+//
+//        if (judgeRole == null){
+//            throw new Exception("El JudgeRole no existe");
+//        }
+//
+//        judgePerMatch.setMatch(match);
+//        judgePerMatch.setJudge(judge);
+//        judgePerMatch.setJudgeRole(judgeRole);
 
-        if (match == null){
-            throw new Exception("El Match no existe");
-        }
-
-
-        if (judge == null){
-            throw new Exception("El Judge no existe");
-        }
-
-
-        if (judgeRole == null){
-            throw new Exception("El JudgeRole no existe");
-        }
-
+        Match match = matchRepository.findById(judgePerMatchDTO.getMatchId())
+                .orElseThrow(() -> new Exception("El Match no existe"));
         judgePerMatch.setMatch(match);
+
+        Judge judge = judgeRepository.findById(judgePerMatchDTO.getJudgeId())
+                .orElseThrow(() -> new Exception("El Judge no existe"));
         judgePerMatch.setJudge(judge);
+
+        JudgeRole judgeRole = judgeRoleRepository.findById(judgePerMatchDTO.getRoleId())
+                .orElseThrow(() -> new Exception("El Judge no existe"));
         judgePerMatch.setJudgeRole(judgeRole);
 
         judgePerMatch = judgePerMatchRepository.save(judgePerMatch);
-
         return JudgePerMatchMapper.domainToDto(judgePerMatch);
     }
 

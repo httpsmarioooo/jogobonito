@@ -63,20 +63,23 @@ public class PlayerServiceImpl implements PlayerService  {
         if(playerDTO.getTeamId() == null) {
             throw new Exception("El TeamId no debe ser nulo");
         }
-
         //Ultimas validaciones en el mismo impl en la parte final---
+
         Player player = PlayerMapper.dtoToDomain(playerDTO);
-        Team team = teamRepository.getReferenceById(playerDTO.getTeamId());
+//        Team team = teamRepository.getReferenceById(playerDTO.getTeamId());
+//
+//        if (team == null){
+//            throw new Exception("El Team no existe");
+//        }
+//        player.setTeam(team);
 
-        if (team == null){
-            throw new Exception("El Team no existe");
-        }
-
+        Team team = teamRepository.findById(playerDTO.getTeamId())
+                .orElseThrow(() -> new Exception("El Team no existe"));
         player.setTeam(team);
+
         player = playerRepository.save(player);
         return PlayerMapper.domainToDto(player);
     }
-
 
     ////////////////////////////////////////////////////////////////////////
 
@@ -88,7 +91,7 @@ public class PlayerServiceImpl implements PlayerService  {
         }
 
         Player player = playerRepository.findById(id)
-                .orElseThrow (() -> new Exception("No se encuentra el Player con el id" +id));
+                .orElseThrow (() -> new Exception("No se encuentra el Player con el  " +id));
         return PlayerMapper.domainToDto(player);
     }
 
@@ -99,7 +102,7 @@ public class PlayerServiceImpl implements PlayerService  {
     public PlayerDTO modificarPlayer(PlayerDTO playerDTO) throws Exception {
 
         if(playerDTO.getId() == null) {
-            throw new Exception("El id no puede ser nulo");
+            throw new Exception("El id no debe de ser nulo");
         }
 
         //2. Validaciones dependencias, llaves etc
@@ -131,18 +134,21 @@ public class PlayerServiceImpl implements PlayerService  {
         if(playerDTO.getTeamId() == null) {
             throw new Exception("El TeamId no debe ser nulo");
         }
-
         //Ultimas validaciones en el mismo impl en la parte final---
+
         Player player = PlayerMapper.dtoToDomain(playerDTO);
-        Team team = teamRepository.getReferenceById(playerDTO.getTeamId());
+//        Team team = teamRepository.getReferenceById(playerDTO.getTeamId());
+//
+//        if (team == null){
+//            throw new Exception("El Team no existe");
+//        }
+//        player.setTeam(team);
 
-        if (team == null){
-            throw new Exception("El Team no existe");
-        }
-
+        Team team = teamRepository.findById(playerDTO.getTeamId())
+                .orElseThrow(() -> new Exception("El Team no existe"));
         player.setTeam(team);
-        player = playerRepository.save(player);
 
+        player = playerRepository.save(player);
         return PlayerMapper.domainToDto(player);
     }
 

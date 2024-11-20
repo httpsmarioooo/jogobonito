@@ -1,11 +1,9 @@
 package com.league.jogobonito.service.implementation;
 
 import com.league.jogobonito.domain.Award;
-import com.league.jogobonito.domain.Coach;
 import com.league.jogobonito.domain.Player;
 import com.league.jogobonito.dto.AwardDTO;
 import com.league.jogobonito.mapper.AwardMapper;
-import com.league.jogobonito.mapper.CoachMapper;
 import com.league.jogobonito.repository.AwardRepository;
 import com.league.jogobonito.repository.PlayerRepository;
 import com.league.jogobonito.service.AwardService;
@@ -50,13 +48,16 @@ public class AwardServiceImpl implements AwardService {
 
         //Ultimas validaciones en el mismo impl en la parte final---
         Award award = AwardMapper.dtoToDomain(awardDTO);
-        Player player = playerRepository.getReferenceById(awardDTO.getPlayerId());
+//        Player player = playerRepository.getReferenceById(awardDTO.getPlayerId());
+//        if (player == null){
+//            throw new Exception("El Award no existe");
+//        }
+//        award.setPlayer(player);
 
-        if (player == null){
-            throw new Exception("El Award no existe");
-        }
-
+        Player player = playerRepository.findById(awardDTO.getPlayerId())
+                .orElseThrow(() -> new Exception("El Player no existe"));
         award.setPlayer(player);
+
         award = awardRepository.save(award);
         return AwardMapper.domainToDto(award);
     }
@@ -78,7 +79,7 @@ public class AwardServiceImpl implements AwardService {
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public AwardDTO modificarAward(AwardDTO awardDTO) throws Exception {
         if(awardDTO.getId() == null) {
-            throw new Exception("El id debe de ser nulo");
+            throw new Exception("El id no debe de ser nulo");
         }
 
         if (awardDTO.getName() == null || awardDTO.getName().isBlank()) {
@@ -93,18 +94,19 @@ public class AwardServiceImpl implements AwardService {
             throw new Exception("El PlayerId no debe ser nulo");
         }
 
-
         //Ultimas validaciones en el mismo impl en la parte final---
         Award award = AwardMapper.dtoToDomain(awardDTO);
-        Player player = playerRepository.getReferenceById(awardDTO.getPlayerId());
+//        Player player = playerRepository.getReferenceById(awardDTO.getPlayerId());
+//        if (player == null){
+//            throw new Exception("El Award no existe");
+//        }
+//        award.setPlayer(player);
 
-        if (player == null){
-            throw new Exception("El Player no existe");
-        }
-
+        Player player = playerRepository.findById(awardDTO.getPlayerId())
+                .orElseThrow(() -> new Exception("El Player no existe"));
         award.setPlayer(player);
-        award = awardRepository.save(award);
 
+        award = awardRepository.save(award);
         return AwardMapper.domainToDto(award);
     }
 

@@ -76,22 +76,36 @@ public class MatchServiceImpl implements MatchService {
         }
 
         Match match = MatchMapper.dtoToDomain(matchDTO);
-        Team homeTeam = teamRepository.getReferenceById(matchDTO.getHomeTeamId());
-        Team awayTeam = teamRepository.getReferenceById(matchDTO.getAwayTeamId());
-        Stadium stadium  = stadiumRepository.getReferenceById(matchDTO.getStadiumId());
 
-        if (homeTeam == null) {
-            throw new Exception("El Home Team no existe");
-        }
-        if (awayTeam == null) { // Agrega esta validación
-            throw new Exception("El Away Team no existe");
-        }
-        if (stadium == null) {
-            throw new Exception("El Stadium no existe");
-        }
+//        Team homeTeam = teamRepository.getReferenceById(matchDTO.getHomeTeamId());
+//        Team awayTeam = teamRepository.getReferenceById(matchDTO.getAwayTeamId());
+//        Stadium stadium  = stadiumRepository.getReferenceById(matchDTO.getStadiumId());
+//
+//        if (homeTeam == null) {
+//            throw new Exception("El Home Team no existe");
+//        }
+//        if (awayTeam == null) { // Agrega esta validación
+//            throw new Exception("El Away Team no existe");
+//        }
+//        if (stadium == null) {
+//            throw new Exception("El Stadium no existe");
+//        }
+//
+//        match.setTeam(homeTeam);
+//        match.setTeam2(awayTeam); // Asigna el equipo visitante
+//        match.setStadium(stadium);
 
+
+        Team homeTeam = teamRepository.findById(matchDTO.getHomeTeamId())
+                .orElseThrow(() -> new Exception("El HomeTeam no existe"));
         match.setTeam(homeTeam);
-        match.setTeam2(awayTeam); // Asigna el equipo visitante
+
+        Team awayTeam = teamRepository.findById(matchDTO.getAwayTeamId())
+                .orElseThrow(() -> new Exception("El AwayTeam no existe"));
+        match.setTeam2(awayTeam);
+
+        Stadium stadium = stadiumRepository.findById(matchDTO.getStadiumId())
+                .orElseThrow(() -> new Exception("El Stadium no existe"));
         match.setStadium(stadium);
 
         match = matchRepository.save(match);
@@ -114,7 +128,6 @@ public class MatchServiceImpl implements MatchService {
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public MatchDTO modificarMatch(MatchDTO matchDTO) throws Exception {
-
         if(matchDTO.getId() == null) {
             throw new Exception("El id no debe de ser nulo");
         }
@@ -143,38 +156,53 @@ public class MatchServiceImpl implements MatchService {
         }
 
         if(matchDTO.getHomeTeamId() == null) {
-            throw new Exception("El TeamId no debe de ser nulo");
+            throw new Exception("El HomeTeamId  no debe de ser nulo");
         }
 
         if(matchDTO.getAwayTeamId() == null) {
-            throw new Exception("El TeamId2 no debe de ser nulo");
+            throw new Exception("El AwayTeamId  no debe de ser nulo");
+        }
+
+        // Validar que los equipos local y visitante no sean los mismos
+        if (matchDTO.getHomeTeamId().equals(matchDTO.getAwayTeamId())) {
+            throw new Exception("No se puede crear un partido con el mismo equipo como local y visitante");
         }
 
         Match match = MatchMapper.dtoToDomain(matchDTO);
-        Team homeTeam = teamRepository.getReferenceById(matchDTO.getHomeTeamId());
-        Team awayTeam = teamRepository.getReferenceById(matchDTO.getAwayTeamId());
+
+//        Team homeTeam = teamRepository.getReferenceById(matchDTO.getHomeTeamId());
+//        Team awayTeam = teamRepository.getReferenceById(matchDTO.getAwayTeamId());
+//        Stadium stadium  = stadiumRepository.getReferenceById(matchDTO.getStadiumId());
+//
+//        if (homeTeam == null) {
+//            throw new Exception("El Home Team no existe");
+//        }
+//        if (awayTeam == null) { // Agrega esta validación
+//            throw new Exception("El Away Team no existe");
+//        }
+//        if (stadium == null) {
+//            throw new Exception("El Stadium no existe");
+//        }
+//
+//        match.setTeam(homeTeam);
+//        match.setTeam2(awayTeam); // Asigna el equipo visitante
+//        match.setStadium(stadium);
 
 
-        Stadium stadium  = stadiumRepository.getReferenceById(matchDTO.getStadiumId());
-
-        if (homeTeam == null) {
-            throw new Exception("El Home Team no existe");
-        }
-        if (awayTeam == null) { // Agrega esta validación
-            throw new Exception("El Away Team no existe");
-        }
-        if (stadium == null) {
-            throw new Exception("El Stadium no existe");
-        }
-
-
+        Team homeTeam = teamRepository.findById(matchDTO.getHomeTeamId())
+                .orElseThrow(() -> new Exception("El HomeTeam no existe"));
         match.setTeam(homeTeam);
-        match.setTeam2(awayTeam); // Asigna el equipo visitante
+
+        Team awayTeam = teamRepository.findById(matchDTO.getAwayTeamId())
+                .orElseThrow(() -> new Exception("El AwayTeam no existe"));
+        match.setTeam2(awayTeam);
+
+        Stadium stadium = stadiumRepository.findById(matchDTO.getStadiumId())
+                .orElseThrow(() -> new Exception("El Stadium no existe"));
         match.setStadium(stadium);
 
         match = matchRepository.save(match);
         return MatchMapper.domainToDto(match);
-
     }
 
     @Override

@@ -27,7 +27,6 @@ public class CoachServiceImpl implements CoachService {
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public CoachDTO guardarNuevoCoach(CoachDTO coachDTO) throws Exception {
-
         if(coachDTO.getId() != null) {
             throw new Exception("El id debe de ser nulo");
         }
@@ -41,13 +40,17 @@ public class CoachServiceImpl implements CoachService {
         }
 
         Coach coach = CoachMapper.dtoToDomain(coachDTO);
-        Team team = teamRepository.getReferenceById(coachDTO.getTeamId());
+//        Team team = teamRepository.getReferenceById(coachDTO.getTeamId());
+//
+//        if (team == null){
+//            throw new Exception("El Team no existe");
+//        }
+//        coach.setTeam(team);
 
-        if (team == null){
-            throw new Exception("El Team no existe");
-        }
-
+        Team team = teamRepository.findById(coachDTO.getTeamId())
+                .orElseThrow(() -> new Exception("El Team no existe"));
         coach.setTeam(team);
+
         coach = coachRepository.save(coach);
         return CoachMapper.domainToDto(coach);
     }
@@ -69,7 +72,7 @@ public class CoachServiceImpl implements CoachService {
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public CoachDTO modificarCoach(CoachDTO coachDTO) throws Exception {
         if(coachDTO.getId() == null) {
-            throw new Exception("El id no puede ser nulo");
+            throw new Exception("El id no debe de ser nulo");
         }
 
         if (coachDTO.getName() == null || coachDTO.getName().isBlank()) {
@@ -81,15 +84,18 @@ public class CoachServiceImpl implements CoachService {
         }
 
         Coach coach = CoachMapper.dtoToDomain(coachDTO);
-        Team team = teamRepository.getReferenceById(coachDTO.getTeamId());
+//        Team team = teamRepository.getReferenceById(coachDTO.getTeamId());
+//
+//        if (team == null){
+//            throw new Exception("El Team no existe");
+//        }
+//        coach.setTeam(team);
 
-        if (team == null){
-            throw new Exception("El Team no existe");
-        }
-
+        Team team = teamRepository.findById(coachDTO.getTeamId())
+                .orElseThrow(() -> new Exception("El Team no existe"));
         coach.setTeam(team);
-        coach = coachRepository.save(coach);
 
+        coach = coachRepository.save(coach);
         return CoachMapper.domainToDto(coach);
     }
 

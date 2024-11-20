@@ -50,14 +50,18 @@ public class StandingServiceImpl implements StandingService {
         }
 
         Standing standing = StandingMapper.dtoToDomain(standingDTO);
-        Team team = teamRepository.getReferenceById(standingDTO.getTeamId());
+//        Team team = teamRepository.getReferenceById(standingDTO.getTeamId());
+//
+//
+//        if (team == null){
+//            throw new Exception("El Team no existe");
+//        }
+//        standing.setTeam(team);
 
-
-        if (team == null){
-            throw new Exception("El Team no existe");
-        }
-
+        Team team = teamRepository.findById(standingDTO.getTeamId())
+                .orElseThrow(() -> new Exception("El Team no existe"));
         standing.setTeam(team);
+
         standing = standingRepository.save(standing);
         return StandingMapper.domainToDto(standing);
     }
@@ -78,7 +82,7 @@ public class StandingServiceImpl implements StandingService {
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public StandingDTO modificarStanding(StandingDTO standingDTO) throws Exception {
         if(standingDTO.getId() == null) {
-            throw new Exception("El id debe de ser nulo");
+            throw new Exception("El id no debe de ser nulo");
         }
 
         if (standingDTO.getPoints() == null ) {
@@ -98,14 +102,17 @@ public class StandingServiceImpl implements StandingService {
         }
 
         Standing standing = StandingMapper.dtoToDomain(standingDTO);
-        Team team = teamRepository.getReferenceById(standingDTO.getTeamId());
+//        Team team = teamRepository.getReferenceById(standingDTO.getTeamId());
+//
+//        if (team == null){
+//            throw new Exception("El Team no existe");
+//        }
+//        standing.setTeam(team);
 
-
-        if (team == null){
-            throw new Exception("El Team no existe");
-        }
-
+        Team team = teamRepository.findById(standingDTO.getTeamId())
+                .orElseThrow(() -> new Exception("El Team no existe"));
         standing.setTeam(team);
+
         standing = standingRepository.save(standing);
         return StandingMapper.domainToDto(standing);
     }

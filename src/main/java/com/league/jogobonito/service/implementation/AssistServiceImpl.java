@@ -1,12 +1,10 @@
 package com.league.jogobonito.service.implementation;
 
 import com.league.jogobonito.domain.Assist;
-import com.league.jogobonito.domain.Award;
 import com.league.jogobonito.domain.Match;
 import com.league.jogobonito.domain.Player;
 import com.league.jogobonito.dto.AssistDTO;
 import com.league.jogobonito.mapper.AssistMapper;
-import com.league.jogobonito.mapper.AwardMapper;
 import com.league.jogobonito.repository.AssistRepository;
 import com.league.jogobonito.repository.MatchRepository;
 import com.league.jogobonito.repository.PlayerRepository;
@@ -52,19 +50,29 @@ public class AssistServiceImpl implements AssistService {
         }
 
         Assist assist = AssistMapper.dtoToDomain(assistDTO);
-        Player player = playerRepository.getReferenceById(assistDTO.getPlayerId());
-        Match match = matchRepository.getReferenceById(assistDTO.getMatchId());
 
-        if (player == null){
-            throw new Exception("El Player no existe");
-        }
+//        Player player = playerRepository.getReferenceById(assistDTO.getPlayerId());
+//        Match match = matchRepository.getReferenceById(assistDTO.getMatchId());
+//
+//        if (player == null){
+//            throw new Exception("El Player no existe");
+//        }
+//
+//        if (match == null){
+//            throw new Exception("El Player no existe");
+//        }
+//
+//        assist.setPlayer(player);
+//        assist.setMatch(match);
 
-        if (match == null){
-            throw new Exception("El Player no existe");
-        }
-
-        assist.setPlayer(player);
+        Match match = matchRepository.findById(assistDTO.getMatchId())
+                .orElseThrow(() -> new Exception("El Match no existe"));
         assist.setMatch(match);
+
+        Player player = playerRepository.findById(assistDTO.getPlayerId())
+                .orElseThrow(() -> new Exception("El Player no existe"));
+        assist.setPlayer(player);
+
         assist = assistRepository.save(assist);
         return AssistMapper.domainToDto(assist);
     }
@@ -84,8 +92,8 @@ public class AssistServiceImpl implements AssistService {
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public AssistDTO modificarAssist(AssistDTO assistDTO) throws Exception {
-        if(assistDTO.getId() == null) {
-            throw new Exception("El id no puede ser nulo");
+        if(assistDTO.getId() != null) {
+            throw new Exception("El id debe de ser nulo");
         }
 
         if(assistDTO.getMinute() == null) {
@@ -93,27 +101,37 @@ public class AssistServiceImpl implements AssistService {
         }
 
         if(assistDTO.getMatchId() == null) {
-            throw new Exception("El Matchid debe no debe de ser nulo");
+            throw new Exception("El MatchId debe no debe de ser nulo");
         }
 
         if(assistDTO.getPlayerId() == null) {
-            throw new Exception("El Playerid no debe de ser nulo");
+            throw new Exception("El PlayerId no debe de ser nulo");
         }
 
         Assist assist = AssistMapper.dtoToDomain(assistDTO);
-        Player player = playerRepository.getReferenceById(assistDTO.getPlayerId());
-        Match match = matchRepository.getReferenceById(assistDTO.getMatchId());
 
-        if (player == null){
-            throw new Exception("El Player no existe");
-        }
+//        Player player = playerRepository.getReferenceById(assistDTO.getPlayerId());
+//        Match match = matchRepository.getReferenceById(assistDTO.getMatchId());
+//
+//        if (player == null){
+//            throw new Exception("El Player no existe");
+//        }
+//
+//        if (match == null){
+//            throw new Exception("El Player no existe");
+//        }
+//
+//        assist.setPlayer(player);
+//        assist.setMatch(match);
 
-        if (match == null){
-            throw new Exception("El Player no existe");
-        }
-
-        assist.setPlayer(player);
+        Match match = matchRepository.findById(assistDTO.getMatchId())
+                .orElseThrow(() -> new Exception("El Match no existe"));
         assist.setMatch(match);
+
+        Player player = playerRepository.findById(assistDTO.getPlayerId())
+                .orElseThrow(() -> new Exception("El Player no existe"));
+        assist.setPlayer(player);
+
         assist = assistRepository.save(assist);
         return AssistMapper.domainToDto(assist);
     }

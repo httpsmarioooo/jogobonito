@@ -25,6 +25,7 @@ public class MatchEventServiceImpl implements MatchEventService{
 
     public MatchEventServiceImpl(MatchEventRepository matchEventRepository, MatchRepository matchRepository, PlayerRepository playerRepository, EventTypeRepository eventTypeRepository) {
         this.matchEventRepository = matchEventRepository;
+
         this.matchRepository = matchRepository;
         this.playerRepository = playerRepository;
         this.eventTypeRepository = eventTypeRepository;
@@ -60,27 +61,44 @@ public class MatchEventServiceImpl implements MatchEventService{
 
         MatchEvent matchEvent = MatchEventMapper.dtoToDomain(matchEventDTO);
 
-        Match match = matchRepository.getReferenceById(matchEventDTO.getMatchId());
-        Player player = playerRepository.getReferenceById(matchEventDTO.getPlayerId());
-        EventType eventType = eventTypeRepository.getReferenceById(matchEventDTO.getEventTypeId());
+//        Match match = matchRepository.getReferenceById(matchEventDTO.getMatchId());
+//        Player player = playerRepository.getReferenceById(matchEventDTO.getPlayerId());
+//        EventType eventType = eventTypeRepository.getReferenceById(matchEventDTO.getEventTypeId());
+//
+//        if (match == null){
+//            throw new Exception("El Match no existe");
+//        }
+//
+//        if (player == null){
+//            throw new Exception("El Player no existe");
+//        }
+//
+//        if (eventType == null){
+//            throw new Exception("El EventType no existe");
+//        }
+//
+//        matchEvent.setMatch(match);
+//        matchEvent.setPlayer(player);
+//        matchEvent.setEventType(eventType);
 
-        if (match == null){
-            throw new Exception("El Match no existe");
-        }
-
-        if (player == null){
-            throw new Exception("El Player no existe");
-        }
-
-        if (eventType == null){
-            throw new Exception("El EventType no existe");
-        }
-
+        Match match = matchRepository.findById(matchEventDTO.getMatchId())
+                .orElseThrow(() -> new Exception("El Player 1 no existe"));
         matchEvent.setMatch(match);
-        matchEvent.setPlayer(player);
-        matchEvent.setEventType(eventType);
-        matchEvent = matchEventRepository.save(matchEvent);
 
+        Player player = playerRepository.findById(matchEventDTO.getPlayerId())
+                .orElseThrow(() -> new Exception("El Player 1 no existe"));
+        matchEvent.setPlayer(player);
+
+        Player player2 = playerRepository.findById(matchEventDTO.getPlayer2Id())
+                .orElseThrow(() -> new Exception("El Player 2 no existe"));
+        matchEvent.setPlayer2(player2);
+
+        EventType eventType = eventTypeRepository.findById(matchEventDTO.getEventTypeId())
+                .orElseThrow(() -> new Exception("El Player 2 no existe"));
+        matchEvent.setEventType(eventType);
+
+
+        matchEvent = matchEventRepository.save(matchEvent);
         return MatchEventMapper.domainToDto(matchEvent);
     }
 
@@ -126,27 +144,44 @@ public class MatchEventServiceImpl implements MatchEventService{
 
         MatchEvent matchEvent = MatchEventMapper.dtoToDomain(matchEventDTO);
 
-        Match match = matchRepository.getReferenceById(matchEventDTO.getMatchId());
-        Player player = playerRepository.getReferenceById(matchEventDTO.getPlayerId());
-        EventType eventType = eventTypeRepository.getReferenceById(matchEventDTO.getEventTypeId());
+//        Match match = matchRepository.getReferenceById(matchEventDTO.getMatchId());
+//        Player player = playerRepository.getReferenceById(matchEventDTO.getPlayerId());
+//        EventType eventType = eventTypeRepository.getReferenceById(matchEventDTO.getEventTypeId());
+//
+//        if (match == null){
+//            throw new Exception("El Match no existe");
+//        }
+//
+//        if (player == null){
+//            throw new Exception("El Player no existe");
+//        }
+//
+//        if (eventType == null){
+//            throw new Exception("El EventType no existe");
+//        }
+//
+//        matchEvent.setMatch(match);
+//        matchEvent.setPlayer(player);
+//        matchEvent.setEventType(eventType);
 
-        if (match == null){
-            throw new Exception("El Match no existe");
-        }
-
-        if (player == null){
-            throw new Exception("El Player no existe");
-        }
-
-        if (eventType == null){
-            throw new Exception("El EventType no existe");
-        }
-
+        Match match = matchRepository.findById(matchEventDTO.getMatchId())
+                .orElseThrow(() -> new Exception("El Player 1 no existe"));
         matchEvent.setMatch(match);
-        matchEvent.setPlayer(player);
-        matchEvent.setEventType(eventType);
-        matchEvent = matchEventRepository.save(matchEvent);
 
+        Player player = playerRepository.findById(matchEventDTO.getPlayerId())
+                .orElseThrow(() -> new Exception("El Player 1 no existe"));
+        matchEvent.setPlayer(player);
+
+        Player player2 = playerRepository.findById(matchEventDTO.getPlayer2Id())
+                .orElseThrow(() -> new Exception("El Player 2 no existe"));
+        matchEvent.setPlayer2(player2);
+
+        EventType eventType = eventTypeRepository.findById(matchEventDTO.getEventTypeId())
+                .orElseThrow(() -> new Exception("El Player 2 no existe"));
+        matchEvent.setEventType(eventType);
+
+
+        matchEvent = matchEventRepository.save(matchEvent);
         return MatchEventMapper.domainToDto(matchEvent);
     }
 
