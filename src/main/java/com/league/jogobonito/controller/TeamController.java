@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/team")
+@CrossOrigin(origins = "http://localhost:4200")
 public class TeamController {
     private TeamService teamService;
 
@@ -19,7 +20,6 @@ public class TeamController {
     }
 
     @PostMapping(value = "/guardarNuevoTeam")
-    @CrossOrigin("http://localhost:4200/")
     public ResponseEntity<TeamDTO> guardarNuevoTeam(@RequestBody TeamDTO teamDTO) throws Exception {
         TeamDTO teamResponse = teamService.guardarNuevoTeam(teamDTO);
         return new ResponseEntity<>(teamResponse, HttpStatus.CREATED);
