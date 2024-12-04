@@ -13,8 +13,7 @@ public class JudgeRepositoryTest {
 
     @Autowired
     private JudgeRepository judgeRepository;
-
-
+    
     @DisplayName("Test guardar nuevo judge")
     @Test
 
