@@ -18,7 +18,6 @@ public class TeamRepositoryTest {
     @DisplayName("Test guardar nuevo equipo")
     @Test
     void guardarTeam(){
-
         //Definir la precondicion
         Team team = Team.builder()
                 .name("Real Madrid")
@@ -30,13 +29,11 @@ public class TeamRepositoryTest {
         //Accion del usuario
         Team team1 = teamRepository.save(team);
 
-
         //La salida osea la repuesta
 
         assertThat(team1.getName()).isEqualTo("Real Madrid");
         assertThat(team1.getCity()).isEqualTo("Madrid");
         assertThat(team1.getInitial()).isEqualTo("RMD");
 //        assertThat(team1.getId()).isNull();
-
     }
 }
