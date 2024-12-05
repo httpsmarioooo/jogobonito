@@ -30,29 +30,29 @@ public class AwardRepositoryTest {
         // Crea y persiste el jugador
 
         Team team = Team.builder()
-                .name("Once")
-                .city("Manizales")
-                .initial("OCC")
+                .name("Liverpool")
+                .city("Liverpool")
+                .initial("LIV")
                 .build();
         entityManager.persist(team);
 
         Date birthDate = Date.from(LocalDate.of(1995, 5, 20).atStartOfDay(ZoneId.systemDefault()).toInstant());
 
         Player player = Player.builder()
-                .name("Lionel Messi")
+                .name("Lucho Diaz")
                 .position("Forward")
                 .team(team)
-                .jerseyNumber("10")
+                .jerseyNumber("7")
                 .birthDate(birthDate)
                 .heightCm(170)
-                .countryOfBirth("Argentina")
+                .countryOfBirth("Colombia")
                 .build();
         entityManager.persist(player);
 
         // Crea y persiste el premio (Award)
         Award award = Award.builder()
                 .name("Ballon d'Or")
-                .description("sed")
+                .description("It´s fake, messi won")
                 .player(player)
                 .build();
         entityManager.persist(award);
