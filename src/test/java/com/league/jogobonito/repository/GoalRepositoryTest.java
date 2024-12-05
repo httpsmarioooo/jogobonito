@@ -27,15 +27,14 @@ public class GoalRepositoryTest {
         Team team = Team.builder()
                 .name("Real Madrid")
                 .city("Madrid")
-                .initial("RM")
                 .build();
         entityManager.persist(team);
 
         // Crea y persiste un estadio
         Stadium stadium = Stadium.builder()
                 .name("Santiago Bernabéu")
-                .capacity(81000)
                 .city("Madrid")
+                .capacity(81000)
                 .country("España")
                 .build();
         entityManager.persist(stadium);
@@ -44,11 +43,11 @@ public class GoalRepositoryTest {
         Player player = Player.builder()
                 .name("Karim Benzema")
                 .position("Forward")
+                .team(team)
                 .jerseyNumber("9")
                 .birthDate(new Date())
                 .heightCm(185)
                 .countryOfBirth("Francia")
-                .team(team)
                 .build();
         entityManager.persist(player);
 
