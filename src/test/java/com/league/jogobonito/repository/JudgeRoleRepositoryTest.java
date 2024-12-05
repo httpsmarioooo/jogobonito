@@ -23,7 +23,6 @@ public class JudgeRoleRepositoryTest {
                 .build();
 
         JudgeRole judgeRole1 = judgeRoleRepository.save(judgeRole);
-
         assertThat(judgeRole.getRoleName()).isEqualTo("VAR");
     }
 }

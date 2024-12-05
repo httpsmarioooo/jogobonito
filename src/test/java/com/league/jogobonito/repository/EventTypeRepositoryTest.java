@@ -21,7 +21,6 @@ public class EventTypeRepositoryTest {
                 .build();
 
         EventType eventType1 = eventTypeRepository.save(eventType);
-
-        assertThat(eventType.getName()).isEqualTo(eventType1.getId());
+        assertThat(eventType.getName()).isEqualTo("Penalti");
     }
 }

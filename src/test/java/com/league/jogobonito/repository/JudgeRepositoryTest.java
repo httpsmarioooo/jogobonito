@@ -23,7 +23,6 @@ public class JudgeRepositoryTest {
                 .build();
 
         Judge judge1 = judgeRepository.save(judge);
-
         assertThat(judge1.getName()).isEqualTo("Oscar");
     }
 }
