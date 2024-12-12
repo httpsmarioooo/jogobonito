@@ -1,5 +1,7 @@
 ## Proyecto Backend
 
+El obketivo principal de este proyecto es desarrollar una aplicación de gestión tomando como ejemplo una liga de futbol, que permita administrar equipos, jugadores, partidos, estadísticas y otras funcionalidades relacionadas, asegurando un rendimiento óptimo, escalabilidad y seguridad.
+
 ![Banner Technologies](Tecnologías.png) 
 
 ### Lenguaje:
@@ -24,3 +26,6 @@ dependencias de la capa de Repositorio).
 3. Capa de Controladores (Clases Java que exponen los Endpoints para consumir servicios REST tipo 
 POST, PUT, GET, DELETE) 
 4. Pruebas unitarias Capas Repositorio. 
+
+## Diagrama ER
+![Diagrama ER](jogobonitodb_public.png) 
