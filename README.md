@@ -27,5 +27,28 @@ dependencias de la capa de Repositorio).
 POST, PUT, GET, DELETE) 
 4. Pruebas unitarias Capas Repositorio. 
 
+## Requisitos Funcionales (RF):
+
+1. Gestión de Equipos:
+Crear, actualizar y eliminar equipos con datos detallados como nombre, ciudad, estadio y entrenador.
+
+2. Gestión de Jugadores:
+Crear, actualizar y eliminar jugadores, incluyendo información personal y deportiva.
+
+3. Asignación de Jugadores a Equipos:
+Asignar, transferir y liberar jugadores entre equipos.
+
+4. Gestión de Partidos:
+Programar, actualizar y registrar resultados de partidos con estadísticas detalladas.
+
+5. Gestión de Estadísticas:
+Generar y consultar tablas de posiciones, máximos goleadores y estadísticas detalladas por jugador y equipo.
+
+6. Seguridad y Autenticación:
+Requerir autenticación para tareas administrativas y manejar roles de usuario con permisos específicos.
+
+7. Interacción y API:
+Proporcionar una REST API para la interacción con el sistema y actualizar estadísticas en tiempo real mediante mensajes de eventos.
+
 ## Diagrama ER
 ![Diagrama ER](jogobonitodb_public.png) 
